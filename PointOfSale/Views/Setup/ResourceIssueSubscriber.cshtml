@@ -1,0 +1,178 @@
+﻿@model POSModel.ResourceIssueModel
+@using POSBLL
+
+@{
+    ViewBag.Title = "ResourceIssueSubscriber";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+}
+
+<div class="title clearfix">
+    <h3>Resource Issue Subscriber</h3>
+</div>
+<div class="clearfix"></div>
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+
+@using (Html.BeginForm("ResourceIssueSubscriber", "Setup", FormMethod.Post, new { id = "search-form" }))
+{
+    <div class="form-group">
+        <div class="row">
+
+            <div class="col-md-3">
+                <div class="form-grop_padding">
+                    
+                    @Html.LabelFor(model => model.SubscriberId)
+                    @Html.DropDownListFor(x => x.SubscriberId, ViewBag.ResourceSubscriberList as SelectList, "Choose one", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SubscriberId)
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-grop_padding">
+                    <button class="btn btn-search" type="submit" style="margin-top: 35px"><i class="fa fa-search"></i> Search</button>
+                </div>
+            </div>
+
+        </div>
+
+        @if (Model.SubscriberId > 0)
+        {
+            <div id="add-new-div">
+                <a href='@Url.Content("~/Setup/ResourceIssueIndex?SubscriberId="+Model.SubscriberId)' class="btn btn-add pull-right"><i class="fa fa-plus"></i> Add New Issue</a>
+                <button id="History" class="btn pull-right" style="margin-right: 5px; padding-left: 10px"><i class="fa fa-history"></i> History</button>
+            </div>
+        }
+
+
+    </div>
+}
+
+
+@if (Model.ResourceIssueList != null)
+{
+    <div class="content-table" style="margin-top: 40px">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th class="width-30">
+                            S.N.
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.ResourceName)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.IssueDate)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.ReturnBackDate)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Remarks)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.IsActive)
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ResourceIssueList)
+                    {
+                        <tr>
+                            <td>
+                                @counter <a href="#" onclick="AddEditResourceIssue('@item.IssueId')"><i class="fa fa-edit"></i></a>
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => item.ResourceName)
+                            </td>
+
+                            <td>
+                                @CommonService.GetCurrentNepaliDate(item.IssueDate)
+                            </td>
+
+                            <td>
+                                @CommonService.GetCurrentNepaliDate(item.ReturnBackDate)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => item.Remarks)
+                            </td>
+
+                            <td>
+                                @Html.CheckBoxFor(modelItem => item.IsActive)
+                            </td>
+
+                            <td>
+                                <button class="btn btn-primary" type="submit" onclick="ReturnBack(@item.ResourceCopyId,@Model.SubscriberId)">Return Back</button>
+                            </td>
+
+
+                        </tr>
+                        counter++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+
+<script>
+    function ReturnBack(resCopyId, subId) {
+
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/Setup/ReturnResource")',
+            data: { resourceCopyId: resCopyId, subscriberId: subId },
+            success: function (result) {
+                $('#check')
+
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+            },
+            error: function () {
+            }
+        });
+    }
+
+
+
+    $('#AddIssue').on('click', function () {
+        AddEditResourceIssue();
+    });
+
+    function AddEditResourceIssue(uniqueId) {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/SetUp/CreateResourceIssue")',
+            data: { IssueId: uniqueId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+
+</script>
+
+

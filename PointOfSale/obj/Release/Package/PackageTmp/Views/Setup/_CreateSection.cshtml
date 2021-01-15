@@ -1,0 +1,100 @@
+﻿@model POSModel.SectionModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">Section</h4>
+        </div>
+        @using (Html.BeginForm("CreateSection", "SetUp", FormMethod.Post, new { id = "section-form" }))
+        {
+            <div class="modal-body">
+                <div class="content-box">
+                    @Html.HiddenFor(model => model.Id)
+
+
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.SectionNameEng)
+                                    @Html.TextBoxFor(model => model.SectionNameEng, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.SectionNameEng)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+
+                                    @Html.LabelFor(model => model.SectionNameNep)
+                                    @Html.TextBoxFor(model => model.SectionNameNep, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.SectionNameNep)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="btn-groups modal-footer">
+                @if (Model.Id == 0)
+                {
+
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save Change</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $.validator.unobtrusive.parse('#section-form');
+        $('#section-form').ajaxForm({
+
+            beforeSubmit: function () {
+                $('#section-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#section-form'));
+                if ($("#section-form").valid()) {
+                    WorkForce.loader.show();
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                if (result.Success) {
+                    WorkForce.loader.hide();
+                    ShowMessage("success", "success", result.Msg);
+                    $('#pop-up-div').modal('hide');
+                    location.href = '@Url.Content("~/SetUp/SectionIndex")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+
+
+            },
+            error: function () {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in calling ajax!!");
+            }
+
+        });
+    });
+</script>

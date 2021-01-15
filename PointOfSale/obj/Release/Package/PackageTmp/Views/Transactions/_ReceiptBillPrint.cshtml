@@ -1,0 +1,168 @@
+﻿@model POSModel.TransactionPaymentModel
+@using POSBLL
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Receipt</title>
+    <style media="print">
+        .invoice-box {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+            font-size: 16px;
+            line-height: 24px;
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color: #555;
+        }
+
+            .invoice-box table {
+                width: 100%;
+                line-height: inherit;
+                text-align: left;
+            }
+
+                .invoice-box table td {
+                    padding: 5px;
+                    vertical-align: top;
+                }
+
+                .invoice-box table tr td:nth-child(2) {
+                    text-align: center;
+                }
+
+                .invoice-box table tr.top table td {
+                    padding-bottom: 20px;
+                }
+
+                    .invoice-box table tr.top table td.title {
+                        font-size: 45px;
+                        line-height: 45px;
+                        color: #333;
+                    }
+
+                .invoice-box table tr.information table td {
+                    padding-bottom: 40px;
+                }
+
+                .invoice-box table tr.heading th {
+                    background: #000;
+                    text-align: center;
+                    font-weight: bold;
+                    color: #fff;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                }
+
+                .invoice-box table tr.details td {
+                    padding-bottom: 20px;
+                }
+
+                .invoice-box table tr.item td {
+                    border-bottom: 1px solid #eee;
+                }
+
+                .invoice-box table tr.item.last td {
+                    border-bottom: none;
+                }
+
+                .invoice-box table tr.total td:nth-child(2) {
+                    border-top: 2px solid #eee;
+                    font-weight: bold;
+                }
+
+                .invoice-box table td {
+                    border: 1px solid #000;
+                }
+
+        .l-r-side {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+            .l-r-side .left-side,
+            .l-r-side .right-side {
+                flex: 0 0 50%;
+                -ms-flex: 0 0 50%;
+                max-width: 50%;
+            }
+
+        .title-3 h3 {
+            margin-top: 0;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+
+        /** RTL **/
+        .rtl {
+            direction: rtl;
+            font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        }
+
+            .rtl table {
+                text-align: center;
+            }
+
+                .rtl table tr td:nth-child(2) {
+                    text-align: center;
+                }
+    </style>
+
+</head>
+
+<body>
+    <div class="invoice-box">
+        <div class="title-3 text-center">
+            <h3 class="text-center">Mining InfoSys</h3>
+            @*<h5>Seller Address</h5>
+            <h5>Seller Contact No.</h5>*@
+
+        </div>
+        <div class="l-r-side text-right">
+            <div class="left-side">
+                @Html.LabelFor(model => model.ReceiptNumber): @Html.DisplayFor(model => model.ReceiptNumber)<br>
+                @Html.LabelFor(model => model.PaymentDateNepali): @Html.DisplayFor(model => model.PaymentDateNepali)<br>
+            </div>
+        </div>
+
+        <p>Received From &nbsp;@Model.PartyOrganization.PartyName &nbsp;, the Amount of Rs&nbsp;@Model.PaymentAmount &nbsp; for @Model.Remarks </p>
+      
+
+        <table cellpadding="0" cellspacing="0" class="text-right" style="width:20%">
+
+            <tr class="heading" style="text-align:center">
+                <th colspan="1">
+
+                </th>
+                <th colspan="2">
+                    Payment Method
+                </th>
+
+            </tr>
+
+            <tr style="text-align:center">
+                <td colspan="1"></td>
+                <td colspan="2">
+                    @ViewBag.PaymentTypeName &nbsp;@if (Model.BankName != null)
+                                             { 
+                                                @Model.BankName
+                                             }
+                </td>
+
+
+            </tr>
+
+        </table>
+
+        <span>Received By : ................</span>
+    </div>
+</body>
+</html>
+
+

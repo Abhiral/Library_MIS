@@ -1,0 +1,177 @@
+﻿@model POSModel.ProgrammeModel
+
+@{
+    ViewBag.Title = "ProgrammIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+}
+
+<div class="title clearfix">
+    <h3>Programme </h3>
+</div>
+<button id="AddProgramme" class="btn btn-add pull-right"><i class="fa fa-plus"></i> Add New</button>
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="width-30">
+                        S.N.
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountTypeID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountSubTypeID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProgramNameEnglish)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProgramNameNepali)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProgramCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FiscalYearID)
+                    </th>
+
+
+                    <th>Program Funds</th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.AreaOfImplementation)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OfficeBranchName)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.CreatedBy)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedBy)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.OrganisationID)
+                        </th>*@
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.UniqueID)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ProgrammeList)
+                {
+                    <tr>
+                        <td>
+                            @counter <a href="#" onclick="AddEditProgramme('@item.ProgramID')"><i class="fa fa-edit"></i></a>
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountSubType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProgramNameEnglish)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProgramNameNepali)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProgramCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FiscalYearID)
+                        </td>
+
+                        <td>
+                            <a href='@Url.Content("~/Setup/ProgrammeFundAllocationIndex?programmeId=")@item.ProgramID'>view</a>
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.AreaOfImplementation)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OfficeBranchName)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.CreatedBy)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreatedDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ModifiedBy)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ModifiedDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrganisationID)
+                            </td>*@
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.UniqueID)
+                            </td>*@
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+
+
+    $('#AddProgramme').on('click', function () {
+        AddEditProgramme();
+
+    });
+
+    function AddEditProgramme(uniqueId) {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/SetUp/CreateEditProgramme")',
+            data: { programmeId: uniqueId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+</script>

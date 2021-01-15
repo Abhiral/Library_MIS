@@ -1,0 +1,139 @@
+﻿@model POSModel.ProvinceModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">Province</h4>
+        </div>
+        @using (Html.BeginForm("CreateEditProvince", "SetUp", FormMethod.Post, new { id = "province-form" }))
+        {
+            <div class="modal-body">
+                <div class="content-box">
+                    @Html.HiddenFor(model => model.ProvinceId)
+
+
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.ProvinceNameEng)
+                                    @Html.TextBoxFor(model => model.ProvinceNameEng, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ProvinceNameEng)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+
+                                    @Html.LabelFor(model => model.ProvinceNameNep)
+                                    @Html.TextBoxFor(model => model.ProvinceNameNep, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ProvinceNameNep)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.PlaceCode)
+                                    @Html.TextBoxFor(model => model.PlaceCode, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PlaceCode)
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.ProvinceCode)
+                                    @Html.TextBoxFor(model => model.ProvinceCode, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ProvinceCode)
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+
+                                    @Html.LabelFor(model => model.LatLong)
+                                    @Html.TextBoxFor(model => model.LatLong, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.LatLong)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+
+                                    @Html.LabelFor(model => model.IsActive)
+                                    @Html.TextBoxFor(model => model.IsActive, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.IsActive)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="btn-groups modal-footer">
+                @if (Model.ProvinceId == 0)
+                {
+
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save Change</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $.validator.unobtrusive.parse('#province-form');
+        $('#province-form').ajaxForm({
+
+            beforeSubmit: function () {
+                $('#province-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#province-form'));
+                if ($("#province-form").valid()) {
+                    WorkForce.loader.show();
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                if (result.Success) {
+                    WorkForce.loader.hide();
+                    ShowMessage("success", "success", result.Msg);
+                    $('#pop-up-div').modal('hide');
+                    location.href = '@Url.Content("~/SetUp/ProvinceIndex")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+
+
+            },
+            error: function () {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in calling ajax!!");
+            }
+
+        });
+    });
+</script>

@@ -1,0 +1,162 @@
+﻿@model POSModel.StudentProfileModel
+
+@{
+    ViewBag.Title = "StudentProfileIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+}
+
+<div class="title clearfix">
+    <h3>Student Profile </h3>
+</div>
+<button id="AddStudent" class="btn btn-add pull-right"><i class="fa fa-plus"></i> Add New</button>
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="width-30">
+                        S.N.
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Guardian)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MobileNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AdmissionDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PermanentMunicipalityId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PermWard)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TemporaryMunicipalityId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TempWard)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Remarks)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsDropped)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DropedRemarks)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Classes)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.StudentProfileList)
+                {
+                    <tr>
+                        <td>
+                            @counter <a href="#" onclick="AddEditStudent('@item.ProfileId')"><i class="fa fa-edit"></i></a>
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Guardian)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MobileNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AdmissionDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PermanentMunicipalityId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PermWard)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TemporaryMunicipalityId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TempWard)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Remarks)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsDropped)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DropedRemarks)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Classes)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+
+
+    $('#AddStudent').on('click', function () {
+        AddEditStudent();
+    });
+
+    function AddEditStudent(uniqueId)
+    {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/SetUp/CreateStudentProfile")',
+            data: { studentId: uniqueId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+</script>

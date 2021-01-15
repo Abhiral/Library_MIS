@@ -1,0 +1,261 @@
+﻿@model PointOfSale.Models.UserProfile
+
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+@{
+    string ApplicationRole = "";
+    ApplicationRole = Roles.GetRolesForUser().FirstOrDefault();
+}
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">User </h4>
+        </div>
+        @using (Html.BeginForm("CreateEditUser", "User", FormMethod.Post, new { id = "add-user-form" }))
+        {
+            
+            <div class="modal-body">
+                <div class="content-box">
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row equal-h">
+                            @Html.HiddenFor(model => model.UserId)
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(x => x.FullName)
+                                    @Html.TextBoxFor(model => model.FullName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.FullName)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(x => x.MobileNumber)
+                                    @Html.TextBoxFor(model => model.MobileNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.MobileNumber)
+                                </div>
+                            </div>
+                       
+                        
+                            @if (Model.UserId == 0)
+                            {
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-grop_padding">
+                                        @Html.LabelFor(x => x.UserName)
+                                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.UserName)
+                                    </div>
+
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-grop_padding">
+                                        @Html.LabelFor(x => x.UserName)
+                                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.RoleName)
+
+                                    @Html.DropDownListFor(model => model.RoleName, new SelectList(POSBLL.CommonService.GetRoleList(), "RoleName", "RoleName"),"-- Select --", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.RoleName)
+                                </div>
+
+                            </div>
+                            @*<div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.Organization)
+                                    @Html.DropDownListFor(model => model.OrganizationId, new SelectList(uService.GetOrganizationList(), "Id", "OrganizationName"), AppConstants.Select, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.OrganizationId)
+                                </div>
+
+                            </div>*@
+                        
+                        @if (Model.UserId == 0)
+                        {
+                       
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-grop_padding">
+                                        @Html.LabelFor(x => x.Password)
+                                        @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Password)
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-grop_padding">
+                                        @Html.LabelFor(x => x.ConfirmPassword)
+                                        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                                    </div>
+
+                                </div>
+
+                            
+                        }
+                        
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    <div class="checkbox-sty-2">
+                                        <div>
+                                          
+                                            @Html.CheckBoxFor(model => model.CanLogin)
+                                              @Html.LabelFor(x => x.CanLogin)
+                                        </div>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.CanLogin)
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            @*<div class="modal-body">
+                <div class="content-box">
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row equal-h">
+                            @Html.HiddenFor(model => model.UserId)
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(x => x.FullName)
+                                    @Html.TextBoxFor(model => model.FullName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.FullName)
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(x => x.MobileNumber)
+                                    @Html.TextBoxFor(model => model.MobileNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.MobileNumber)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            @if (Model.UserId == 0)
+                            {
+                                <div class="col-md-6">
+                                    <div class="form-grop_padding">
+                                        @Html.LabelFor(x => x.UserName)
+                                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.UserName)
+                                    </div>
+
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-6">
+                                    <div class="form-grop_padding">
+                                        @Html.LabelFor(x => x.UserName)
+                                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.RoleName)
+
+                                    @Html.DropDownListFor(model => model.RoleName, new SelectList(POSBLL.CommonService.GetRoleList(), "RoleName", "RoleName"), "--select--", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.RoleName)
+                                </div>
+
+                            </div>
+                        </div>
+                        @if (Model.UserId == 0)
+                        {
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-grop_padding">
+                                        @Html.LabelFor(x => x.Password)
+                                        @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Password)
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-grop_padding">
+                                        @Html.LabelFor(x => x.ConfirmPassword)
+                                        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        }
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(x => x.CanLogin)
+                                    @Html.CheckBoxFor(model => model.CanLogin)
+                                    @Html.ValidationMessageFor(model => model.CanLogin)
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>*@
+            <div class="btn-groups modal-footer">
+                @if (Model.UserId == 0)
+                {
+
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save Change</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+<script>
+    $(function () {
+        $.validator.unobtrusive.parse('#add-user-form');
+        $('#add-user-form').ajaxForm({
+            beforeSubmit: function () {
+                $('#add-user-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#add-user-form'));
+                if ($("#add-user-form").valid()) {
+                    WorkForce.loader.show();
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                if (result.Success) {
+                    WorkForce.loader.hide();
+                    ShowMessage("success", "success", result.Msg);
+                    $('#pop-up-div').modal('hide');
+                    location.href = '@Url.Content("~/User/UserLists")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+
+
+            },
+            error: function () {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in calling ajax!!");
+            }
+
+        });
+    });
+</script>

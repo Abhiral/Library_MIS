@@ -1,0 +1,133 @@
+﻿@model POSModel.GoodsModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">Sub-Goods </h4>
+        </div>
+        @using (Html.BeginForm("CreateSubGoods", "Goods", FormMethod.Post, new { id = "subgoods-entry-form" }))
+        {
+            <div class="modal-body">
+                <div class="content-box">
+
+                    @Html.ValidationSummary(true)
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Item Name</label>
+                            @Html.TextBoxFor(x => x.GoodsName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.GoodsName)
+                        </div>
+                        <div class="col-md-6">
+                            <label>Unit Type</label>
+                            @Html.DropDownListFor(x => x.UnitTypeId, new SelectList(POSBLL.CommonService.GetConfigChoices("Unit Type"), "SelectId", "SelectText"), "---Select---", new { @class = "form-control", @id = "dropdown" })
+                            @Html.ValidationMessageFor(x => x.UnitTypeId)
+                        </div>
+                        <div class="col-md-6">
+                            <label>Manufacturer</label>
+                            @Html.TextBoxFor(x => x.Manufacturer, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Manufacturer)
+                        </div>
+                        <div class="col-md-6">
+                            <label>Default Rate</label>
+                            @Html.TextBoxFor(x => x.DefaultRate, new { @Value = (Model.DefaultRate > 0 ? Model.DefaultRate.ToString() : string.Empty), @class = "form-control", placeholder = "0" })
+                            @Html.ValidationMessageFor(x => x.DefaultRate)
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Default Discount (%)</label>
+                            @Html.TextBoxFor(x => x.DiscountPercentage, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.DefaultRate)
+                        </div>
+
+                        <div class="col-md-12">
+                            <label>Remarks</label>
+                            @Html.TextAreaFor(x => x.Remarks, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Remarks)
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="btn-groups modal-footer">
+
+                <button type="submit" id="add-item-to-view" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Add Item</button>
+            </div>
+        }
+    </div>
+    </div>
+<script>
+    $(function () {
+        $.validator.unobtrusive.parse('#subgoods-entry-form');
+        $('#subgoods-entry-form').ajaxForm({
+            beforeSubmit: function () {
+                $('#subgoods-entry-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#subgoods-entry-form'));
+                if ($("#subgoods-entry-form").valid()) {
+                    var counter = $('.indivisual-row.row').length;
+                    counter++;
+                    var data = {
+                        GoodsName: $('#GoodsName').val(),
+                        UnitTypeId: $('select[name=UnitTypeId] option:selected').val(),
+                        Manufacturer: $('#Manufacturer').val(),
+                        DefaultRate: $('#DefaultRate').val(),
+                        Remarks: $('#Remarks').val(),
+                        counter: counter,
+                        IsActive:true
+                    };
+                    
+                    $.ajax({
+                        type: 'GET',
+                        url: '@Url.Content("~/Goods/ReturnSubGoodsView")',
+                        data: data,
+                        success: function (result) {
+                            if (result) {
+                                $('#items-table-div').append(result);
+                                $('#pop-up-div').modal('hide');
+                            }
+
+                        },
+                        error: function () {
+                        }
+                    });
+
+                    return false;
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                if (result.Success) {
+                    WorkForce.loader.hide();
+                    
+                    $('#pop-up-div').modal('hide');
+                    //location.href = '@Url.Content("~/Party/PartyIndex")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+
+
+            },
+            error: function () {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in calling ajax!!");
+            }
+
+        });
+    });
+
+
+</script>

@@ -1,0 +1,137 @@
+﻿@model POSModel.AccountSubTypeModel
+
+@{
+    ViewBag.Title = "AccountSubTypeIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+}
+
+<div class="title clearfix">
+    <h3>AccountSubType </h3>
+</div>
+<button id="AddAccountSubType" class="btn btn-add pull-right"><i class="fa fa-plus"></i> Add New</button>
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="width-30">
+                        S.N.
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountTypeID)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountSubTypeNameEnglish)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountSubTypeNameNepali)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountSubTypeCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+
+                    <th>Account Heads</th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.CreatedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifiedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifiedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OrganisationID)
+                    </th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.AccountSubTypeList)
+                {
+                    <tr>
+                        <td>
+                            @counter <a href="#" onclick="EditAccountSubType('@item.AccountSubTypeID')"><i class="fa fa-edit"></i></a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountType)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountSubTypeNameEnglish)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountSubTypeNameNepali)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountSubTypeCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td><a href=@Url.Content("~/Setup/AccountHeadIndex?accountSubTypeId=")@item.AccountSubTypeID>view</a></td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.CreatedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrganisationID)
+                        </td>*@
+
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+
+
+    $('#AddAccountSubType').on('click', function () {
+        EditAccountSubType();
+
+    });
+
+    function EditAccountSubType(uniqueId)
+    {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/SetUp/CreateEditAccountSubTypes")',
+            data: { accountSubTypeId: uniqueId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+</script>

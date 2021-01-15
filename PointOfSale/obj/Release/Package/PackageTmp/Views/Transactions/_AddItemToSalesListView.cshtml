@@ -1,0 +1,92 @@
+﻿@using FormCollectionHelper
+
+@model POSModel.TransactionDetailModel
+
+@using (Html.BeginCollectionItem("TransactionDetails"))
+{
+    <div class="indivisual-row table-body" style="margin-bottom:10px;">
+        <div class="sec-sn item">
+            @ViewBag.Counter
+        </div>
+        <div class="sec-item item">
+            @Html.HiddenFor(model => model.TransactionDetailId)
+            @Html.HiddenFor(model => model.GoodsId, new { @class = "Goods-Id" })
+            @Html.TextBoxFor(model => model.GoodsName, new { @readonly = true, @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.GoodsName)
+        </div>
+        <div class="sec-rate item">
+            @Html.TextBoxFor(x => x.GoodsRate, new { @class = "good-rate form-control text-right" })
+            @Html.ValidationMessageFor(model => model.GoodsRate)
+        </div>
+        <div class="sec-rate item">
+            @Html.TextBoxFor(x => x.DiscountPercentage, new { @class = "good-discountPercentage form-control text-right" })
+            @Html.ValidationMessageFor(model => model.DiscountPercentage)
+        </div>
+        <div class="sec-Quantity item">
+            @Html.TextBoxFor(model => model.Quantity, new { @class = "good-quantity form-control text-right" })
+            @Html.ValidationMessageFor(model => model.Quantity)
+        </div>
+
+        @*<div class="col-md-2">
+                @Html.CheckBoxFor(model => model.IsActive)
+            </div>*@
+        <div class="sec-total item">
+            @Html.TextBoxFor(model => model.Total, new { @readonly = true, @class = "good-total form-control text-right", Value = String.Format("{0:0.00}", Model.Total) })
+            @Html.ValidationMessageFor(model => model.Total)
+        </div>
+
+        @if (Model.TransactionDetailId == 0)
+{
+    <div class="sec-action item">
+        <button type="button" onclick="DeleteRow(this)" class="row-button btn btn-sm btn-danger btn-delete"><i class="fa fa-trash-o"></i> Remove</button>
+    </div>
+}
+    </div>
+
+
+    @*<div class="indivisual-row table-body">
+        <div class="sec-sn">
+            @ViewBag.Counter
+        </div>
+        <div class="sec-item item">
+            @Html.HiddenFor(model => model.TransactionDetailId)
+            @Html.HiddenFor(model => model.GoodsId, new { @class = "Goods-Id" })
+            @Html.TextBoxFor(model => model.GoodsName, new { @readonly = true, @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.GoodsName)
+        </div>
+        <div class="sec-rate item">
+            @Html.TextBoxFor(x => x.GoodsRate, new { @class = "good-rate form-control text-right" })
+            @Html.ValidationMessageFor(model => model.GoodsRate)
+        </div>
+        <div class="sec-rate item">
+            @Html.TextBoxFor(x => x.DiscountPercentage, new { @class = "good-discountPercentage form-control text-right" })
+            @Html.ValidationMessageFor(model => model.DiscountPercentage)
+        </div>
+        <div class="sec-Quantity item">
+            @Html.TextBoxFor(model => model.Quantity, new { @class = "good-quantity form-control text-right" })
+            @Html.ValidationMessageFor(model => model.Quantity)
+        </div>
+
+        @*<div class="">
+                @Html.CheckBoxFor(model => model.IsActive)
+            </div>
+        <div class="sec-total item">
+            @Html.TextBoxFor(model => model.Total, new { @readonly = true, @class = "good-total form-control text-right", Value = String.Format("{0:0.00}", Model.Total) })
+            @Html.ValidationMessageFor(model => model.Total)
+        </div>
+
+        @if (Model.InventoryTransactionDetailId == 0)
+            {
+        <div class="sec-action item">
+            <button type="button" onclick="DeleteRow(this)" class="row-button btn btn-sm btn-danger btn-delete"><i class="fa fa-trash-o"></i> Remove</button>
+        </div>
+
+    </div>*@
+}
+<script>
+
+    $(function () {
+        $('#items-table-div').scrollTop($('#items-table-div').prop('scrollHeight'));
+    })
+
+</script>

@@ -1,0 +1,133 @@
+﻿
+
+@model POSModel.BankInformationModel
+
+@{
+    ViewBag.Title = "BankAccountIndex";
+    int counter = 1;
+    
+
+}
+<div class="main-title clearfix">
+    <h3>Bank  Information</h3>
+</div>
+<div class="text-right">
+    <button id="AddEditButton" class="btn btn-add"><i class="fa fa-plus"></i>Add New</button>
+</div>
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="width-30">
+                        S.N.
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(x => x.BankName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(x => x.AccountHolderName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(x => x.AccountNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(x => x.PhoneNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(x => x.Address)
+                    </th>
+
+                    <th>
+                        Statement
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(x => x.IsActive)
+                    </th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.BankAccountList)
+                {
+                    <tr>
+                        <td>
+                            @counter
+                        </td>
+
+                        <td>
+
+                            <a href="#" onclick="AddEditFunction('@item.Id')"><i class="fa fa-edit"></i>@item.BankName</a>
+
+                        </td>
+                        <td>
+                            @item.AccountHolderName
+                        </td>
+                        <td>
+                            @item.AccountNumber
+                        </td>
+                        <td>
+                            @item.PhoneNumber
+                        </td>
+                        <td>
+                            @item.Address
+                        </td>
+
+                        <td style="text-align:center">
+                           
+                            @*<a href="~/BankInformation/BankTransactionIndex, new {id=@item.Id}"><input type="button" name="" value="View" class="btn btn-primary" /></a>*@
+                           @*@Html.ActionLink("View", "BankTransactionStatement", "BankInformation", new { bankId = item.Id })*@
+                            <a href="@Url.Content("~/BankInformation/BankTransactionStatement?bankId=" + item.Id)">View</a>
+                            
+                        </td>
+
+                        <td>
+                            @Html.CheckBoxFor(x => item.IsActive)
+                        </td>
+
+
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+
+
+    $('#AddEditButton').on('click', function () {
+        AddEditFunction();
+    });
+
+    function AddEditFunction(Id) {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/BankInformation/CreateEditBankAccount")',
+
+            data: {Id: Id },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static',
+                    'draggable':true
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+    $('#ShowTransaction').on('click', function () {
+        ShowBankTransaction();
+    })
+</script>
+
+

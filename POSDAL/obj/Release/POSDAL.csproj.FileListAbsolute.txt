@@ -1,0 +1,16 @@
+E:\projects\PointOfSale\POSDAL\bin\Release\POSDAL.dll.config
+E:\projects\PointOfSale\POSDAL\bin\Release\POSDAL.dll
+E:\projects\PointOfSale\POSDAL\bin\Release\POSDAL.pdb
+E:\projects\PointOfSale\POSDAL\bin\Release\EntityFramework.dll
+E:\projects\PointOfSale\POSDAL\bin\Release\EntityFramework.xml
+E:\projects\PointOfSale\POSDAL\obj\Release\POSDAL.csprojResolveAssemblyReference.cache
+E:\projects\PointOfSale\POSDAL\obj\Release\POSDAL.dll
+E:\projects\PointOfSale\POSDAL\obj\Release\POSDAL.pdb
+F:\Dot.Net\POS\trunk\PointOfSale\POSDAL\bin\Release\POSDAL.dll.config
+F:\Dot.Net\POS\trunk\PointOfSale\POSDAL\bin\Release\POSDAL.dll
+F:\Dot.Net\POS\trunk\PointOfSale\POSDAL\bin\Release\POSDAL.pdb
+F:\Dot.Net\POS\trunk\PointOfSale\POSDAL\bin\Release\EntityFramework.dll
+F:\Dot.Net\POS\trunk\PointOfSale\POSDAL\bin\Release\EntityFramework.xml
+F:\Dot.Net\POS\trunk\PointOfSale\POSDAL\obj\Release\POSDAL.csprojResolveAssemblyReference.cache
+F:\Dot.Net\POS\trunk\PointOfSale\POSDAL\obj\Release\POSDAL.dll
+F:\Dot.Net\POS\trunk\PointOfSale\POSDAL\obj\Release\POSDAL.pdb

@@ -1,0 +1,137 @@
+﻿@model POSModel.ResourceGenerationModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">Resource Generation</h4>
+        </div>
+        @using (Html.BeginForm("CreateResourceGeneration", "SetUp", FormMethod.Post, new { id = "CreateResourceGeneration-form" }))
+        {
+            <div class="modal-body">
+                <div class="content-box">
+                    @Html.HiddenFor(model => model.GenerationId)
+
+
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.HiddenFor(model => model.ResourceId)
+                                    @Html.LabelFor(model => model.ResourceName)
+                                    @Html.TextBoxFor(model => model.ResourceName, new { @class = "form-control", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.ResourceName)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.HiddenFor(model => model.GenerationDateNepali)
+                                    @Html.LabelFor(model => model.GenerationDateNepali)
+                                    @Html.TextBoxFor(model => model.GenerationDateNepali, new { @class = "nepali-calendar form-control", autoComplete = "off", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.GenerationDateNepali)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.HiddenFor(model => model.GenerationCopyCount)
+                                    @Html.LabelFor(model => model.GenerationCopyCount)
+                                    @Html.TextBoxFor(model => model.GenerationCopyCount, new { @class = "form-control", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.GenerationCopyCount)
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.Remarks)
+                                    @Html.TextBoxFor(model => model.Remarks, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Remarks)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.IsActive)
+                                    @Html.CheckBoxFor(model => model.IsActive, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.IsActive)
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="btn-groups modal-footer">
+                @if (Model.GenerationId == 0)
+                {
+
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save Change</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(function () {
+
+        $('#CreateResourceGeneration-form').ajaxForm({
+
+            beforeSubmit: function () {
+                $('#CreateResourceGeneration-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#CreateResourceGeneration-form'));
+                if ($("#CreateResourceGeneration-form").valid()) {
+                    WorkForce.loader.show();
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                if (result.Success) {
+                    WorkForce.loader.hide();
+                    ShowMessage("success", "success", result.Msg);
+                    $('#pop-up-div').modal('hide');
+                    location.href = '@Url.Content("~/SetUp/ResourceGenerationIndex")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+
+
+            },
+            error: function () {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in calling ajax!!");
+            }
+
+        });
+    });
+
+    $('.nepali-calendar').nepaliDatePicker({
+        npdMonth: true,
+        npdYear: true,
+    });
+
+
+
+</script>

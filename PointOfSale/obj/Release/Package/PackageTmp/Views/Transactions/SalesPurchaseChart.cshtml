@@ -1,0 +1,61 @@
+﻿@*@model POSModel.ChartModel
+@{string stringForPurchase = "[";
+    string stringForSales = "[";
+
+    foreach (var item in Model.ChartList)
+    {
+        stringForPurchase = stringForPurchase + "{ y: " + item.PurchaseAmount + ", label: \"" + POSBLL.CommonService.GetMonthNameByMonth(Model.ChartList.IndexOf(item) + 1) + "\" },";
+        stringForSales = stringForSales + "{y: " + item.SalesAmount + " , label: \"" + POSBLL.CommonService.GetMonthNameByMonth(Model.ChartList.IndexOf(item) + 1) + "\"},";
+    }
+    stringForPurchase = stringForPurchase + "]";
+    stringForSales = stringForSales + "]";
+}
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+<script>
+
+    $(function () {
+
+        //Better to construct options first and then pass it as a parameter
+        var ptext = @Html.Raw(stringForPurchase);
+        var stext = @Html.Raw(stringForSales);
+        var options = {
+            animationEnabled: true,
+            title:{
+                text: "Purchase Vs Sales for Current Year"
+            },
+            axisY:{
+                title:"Amount in Rs."
+            },
+            toolTip: {
+                shared: true,
+                reversed: true
+            },
+            data: [{
+                type: "column",
+                name: "Purchase",
+                showInLegend: "true",
+                yValueFormatString: "#",
+                dataPoints:
+                    ptext
+
+            },
+            {
+                type: "column",
+                name: "Sales",
+                showInLegend: "true",
+                yValueFormatString: "#",
+                dataPoints:
+                    stext
+
+            }]
+        };
+
+        $("#chartContainer").CanvasJSChart(options);
+    }
+);
+</script>*@
+
+

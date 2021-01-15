@@ -1,0 +1,1186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PointOfSaleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PointOfSaleEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="EnglishDateToNepali" ReturnType="Collection(String)">
+      <Parameter Name="englishDate" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="NepaliDateToEnglish" ReturnType="Collection(DateTime)">
+      <Parameter Name="nepaliDate" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SpGetTransactionPayments" ReturnType="Collection(PointOfSaleModel.SpGetTransactionPayments_Result)">
+      <Parameter Name="transactionId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SpGetTransactions" ReturnType="Collection(PointOfSaleModel.SpGetTransactions_Result)">
+      <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="toDate" Mode="In" Type="DateTime" />
+      <Parameter Name="transactionType" Mode="In" Type="Int32" />
+      <Parameter Name="party" Mode="In" Type="Int32" />
+      <Parameter Name="createdBy" Mode="In" Type="Int32" />
+      <Parameter Name="isActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="SpGetTransactionsLedger" ReturnType="Collection(PointOfSaleModel.SpGetTransactionsLedger_Result)">
+      <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="toDate" Mode="In" Type="DateTime" />
+      <Parameter Name="transactionType" Mode="In" Type="Int32" />
+      <Parameter Name="party" Mode="In" Type="Int32" />
+      <Parameter Name="createdBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SpGetUserList" ReturnType="Collection(PointOfSaleModel.SpGetUserList_Result)" />
+    <FunctionImport Name="SpGetUsers" ReturnType="Collection(PointOfSaleModel.SpGetUsers_Result)">
+      <Parameter Name="userRole" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SpGetMonthWiseTransaction" />
+    <FunctionImport Name="SpGetStockLedger" ReturnType="Collection(PointOfSaleModel.SpGetStockLedger_Result)">
+      <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="toDate" Mode="In" Type="DateTime" />
+      <Parameter Name="transactionType" Mode="In" Type="Int32" />
+      <Parameter Name="createdBy" Mode="In" Type="Int32" />
+      <Parameter Name="goodsId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="AccountHeads" EntityType="PointOfSaleModel.AccountHead" />
+    <EntitySet Name="AccountSubHeads" EntityType="PointOfSaleModel.AccountSubHead" />
+    <EntitySet Name="AccountSubTypes" EntityType="PointOfSaleModel.AccountSubType" />
+    <EntitySet Name="AccountTypes" EntityType="PointOfSaleModel.AccountType" />
+    <EntitySet Name="BankInformations" EntityType="PointOfSaleModel.BankInformation" />
+    <EntitySet Name="BankTransactions" EntityType="PointOfSaleModel.BankTransaction" />
+    <EntitySet Name="ConfigChoices" EntityType="PointOfSaleModel.ConfigChoice" />
+    <EntitySet Name="ConfigChoiceCategories" EntityType="PointOfSaleModel.ConfigChoiceCategory" />
+    <EntitySet Name="DateConversion_TblNepaliCalender" EntityType="PointOfSaleModel.DateConversion_TblNepaliCalender" />
+    <EntitySet Name="Districts" EntityType="PointOfSaleModel.District" />
+    <EntitySet Name="EducationalYears" EntityType="PointOfSaleModel.EducationalYear" />
+    <EntitySet Name="FiscalYears" EntityType="PointOfSaleModel.FiscalYear" />
+    <EntitySet Name="Goods" EntityType="PointOfSaleModel.Good" />
+    <EntitySet Name="Grades" EntityType="PointOfSaleModel.Grade" />
+    <EntitySet Name="GradeSectionClasses" EntityType="PointOfSaleModel.GradeSectionClass" />
+    <EntitySet Name="MaterializedViews" EntityType="PointOfSaleModel.MaterializedView" />
+    <EntitySet Name="MunicipalityVDCs" EntityType="PointOfSaleModel.MunicipalityVDC" />
+    <EntitySet Name="MyTables" EntityType="PointOfSaleModel.MyTable" />
+    <EntitySet Name="PartyOrganizations" EntityType="PointOfSaleModel.PartyOrganization" />
+    <EntitySet Name="Programmes" EntityType="PointOfSaleModel.Programme" />
+    <EntitySet Name="ProgrammeFundAllocationAccHeads" EntityType="PointOfSaleModel.ProgrammeFundAllocationAccHead" />
+    <EntitySet Name="Provinces" EntityType="PointOfSaleModel.Province" />
+    <EntitySet Name="Sections" EntityType="PointOfSaleModel.Section" />
+    <EntitySet Name="StudentProfiles" EntityType="PointOfSaleModel.StudentProfile" />
+    <EntitySet Name="TransactionDetails" EntityType="PointOfSaleModel.TransactionDetail" />
+    <EntitySet Name="TransactionMasters" EntityType="PointOfSaleModel.TransactionMaster" />
+    <EntitySet Name="TransactionPayments" EntityType="PointOfSaleModel.TransactionPayment" />
+    <EntitySet Name="webpages_Membership" EntityType="PointOfSaleModel.webpages_Membership" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="PointOfSaleModel.webpages_OAuthMembership" />
+    <EntitySet Name="webpages_Roles" EntityType="PointOfSaleModel.webpages_Roles" />
+    <EntitySet Name="webpages_UsersInRoles" EntityType="PointOfSaleModel.webpages_UsersInRoles" />
+    <AssociationSet Name="FK_AccountHead_AccountSubType" Association="PointOfSaleModel.FK_AccountHead_AccountSubType">
+      <End Role="AccountSubType" EntitySet="AccountSubTypes" />
+      <End Role="AccountHead" EntitySet="AccountHeads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccountHead_AccountType" Association="PointOfSaleModel.FK_AccountHead_AccountType">
+      <End Role="AccountType" EntitySet="AccountTypes" />
+      <End Role="AccountHead" EntitySet="AccountHeads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccountSubHead_AccountHead" Association="PointOfSaleModel.FK_AccountSubHead_AccountHead">
+      <End Role="AccountHead" EntitySet="AccountHeads" />
+      <End Role="AccountSubHead" EntitySet="AccountSubHeads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProgrammeFundAllocationAccHead_AccountHead" Association="PointOfSaleModel.FK_ProgrammeFundAllocationAccHead_AccountHead">
+      <End Role="AccountHead" EntitySet="AccountHeads" />
+      <End Role="ProgrammeFundAllocationAccHead" EntitySet="ProgrammeFundAllocationAccHeads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccountSubHead_AccountSubType" Association="PointOfSaleModel.FK_AccountSubHead_AccountSubType">
+      <End Role="AccountSubType" EntitySet="AccountSubTypes" />
+      <End Role="AccountSubHead" EntitySet="AccountSubHeads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccountSubHead_AccountType" Association="PointOfSaleModel.FK_AccountSubHead_AccountType">
+      <End Role="AccountType" EntitySet="AccountTypes" />
+      <End Role="AccountSubHead" EntitySet="AccountSubHeads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccountSubType_AccountType" Association="PointOfSaleModel.FK_AccountSubType_AccountType">
+      <End Role="AccountType" EntitySet="AccountTypes" />
+      <End Role="AccountSubType" EntitySet="AccountSubTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Programme_AccountSubType" Association="PointOfSaleModel.FK_Programme_AccountSubType">
+      <End Role="AccountSubType" EntitySet="AccountSubTypes" />
+      <End Role="Programme" EntitySet="Programmes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Programme_AccountType" Association="PointOfSaleModel.FK_Programme_AccountType">
+      <End Role="AccountType" EntitySet="AccountTypes" />
+      <End Role="Programme" EntitySet="Programmes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BankTransaction_BankInformation" Association="PointOfSaleModel.FK_BankTransaction_BankInformation">
+      <End Role="BankInformation" EntitySet="BankInformations" />
+      <End Role="BankTransaction" EntitySet="BankTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionPayment_BankInformation" Association="PointOfSaleModel.FK_TransactionPayment_BankInformation">
+      <End Role="BankInformation" EntitySet="BankInformations" />
+      <End Role="TransactionPayment" EntitySet="TransactionPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BankTransaction_ConfigChoice1" Association="PointOfSaleModel.FK_BankTransaction_ConfigChoice1">
+      <End Role="ConfigChoice" EntitySet="ConfigChoices" />
+      <End Role="BankTransaction" EntitySet="BankTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ConfigChoice_ConfigChoiceCategory" Association="PointOfSaleModel.FK_ConfigChoice_ConfigChoiceCategory">
+      <End Role="ConfigChoiceCategory" EntitySet="ConfigChoiceCategories" />
+      <End Role="ConfigChoice" EntitySet="ConfigChoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Goods_ConfigChoice" Association="PointOfSaleModel.FK_Goods_ConfigChoice">
+      <End Role="ConfigChoice" EntitySet="ConfigChoices" />
+      <End Role="Good" EntitySet="Goods" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PartyOrganization_ConfigChoice" Association="PointOfSaleModel.FK_PartyOrganization_ConfigChoice">
+      <End Role="ConfigChoice" EntitySet="ConfigChoices" />
+      <End Role="PartyOrganization" EntitySet="PartyOrganizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionMaster_ConfigChoice" Association="PointOfSaleModel.FK_TransactionMaster_ConfigChoice">
+      <End Role="ConfigChoice" EntitySet="ConfigChoices" />
+      <End Role="TransactionMaster" EntitySet="TransactionMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionPayment_ConfigChoice" Association="PointOfSaleModel.FK_TransactionPayment_ConfigChoice">
+      <End Role="ConfigChoice" EntitySet="ConfigChoices" />
+      <End Role="TransactionPayment" EntitySet="TransactionPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_District_Province" Association="PointOfSaleModel.FK_District_Province">
+      <End Role="Province" EntitySet="Provinces" />
+      <End Role="District" EntitySet="Districts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MunicipalityVDC_District" Association="PointOfSaleModel.FK_MunicipalityVDC_District">
+      <End Role="District" EntitySet="Districts" />
+      <End Role="MunicipalityVDC" EntitySet="MunicipalityVDCs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GradeSectionClass_EducationalYear" Association="PointOfSaleModel.FK_GradeSectionClass_EducationalYear">
+      <End Role="EducationalYear" EntitySet="EducationalYears" />
+      <End Role="GradeSectionClass" EntitySet="GradeSectionClasses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionDetail_Goods" Association="PointOfSaleModel.FK_TransactionDetail_Goods">
+      <End Role="Good" EntitySet="Goods" />
+      <End Role="TransactionDetail" EntitySet="TransactionDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GradeSectionClass_Grade" Association="PointOfSaleModel.FK_GradeSectionClass_Grade">
+      <End Role="Grade" EntitySet="Grades" />
+      <End Role="GradeSectionClass" EntitySet="GradeSectionClasses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GradeSectionClass_Section" Association="PointOfSaleModel.FK_GradeSectionClass_Section">
+      <End Role="Section" EntitySet="Sections" />
+      <End Role="GradeSectionClass" EntitySet="GradeSectionClasses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MaterializedView_TransactionMaster" Association="PointOfSaleModel.FK_MaterializedView_TransactionMaster">
+      <End Role="TransactionMaster" EntitySet="TransactionMasters" />
+      <End Role="MaterializedView" EntitySet="MaterializedViews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionMaster_PartyOrganization" Association="PointOfSaleModel.FK_TransactionMaster_PartyOrganization">
+      <End Role="PartyOrganization" EntitySet="PartyOrganizations" />
+      <End Role="TransactionMaster" EntitySet="TransactionMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProgrammeFundAllocationAccHead_Programme" Association="PointOfSaleModel.FK_ProgrammeFundAllocationAccHead_Programme">
+      <End Role="Programme" EntitySet="Programmes" />
+      <End Role="ProgrammeFundAllocationAccHead" EntitySet="ProgrammeFundAllocationAccHeads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionDetail_TransactionMaster" Association="PointOfSaleModel.FK_TransactionDetail_TransactionMaster">
+      <End Role="TransactionMaster" EntitySet="TransactionMasters" />
+      <End Role="TransactionDetail" EntitySet="TransactionDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionPayment_TransactionMaster" Association="PointOfSaleModel.FK_TransactionPayment_TransactionMaster">
+      <End Role="TransactionMaster" EntitySet="TransactionMasters" />
+      <End Role="TransactionPayment" EntitySet="TransactionPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionPayment_TransactionPayment" Association="PointOfSaleModel.FK_TransactionPayment_TransactionPayment">
+      <End Role="TransactionPayment" EntitySet="TransactionPayments" />
+      <End Role="TransactionPayment1" EntitySet="TransactionPayments" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RoleId" Association="PointOfSaleModel.fk_RoleId">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="SpGetTransactionPayments_Result">
+    <Property Type="Int32" Name="TransactionMasterID" Nullable="false" />
+    <Property Type="Int32" Name="PaymentId" Nullable="false" />
+    <Property Type="Decimal" Name="PaymentAmount" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="PaymentType" Nullable="false" MaxLength="500" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="CreatedByName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="UpdateByName" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="PaymentDate" Nullable="false" />
+    <Property Type="String" Name="PaymentDateNepali" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Remarks" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+    <Property Type="DateTime" Name="UpdatedDate" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SpGetTransactions_Result">
+    <Property Type="Int32" Name="TransactionMasterID" Nullable="false" />
+    <Property Type="DateTime" Name="TransactionDate" Nullable="false" />
+    <Property Type="String" Name="TransactionDateNepali" Nullable="true" MaxLength="20" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="TransactionType" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="PartyName" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="ContactPerson" Nullable="false" MaxLength="500" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="38" Scale="4" />
+    <Property Type="String" Name="BilledBy" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="SpGetTransactionsLedger_Result">
+    <Property Type="Int32" Name="TransactionMasterID" Nullable="false" />
+    <Property Type="String" Name="TransactionDateNepali" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="TransactionDate" Nullable="false" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="TransactionType" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="DebitCredit" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="Particulars" Nullable="false" MaxLength="514" />
+    <Property Type="Decimal" Name="Amount" Nullable="false" Precision="38" Scale="4" />
+    <Property Type="String" Name="BilledBy" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SpGetUserList_Result">
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="56" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="500" />
+    <Property Type="Boolean" Name="CanLogin" Nullable="true" />
+    <Property Type="Int32" Name="RoleId" Nullable="false" />
+    <Property Type="String" Name="RoleName" Nullable="false" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="SpGetUsers_Result">
+    <Property Type="Int32" Name="SelectId" Nullable="false" />
+    <Property Type="String" Name="selectText" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="SpGetStockLedger_Result">
+    <Property Type="Int32" Name="TransactionMasterID" Nullable="false" />
+    <Property Type="String" Name="TransactionDateNepali" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="TransactionDate" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="TransactionType" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="BillNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DebitCredit" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Particulars" Nullable="true" MaxLength="514" />
+    <Property Type="Decimal" Name="Quantity" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="BilledBy" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="GoodsName" Nullable="false" MaxLength="500" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="AccountHead">
+    <Key>
+      <PropertyRef Name="AccountHeadID" />
+    </Key>
+    <Property Name="AccountHeadID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountSubTypeID" Type="Int32" Nullable="false" />
+    <Property Name="AccountTypeID" Type="Int32" Nullable="false" />
+    <Property Name="AccountHeadCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AccountHeadNameEnglish" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AccountHeadNameNepali" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AccountParentID" Type="Int32" />
+    <Property Name="ExpenseTypeID" Type="Int32" />
+    <Property Name="ChildLevel" Type="Int32" />
+    <Property Name="IsLastNode" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="ReferenceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsArthBudget" Type="Boolean" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="OrganisationID" Type="Int32" />
+    <Property Name="IsBank" Type="Boolean" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AccountSubType" Relationship="PointOfSaleModel.FK_AccountHead_AccountSubType" FromRole="AccountHead" ToRole="AccountSubType" />
+    <NavigationProperty Name="AccountType" Relationship="PointOfSaleModel.FK_AccountHead_AccountType" FromRole="AccountHead" ToRole="AccountType" />
+    <NavigationProperty Name="AccountSubHeads" Relationship="PointOfSaleModel.FK_AccountSubHead_AccountHead" FromRole="AccountHead" ToRole="AccountSubHead" />
+    <NavigationProperty Name="ProgrammeFundAllocationAccHeads" Relationship="PointOfSaleModel.FK_ProgrammeFundAllocationAccHead_AccountHead" FromRole="AccountHead" ToRole="ProgrammeFundAllocationAccHead" />
+  </EntityType>
+  <EntityType Name="AccountSubHead">
+    <Key>
+      <PropertyRef Name="AccountSubHeadID" />
+    </Key>
+    <Property Name="AccountSubHeadID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountHeadID" Type="Int32" Nullable="false" />
+    <Property Name="AccountSubTypeID" Type="Int32" Nullable="false" />
+    <Property Name="AccountTypeID" Type="Int32" Nullable="false" />
+    <Property Name="AccountSubHeadCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AccountSubHeadNameEnglish" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AccountSubHeadNameNepali" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FiscalYearID" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="OrganizationID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AccountHead" Relationship="PointOfSaleModel.FK_AccountSubHead_AccountHead" FromRole="AccountSubHead" ToRole="AccountHead" />
+    <NavigationProperty Name="AccountSubType" Relationship="PointOfSaleModel.FK_AccountSubHead_AccountSubType" FromRole="AccountSubHead" ToRole="AccountSubType" />
+    <NavigationProperty Name="AccountType" Relationship="PointOfSaleModel.FK_AccountSubHead_AccountType" FromRole="AccountSubHead" ToRole="AccountType" />
+  </EntityType>
+  <EntityType Name="AccountSubType">
+    <Key>
+      <PropertyRef Name="AccountSubTypeID" />
+    </Key>
+    <Property Name="AccountSubTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountTypeID" Type="Int32" Nullable="false" />
+    <Property Name="AccountSubTypeNameNepali" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AccountSubTypeNameEnglish" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AccountSubTypeCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="OrganisationID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AccountHeads" Relationship="PointOfSaleModel.FK_AccountHead_AccountSubType" FromRole="AccountSubType" ToRole="AccountHead" />
+    <NavigationProperty Name="AccountSubHeads" Relationship="PointOfSaleModel.FK_AccountSubHead_AccountSubType" FromRole="AccountSubType" ToRole="AccountSubHead" />
+    <NavigationProperty Name="AccountType" Relationship="PointOfSaleModel.FK_AccountSubType_AccountType" FromRole="AccountSubType" ToRole="AccountType" />
+    <NavigationProperty Name="Programmes" Relationship="PointOfSaleModel.FK_Programme_AccountSubType" FromRole="AccountSubType" ToRole="Programme" />
+  </EntityType>
+  <EntityType Name="AccountType">
+    <Key>
+      <PropertyRef Name="AccountTypeID" />
+    </Key>
+    <Property Name="AccountTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountTypeNameEnglish" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AccountTypeNameNepali" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AccountTypeCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="OrganisationID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AccountHeads" Relationship="PointOfSaleModel.FK_AccountHead_AccountType" FromRole="AccountType" ToRole="AccountHead" />
+    <NavigationProperty Name="AccountSubHeads" Relationship="PointOfSaleModel.FK_AccountSubHead_AccountType" FromRole="AccountType" ToRole="AccountSubHead" />
+    <NavigationProperty Name="AccountSubTypes" Relationship="PointOfSaleModel.FK_AccountSubType_AccountType" FromRole="AccountType" ToRole="AccountSubType" />
+    <NavigationProperty Name="Programmes" Relationship="PointOfSaleModel.FK_Programme_AccountType" FromRole="AccountType" ToRole="Programme" />
+  </EntityType>
+  <EntityType Name="BankInformation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BankName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="AccountHolderName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="AccountNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="BankTransactions" Relationship="PointOfSaleModel.FK_BankTransaction_BankInformation" FromRole="BankInformation" ToRole="BankTransaction" />
+    <NavigationProperty Name="TransactionPayments" Relationship="PointOfSaleModel.FK_TransactionPayment_BankInformation" FromRole="BankInformation" ToRole="TransactionPayment" />
+  </EntityType>
+  <EntityType Name="BankTransaction">
+    <Key>
+      <PropertyRef Name="BankTransactionId" />
+    </Key>
+    <Property Name="BankTransactionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BankInformationId" Type="Int32" Nullable="false" />
+    <Property Name="TransactionType" Type="Int32" Nullable="false" />
+    <Property Name="TransactionPaymentId" Type="Int32" />
+    <Property Name="TransactionAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="TransactionBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreateBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="BankInformation" Relationship="PointOfSaleModel.FK_BankTransaction_BankInformation" FromRole="BankTransaction" ToRole="BankInformation" />
+    <NavigationProperty Name="ConfigChoice" Relationship="PointOfSaleModel.FK_BankTransaction_ConfigChoice1" FromRole="BankTransaction" ToRole="ConfigChoice" />
+  </EntityType>
+  <EntityType Name="ConfigChoice">
+    <Key>
+      <PropertyRef Name="ChoiceId" />
+    </Key>
+    <Property Name="ChoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="Choice" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ChoiceDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ChoiceNepali" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Val" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BankTransactions" Relationship="PointOfSaleModel.FK_BankTransaction_ConfigChoice1" FromRole="ConfigChoice" ToRole="BankTransaction" />
+    <NavigationProperty Name="ConfigChoiceCategory" Relationship="PointOfSaleModel.FK_ConfigChoice_ConfigChoiceCategory" FromRole="ConfigChoice" ToRole="ConfigChoiceCategory" />
+    <NavigationProperty Name="Goods" Relationship="PointOfSaleModel.FK_Goods_ConfigChoice" FromRole="ConfigChoice" ToRole="Good" />
+    <NavigationProperty Name="PartyOrganizations" Relationship="PointOfSaleModel.FK_PartyOrganization_ConfigChoice" FromRole="ConfigChoice" ToRole="PartyOrganization" />
+    <NavigationProperty Name="TransactionMasters" Relationship="PointOfSaleModel.FK_TransactionMaster_ConfigChoice" FromRole="ConfigChoice" ToRole="TransactionMaster" />
+    <NavigationProperty Name="TransactionPayments" Relationship="PointOfSaleModel.FK_TransactionPayment_ConfigChoice" FromRole="ConfigChoice" ToRole="TransactionPayment" />
+  </EntityType>
+  <EntityType Name="ConfigChoiceCategory">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryNepali" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ConfigChoices" Relationship="PointOfSaleModel.FK_ConfigChoice_ConfigChoiceCategory" FromRole="ConfigChoiceCategory" ToRole="ConfigChoice" />
+  </EntityType>
+  <EntityType Name="DateConversion_TblNepaliCalender">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YearID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MonthID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="E_Start_Date" Type="DateTime" Precision="3" />
+    <Property Name="E_End_Date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="DistrictID" />
+    </Key>
+    <Property Name="DistrictID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProvinceId" Type="Int32" Nullable="false" />
+    <Property Name="DistrictCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DistrictNameEng" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DistrictNameNep" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DMEGAName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LatLong" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PlaceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Province" Relationship="PointOfSaleModel.FK_District_Province" FromRole="District" ToRole="Province" />
+    <NavigationProperty Name="MunicipalityVDCs" Relationship="PointOfSaleModel.FK_MunicipalityVDC_District" FromRole="District" ToRole="MunicipalityVDC" />
+  </EntityType>
+  <EntityType Name="EducationalYear">
+    <Key>
+      <PropertyRef Name="EducationalYearID" />
+    </Key>
+    <Property Name="EducationalYearID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sYearName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sYearLocalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sBSStartDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sBSEndDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dtADStartDate" Type="DateTime" Precision="0" />
+    <Property Name="dtADEndDate" Type="DateTime" Precision="0" />
+    <Property Name="isCurrent" Type="Boolean" Nullable="false" />
+    <Property Name="iPrevFYID" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="GradeSectionClasses" Relationship="PointOfSaleModel.FK_GradeSectionClass_EducationalYear" FromRole="EducationalYear" ToRole="GradeSectionClass" />
+  </EntityType>
+  <EntityType Name="FiscalYear">
+    <Key>
+      <PropertyRef Name="FiscalYearID" />
+    </Key>
+    <Property Name="FiscalYearID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sYearName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sYearLocalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sBSStartDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sBSEndDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dtADStartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="dtADEndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="isCurrent" Type="Boolean" Nullable="false" />
+    <Property Name="iPrevFYID" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Good">
+    <Key>
+      <PropertyRef Name="GoodsId" />
+    </Key>
+    <Property Name="GoodsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GoodsName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="UnitType" Type="Int32" Nullable="false" />
+    <Property Name="HasSubCategory" Type="Boolean" Nullable="false" />
+    <Property Name="IsSubCategory" Type="Boolean" Nullable="false" />
+    <Property Name="ParentGoodsId" Type="Int32" />
+    <Property Name="DefaultRate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DiscountPercentage" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Manufacturer" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Stock" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdateBy" Type="Int32" />
+    <NavigationProperty Name="ConfigChoice" Relationship="PointOfSaleModel.FK_Goods_ConfigChoice" FromRole="Good" ToRole="ConfigChoice" />
+    <NavigationProperty Name="TransactionDetails" Relationship="PointOfSaleModel.FK_TransactionDetail_Goods" FromRole="Good" ToRole="TransactionDetail" />
+  </EntityType>
+  <EntityType Name="Grade">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GradeNameEng" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="GradeNameNep" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <NavigationProperty Name="GradeSectionClasses" Relationship="PointOfSaleModel.FK_GradeSectionClass_Grade" FromRole="Grade" ToRole="GradeSectionClass" />
+  </EntityType>
+  <EntityType Name="GradeSectionClass">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GradeId" Type="Int32" Nullable="false" />
+    <Property Name="SectionId" Type="Int32" Nullable="false" />
+    <Property Name="EducationYear" Type="Int32" Nullable="false" />
+    <Property Name="ClassTeacher" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="0" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="EducationalYear" Relationship="PointOfSaleModel.FK_GradeSectionClass_EducationalYear" FromRole="GradeSectionClass" ToRole="EducationalYear" />
+    <NavigationProperty Name="Grade" Relationship="PointOfSaleModel.FK_GradeSectionClass_Grade" FromRole="GradeSectionClass" ToRole="Grade" />
+    <NavigationProperty Name="Section" Relationship="PointOfSaleModel.FK_GradeSectionClass_Section" FromRole="GradeSectionClass" ToRole="Section" />
+  </EntityType>
+  <EntityType Name="MaterializedView">
+    <Key>
+      <PropertyRef Name="MaterializedViewId" />
+    </Key>
+    <Property Name="MaterializedViewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fiscal_Year" Type="Int32" Nullable="false" />
+    <Property Name="Bill_no" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Pan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Bill_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Taxable_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Tax_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Total_Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Sync_with_IRD" Type="Boolean" Nullable="false" />
+    <Property Name="IS_Bill_Printed" Type="Boolean" Nullable="false" />
+    <Property Name="Is_bill_Active" Type="Boolean" Nullable="false" />
+    <Property Name="Printed_Time" Type="Int32" Nullable="false" />
+    <Property Name="Entered_By" Type="Int32" Nullable="false" />
+    <Property Name="Printed_by" Type="Int32" Nullable="false" />
+    <Property Name="Is_realtime" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TransactionMasterId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TransactionMaster" Relationship="PointOfSaleModel.FK_MaterializedView_TransactionMaster" FromRole="MaterializedView" ToRole="TransactionMaster" />
+  </EntityType>
+  <EntityType Name="MunicipalityVDC">
+    <Key>
+      <PropertyRef Name="MunicipalityVDCID" />
+    </Key>
+    <Property Name="MunicipalityVDCID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DistrictID" Type="Int32" Nullable="false" />
+    <Property Name="MunicipalityVDCRuralMarketCenterID" Type="Int32" Nullable="false" />
+    <Property Name="MunicipalityVDCNameEng" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MunicipalityVDCNameNep" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MunicipalityVDCCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsMunicipality" Type="Boolean" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="District" Relationship="PointOfSaleModel.FK_MunicipalityVDC_District" FromRole="MunicipalityVDC" ToRole="District" />
+  </EntityType>
+  <EntityType Name="MyTable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PartyOrganization">
+    <Key>
+      <PropertyRef Name="PartyId" />
+    </Key>
+    <Property Name="PartyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartyType" Type="Int32" Nullable="false" />
+    <Property Name="PartyName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ContactPerson" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PanNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="BankName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BankAccountNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdateBy" Type="Int32" />
+    <NavigationProperty Name="ConfigChoice" Relationship="PointOfSaleModel.FK_PartyOrganization_ConfigChoice" FromRole="PartyOrganization" ToRole="ConfigChoice" />
+    <NavigationProperty Name="TransactionMasters" Relationship="PointOfSaleModel.FK_TransactionMaster_PartyOrganization" FromRole="PartyOrganization" ToRole="TransactionMaster" />
+  </EntityType>
+  <EntityType Name="Programme">
+    <Key>
+      <PropertyRef Name="ProgramID" />
+    </Key>
+    <Property Name="ProgramID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProgramCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="FiscalYearID" Type="Int32" Nullable="false" />
+    <Property Name="AccountTypeID" Type="Int32" Nullable="false" />
+    <Property Name="AccountSubTypeID" Type="Int32" Nullable="false" />
+    <Property Name="ProgramNameEnglish" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ProgramNameNepali" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AreaOfImplementation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OfficeBranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="OrganisationID" Type="Int32" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AccountSubType" Relationship="PointOfSaleModel.FK_Programme_AccountSubType" FromRole="Programme" ToRole="AccountSubType" />
+    <NavigationProperty Name="AccountType" Relationship="PointOfSaleModel.FK_Programme_AccountType" FromRole="Programme" ToRole="AccountType" />
+    <NavigationProperty Name="ProgrammeFundAllocationAccHeads" Relationship="PointOfSaleModel.FK_ProgrammeFundAllocationAccHead_Programme" FromRole="Programme" ToRole="ProgrammeFundAllocationAccHead" />
+  </EntityType>
+  <EntityType Name="ProgrammeFundAllocationAccHead">
+    <Key>
+      <PropertyRef Name="AccHeadDetailID" />
+    </Key>
+    <Property Name="AccHeadDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DetailsID" Type="Int32" />
+    <Property Name="ProgrammID" Type="Int32" />
+    <Property Name="FundSourceID" Type="Int32" />
+    <Property Name="FundProvider" Type="Int32" />
+    <Property Name="AccountHeadID" Type="Int32" />
+    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="UsedAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="RemainingAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ThapAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="GhatAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="FYID" Type="Int32" Nullable="false" />
+    <Property Name="DistributedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="OrganisationID" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AccountHead" Relationship="PointOfSaleModel.FK_ProgrammeFundAllocationAccHead_AccountHead" FromRole="ProgrammeFundAllocationAccHead" ToRole="AccountHead" />
+    <NavigationProperty Name="Programme" Relationship="PointOfSaleModel.FK_ProgrammeFundAllocationAccHead_Programme" FromRole="ProgrammeFundAllocationAccHead" ToRole="Programme" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="ProvinceId" />
+    </Key>
+    <Property Name="ProvinceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProvinceNameEng" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ProvinceNameNep" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PlaceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProvinceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LatLong" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Districts" Relationship="PointOfSaleModel.FK_District_Province" FromRole="Province" ToRole="District" />
+  </EntityType>
+  <EntityType Name="Section">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SectionNameEng" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="SectionNameNep" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="0" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="GradeSectionClasses" Relationship="PointOfSaleModel.FK_GradeSectionClass_Section" FromRole="Section" ToRole="GradeSectionClass" />
+  </EntityType>
+  <EntityType Name="StudentProfile">
+    <Key>
+      <PropertyRef Name="ProfileId" />
+    </Key>
+    <Property Name="ProfileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Guardian" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MobileNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="AdmissionDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PermanentMunicipalityId" Type="Int32" Nullable="false" />
+    <Property Name="PermWard" Type="Int32" Nullable="false" />
+    <Property Name="TemporaryMunicipalityId" Type="Int32" />
+    <Property Name="TempWard" Type="Int32" />
+    <Property Name="Remarks" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="IsDropped" Type="Boolean" Nullable="false" />
+    <Property Name="DropedRemarks" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Classes" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TransactionDetail">
+    <Key>
+      <PropertyRef Name="TransactionDetailId" />
+    </Key>
+    <Property Name="TransactionDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionMasterId" Type="Int32" Nullable="false" />
+    <Property Name="GoodsId" Type="Int32" Nullable="false" />
+    <Property Name="GoodsRate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="DiscountPercentage" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <NavigationProperty Name="Good" Relationship="PointOfSaleModel.FK_TransactionDetail_Goods" FromRole="TransactionDetail" ToRole="Good" />
+    <NavigationProperty Name="TransactionMaster" Relationship="PointOfSaleModel.FK_TransactionDetail_TransactionMaster" FromRole="TransactionDetail" ToRole="TransactionMaster" />
+  </EntityType>
+  <EntityType Name="TransactionMaster">
+    <Key>
+      <PropertyRef Name="TransactionMasterID" />
+    </Key>
+    <Property Name="TransactionMasterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionType" Type="Int32" Nullable="false" />
+    <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PartyId" Type="Int32" />
+    <Property Name="PartyName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="BillNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="ConfigChoice" Relationship="PointOfSaleModel.FK_TransactionMaster_ConfigChoice" FromRole="TransactionMaster" ToRole="ConfigChoice" />
+    <NavigationProperty Name="MaterializedViews" Relationship="PointOfSaleModel.FK_MaterializedView_TransactionMaster" FromRole="TransactionMaster" ToRole="MaterializedView" />
+    <NavigationProperty Name="PartyOrganization" Relationship="PointOfSaleModel.FK_TransactionMaster_PartyOrganization" FromRole="TransactionMaster" ToRole="PartyOrganization" />
+    <NavigationProperty Name="TransactionDetails" Relationship="PointOfSaleModel.FK_TransactionDetail_TransactionMaster" FromRole="TransactionMaster" ToRole="TransactionDetail" />
+    <NavigationProperty Name="TransactionPayments" Relationship="PointOfSaleModel.FK_TransactionPayment_TransactionMaster" FromRole="TransactionMaster" ToRole="TransactionPayment" />
+  </EntityType>
+  <EntityType Name="TransactionPayment">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionMasterId" Type="Int32" Nullable="false" />
+    <Property Name="PaymentType" Type="Int32" Nullable="false" />
+    <Property Name="ReceiptNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PaymentAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="BankInformationId" Type="Int32" />
+    <NavigationProperty Name="BankInformation" Relationship="PointOfSaleModel.FK_TransactionPayment_BankInformation" FromRole="TransactionPayment" ToRole="BankInformation" />
+    <NavigationProperty Name="ConfigChoice" Relationship="PointOfSaleModel.FK_TransactionPayment_ConfigChoice" FromRole="TransactionPayment" ToRole="ConfigChoice" />
+    <NavigationProperty Name="TransactionMaster" Relationship="PointOfSaleModel.FK_TransactionPayment_TransactionMaster" FromRole="TransactionPayment" ToRole="TransactionMaster" />
+    <NavigationProperty Name="TransactionPayment1" Relationship="PointOfSaleModel.FK_TransactionPayment_TransactionPayment" FromRole="TransactionPayment" ToRole="TransactionPayment1" />
+    <NavigationProperty Name="TransactionPayment2" Relationship="PointOfSaleModel.FK_TransactionPayment_TransactionPayment" FromRole="TransactionPayment1" ToRole="TransactionPayment" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ConfirmationToken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IsConfirmed" Type="Boolean" />
+    <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderUserId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="webpages_UsersInRoles" Relationship="PointOfSaleModel.fk_RoleId" FromRole="webpages_Roles" ToRole="webpages_UsersInRoles" />
+  </EntityType>
+  <EntityType Name="webpages_UsersInRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="webpages_Roles" Relationship="PointOfSaleModel.fk_RoleId" FromRole="webpages_UsersInRoles" ToRole="webpages_Roles" />
+  </EntityType>
+  <Association Name="FK_AccountHead_AccountSubType">
+    <End Type="PointOfSaleModel.AccountSubType" Role="AccountSubType" Multiplicity="1" />
+    <End Type="PointOfSaleModel.AccountHead" Role="AccountHead" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountSubType">
+        <PropertyRef Name="AccountSubTypeID" />
+      </Principal>
+      <Dependent Role="AccountHead">
+        <PropertyRef Name="AccountSubTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountHead_AccountType">
+    <End Type="PointOfSaleModel.AccountType" Role="AccountType" Multiplicity="1" />
+    <End Type="PointOfSaleModel.AccountHead" Role="AccountHead" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountType">
+        <PropertyRef Name="AccountTypeID" />
+      </Principal>
+      <Dependent Role="AccountHead">
+        <PropertyRef Name="AccountTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountSubHead_AccountHead">
+    <End Type="PointOfSaleModel.AccountHead" Role="AccountHead" Multiplicity="1" />
+    <End Type="PointOfSaleModel.AccountSubHead" Role="AccountSubHead" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountHead">
+        <PropertyRef Name="AccountHeadID" />
+      </Principal>
+      <Dependent Role="AccountSubHead">
+        <PropertyRef Name="AccountHeadID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProgrammeFundAllocationAccHead_AccountHead">
+    <End Type="PointOfSaleModel.AccountHead" Role="AccountHead" Multiplicity="0..1" />
+    <End Type="PointOfSaleModel.ProgrammeFundAllocationAccHead" Role="ProgrammeFundAllocationAccHead" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountHead">
+        <PropertyRef Name="AccountHeadID" />
+      </Principal>
+      <Dependent Role="ProgrammeFundAllocationAccHead">
+        <PropertyRef Name="AccountHeadID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountSubHead_AccountSubType">
+    <End Type="PointOfSaleModel.AccountSubType" Role="AccountSubType" Multiplicity="1" />
+    <End Type="PointOfSaleModel.AccountSubHead" Role="AccountSubHead" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountSubType">
+        <PropertyRef Name="AccountSubTypeID" />
+      </Principal>
+      <Dependent Role="AccountSubHead">
+        <PropertyRef Name="AccountSubTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountSubHead_AccountType">
+    <End Type="PointOfSaleModel.AccountType" Role="AccountType" Multiplicity="1" />
+    <End Type="PointOfSaleModel.AccountSubHead" Role="AccountSubHead" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountType">
+        <PropertyRef Name="AccountTypeID" />
+      </Principal>
+      <Dependent Role="AccountSubHead">
+        <PropertyRef Name="AccountTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccountSubType_AccountType">
+    <End Type="PointOfSaleModel.AccountType" Role="AccountType" Multiplicity="1" />
+    <End Type="PointOfSaleModel.AccountSubType" Role="AccountSubType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountType">
+        <PropertyRef Name="AccountTypeID" />
+      </Principal>
+      <Dependent Role="AccountSubType">
+        <PropertyRef Name="AccountTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Programme_AccountSubType">
+    <End Type="PointOfSaleModel.AccountSubType" Role="AccountSubType" Multiplicity="1" />
+    <End Type="PointOfSaleModel.Programme" Role="Programme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountSubType">
+        <PropertyRef Name="AccountSubTypeID" />
+      </Principal>
+      <Dependent Role="Programme">
+        <PropertyRef Name="AccountSubTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Programme_AccountType">
+    <End Type="PointOfSaleModel.AccountType" Role="AccountType" Multiplicity="1" />
+    <End Type="PointOfSaleModel.Programme" Role="Programme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountType">
+        <PropertyRef Name="AccountTypeID" />
+      </Principal>
+      <Dependent Role="Programme">
+        <PropertyRef Name="AccountTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BankTransaction_BankInformation">
+    <End Type="PointOfSaleModel.BankInformation" Role="BankInformation" Multiplicity="1" />
+    <End Type="PointOfSaleModel.BankTransaction" Role="BankTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BankInformation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BankTransaction">
+        <PropertyRef Name="BankInformationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionPayment_BankInformation">
+    <End Type="PointOfSaleModel.BankInformation" Role="BankInformation" Multiplicity="0..1" />
+    <End Type="PointOfSaleModel.TransactionPayment" Role="TransactionPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BankInformation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TransactionPayment">
+        <PropertyRef Name="BankInformationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BankTransaction_ConfigChoice1">
+    <End Type="PointOfSaleModel.ConfigChoice" Role="ConfigChoice" Multiplicity="1" />
+    <End Type="PointOfSaleModel.BankTransaction" Role="BankTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConfigChoice">
+        <PropertyRef Name="ChoiceId" />
+      </Principal>
+      <Dependent Role="BankTransaction">
+        <PropertyRef Name="TransactionType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ConfigChoice_ConfigChoiceCategory">
+    <End Type="PointOfSaleModel.ConfigChoiceCategory" Role="ConfigChoiceCategory" Multiplicity="1" />
+    <End Type="PointOfSaleModel.ConfigChoice" Role="ConfigChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConfigChoiceCategory">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="ConfigChoice">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Goods_ConfigChoice">
+    <End Type="PointOfSaleModel.ConfigChoice" Role="ConfigChoice" Multiplicity="1" />
+    <End Type="PointOfSaleModel.Good" Role="Good" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConfigChoice">
+        <PropertyRef Name="ChoiceId" />
+      </Principal>
+      <Dependent Role="Good">
+        <PropertyRef Name="UnitType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PartyOrganization_ConfigChoice">
+    <End Type="PointOfSaleModel.ConfigChoice" Role="ConfigChoice" Multiplicity="1" />
+    <End Type="PointOfSaleModel.PartyOrganization" Role="PartyOrganization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConfigChoice">
+        <PropertyRef Name="ChoiceId" />
+      </Principal>
+      <Dependent Role="PartyOrganization">
+        <PropertyRef Name="PartyType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionMaster_ConfigChoice">
+    <End Type="PointOfSaleModel.ConfigChoice" Role="ConfigChoice" Multiplicity="1" />
+    <End Type="PointOfSaleModel.TransactionMaster" Role="TransactionMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConfigChoice">
+        <PropertyRef Name="ChoiceId" />
+      </Principal>
+      <Dependent Role="TransactionMaster">
+        <PropertyRef Name="TransactionType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionPayment_ConfigChoice">
+    <End Type="PointOfSaleModel.ConfigChoice" Role="ConfigChoice" Multiplicity="1" />
+    <End Type="PointOfSaleModel.TransactionPayment" Role="TransactionPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConfigChoice">
+        <PropertyRef Name="ChoiceId" />
+      </Principal>
+      <Dependent Role="TransactionPayment">
+        <PropertyRef Name="PaymentType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_District_Province">
+    <End Type="PointOfSaleModel.Province" Role="Province" Multiplicity="1" />
+    <End Type="PointOfSaleModel.District" Role="District" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="ProvinceId" />
+      </Principal>
+      <Dependent Role="District">
+        <PropertyRef Name="ProvinceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MunicipalityVDC_District">
+    <End Type="PointOfSaleModel.District" Role="District" Multiplicity="1" />
+    <End Type="PointOfSaleModel.MunicipalityVDC" Role="MunicipalityVDC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="DistrictID" />
+      </Principal>
+      <Dependent Role="MunicipalityVDC">
+        <PropertyRef Name="DistrictID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GradeSectionClass_EducationalYear">
+    <End Type="PointOfSaleModel.EducationalYear" Role="EducationalYear" Multiplicity="1" />
+    <End Type="PointOfSaleModel.GradeSectionClass" Role="GradeSectionClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EducationalYear">
+        <PropertyRef Name="EducationalYearID" />
+      </Principal>
+      <Dependent Role="GradeSectionClass">
+        <PropertyRef Name="EducationYear" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionDetail_Goods">
+    <End Type="PointOfSaleModel.Good" Role="Good" Multiplicity="1" />
+    <End Type="PointOfSaleModel.TransactionDetail" Role="TransactionDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Good">
+        <PropertyRef Name="GoodsId" />
+      </Principal>
+      <Dependent Role="TransactionDetail">
+        <PropertyRef Name="GoodsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GradeSectionClass_Grade">
+    <End Type="PointOfSaleModel.Grade" Role="Grade" Multiplicity="1" />
+    <End Type="PointOfSaleModel.GradeSectionClass" Role="GradeSectionClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GradeSectionClass">
+        <PropertyRef Name="GradeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GradeSectionClass_Section">
+    <End Type="PointOfSaleModel.Section" Role="Section" Multiplicity="1" />
+    <End Type="PointOfSaleModel.GradeSectionClass" Role="GradeSectionClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GradeSectionClass">
+        <PropertyRef Name="SectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MaterializedView_TransactionMaster">
+    <End Type="PointOfSaleModel.TransactionMaster" Role="TransactionMaster" Multiplicity="1" />
+    <End Type="PointOfSaleModel.MaterializedView" Role="MaterializedView" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionMaster">
+        <PropertyRef Name="TransactionMasterID" />
+      </Principal>
+      <Dependent Role="MaterializedView">
+        <PropertyRef Name="TransactionMasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionMaster_PartyOrganization">
+    <End Type="PointOfSaleModel.PartyOrganization" Role="PartyOrganization" Multiplicity="0..1" />
+    <End Type="PointOfSaleModel.TransactionMaster" Role="TransactionMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PartyOrganization">
+        <PropertyRef Name="PartyId" />
+      </Principal>
+      <Dependent Role="TransactionMaster">
+        <PropertyRef Name="PartyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProgrammeFundAllocationAccHead_Programme">
+    <End Type="PointOfSaleModel.Programme" Role="Programme" Multiplicity="0..1" />
+    <End Type="PointOfSaleModel.ProgrammeFundAllocationAccHead" Role="ProgrammeFundAllocationAccHead" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Programme">
+        <PropertyRef Name="ProgramID" />
+      </Principal>
+      <Dependent Role="ProgrammeFundAllocationAccHead">
+        <PropertyRef Name="ProgrammID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionDetail_TransactionMaster">
+    <End Type="PointOfSaleModel.TransactionMaster" Role="TransactionMaster" Multiplicity="1" />
+    <End Type="PointOfSaleModel.TransactionDetail" Role="TransactionDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionMaster">
+        <PropertyRef Name="TransactionMasterID" />
+      </Principal>
+      <Dependent Role="TransactionDetail">
+        <PropertyRef Name="TransactionMasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionPayment_TransactionMaster">
+    <End Type="PointOfSaleModel.TransactionMaster" Role="TransactionMaster" Multiplicity="1" />
+    <End Type="PointOfSaleModel.TransactionPayment" Role="TransactionPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionMaster">
+        <PropertyRef Name="TransactionMasterID" />
+      </Principal>
+      <Dependent Role="TransactionPayment">
+        <PropertyRef Name="TransactionMasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionPayment_TransactionPayment">
+    <End Type="PointOfSaleModel.TransactionPayment" Role="TransactionPayment" Multiplicity="1" />
+    <End Type="PointOfSaleModel.TransactionPayment" Role="TransactionPayment1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionPayment">
+        <PropertyRef Name="PaymentId" />
+      </Principal>
+      <Dependent Role="TransactionPayment1">
+        <PropertyRef Name="PaymentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RoleId">
+    <End Type="PointOfSaleModel.webpages_Roles" Role="webpages_Roles" Multiplicity="1" />
+    <End Type="PointOfSaleModel.webpages_UsersInRoles" Role="webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="webpages_Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

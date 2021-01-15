@@ -1,0 +1,85 @@
+﻿@model POSModel.SectionModel
+
+@{
+    ViewBag.Title = "SectionIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+}
+
+<div class="title clearfix">
+    <h3>Grade</h3>
+</div>
+<button id="AddSection" class="btn btn-add pull-right"><i class="fa fa-plus"></i> Add New</button>
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="width-30">
+                        S.N.
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.SectionNameEng)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SectionNameNep)
+                    </th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.SectionList)
+                {
+                    <tr>
+                        <td>
+                            @counter <a href="#" onclick="AddEditSection('@item.Id')"><i class="fa fa-edit"></i></a>
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SectionNameEng)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SectionNameNep)
+                        </td>
+                  
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+
+
+    $('#AddSection').on('click', function () {
+        AddEditSection();
+    });
+
+    function AddEditSection(uniqueId)
+    {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/SetUp/CreateSection")',
+            data: { sectionId: uniqueId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+</script>

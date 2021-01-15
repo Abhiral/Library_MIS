@@ -1,0 +1,1966 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\www\POS</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>02/23/2018 12:21:08</publishTime>
+    </File>
+    <File Include="bin/ClosedXML.dll">
+      <publishTime>02/23/2018 12:20:46</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.Data.Edm.resources.dll">
+      <publishTime>02/23/2018 12:20:56</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.Data.OData.resources.dll">
+      <publishTime>02/23/2018 12:20:58</publishTime>
+    </File>
+    <File Include="bin/de/System.Spatial.resources.dll">
+      <publishTime>02/23/2018 12:21:06</publishTime>
+    </File>
+    <File Include="bin/DocumentFormat.OpenXml.dll">
+      <publishTime>02/23/2018 12:20:46</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.AspNet.dll">
+      <publishTime>02/23/2018 12:20:48</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.Core.dll">
+      <publishTime>02/23/2018 12:20:48</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OAuth.Consumer.dll">
+      <publishTime>02/23/2018 12:20:48</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OAuth.dll">
+      <publishTime>02/23/2018 12:20:48</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OpenId.dll">
+      <publishTime>02/23/2018 12:20:48</publishTime>
+    </File>
+    <File Include="bin/DotNetOpenAuth.OpenId.RelyingParty.dll">
+      <publishTime>02/23/2018 12:20:50</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>02/23/2018 12:20:50</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.Data.Edm.resources.dll">
+      <publishTime>02/23/2018 12:20:56</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.Data.OData.resources.dll">
+      <publishTime>02/23/2018 12:20:58</publishTime>
+    </File>
+    <File Include="bin/es/System.Spatial.resources.dll">
+      <publishTime>02/23/2018 12:21:06</publishTime>
+    </File>
+    <File Include="bin/FastMember.dll">
+      <publishTime>02/23/2018 12:20:52</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.Data.Edm.resources.dll">
+      <publishTime>02/23/2018 12:20:56</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.Data.OData.resources.dll">
+      <publishTime>02/23/2018 12:20:58</publishTime>
+    </File>
+    <File Include="bin/fr/System.Spatial.resources.dll">
+      <publishTime>02/23/2018 12:21:06</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.Data.Edm.resources.dll">
+      <publishTime>02/23/2018 12:20:56</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.Data.OData.resources.dll">
+      <publishTime>02/23/2018 12:20:58</publishTime>
+    </File>
+    <File Include="bin/it/System.Spatial.resources.dll">
+      <publishTime>02/23/2018 12:21:06</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.Data.Edm.resources.dll">
+      <publishTime>02/23/2018 12:20:56</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.Data.OData.resources.dll">
+      <publishTime>02/23/2018 12:21:00</publishTime>
+    </File>
+    <File Include="bin/ja/System.Spatial.resources.dll">
+      <publishTime>02/23/2018 12:21:06</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.Data.Edm.resources.dll">
+      <publishTime>02/23/2018 12:20:56</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.Data.OData.resources.dll">
+      <publishTime>02/23/2018 12:21:00</publishTime>
+    </File>
+    <File Include="bin/ko/System.Spatial.resources.dll">
+      <publishTime>02/23/2018 12:21:06</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.Edm.dll">
+      <publishTime>02/23/2018 12:20:56</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.OData.dll">
+      <publishTime>02/23/2018 12:21:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>02/23/2018 12:21:04</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>02/23/2018 12:20:52</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.WebPages.OAuth.dll">
+      <publishTime>02/23/2018 12:20:56</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>02/23/2018 12:21:04</publishTime>
+    </File>
+    <File Include="bin/PointOfSale.dll">
+      <publishTime>10/16/2019 21:54:07</publishTime>
+    </File>
+    <File Include="bin/POSBLL.dll">
+      <publishTime>10/16/2019 21:54:06</publishTime>
+    </File>
+    <File Include="bin/POSDAL.dll">
+      <publishTime>10/16/2019 21:54:05</publishTime>
+    </File>
+    <File Include="bin/POSModel.dll">
+      <publishTime>10/16/2019 21:54:05</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.Data.Edm.resources.dll">
+      <publishTime>02/23/2018 12:20:56</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.Data.OData.resources.dll">
+      <publishTime>02/23/2018 12:21:00</publishTime>
+    </File>
+    <File Include="bin/ru/System.Spatial.resources.dll">
+      <publishTime>02/23/2018 12:21:08</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>12/19/2017 10:54:02</publishTime>
+    </File>
+    <File Include="bin/System.Spatial.dll">
+      <publishTime>02/23/2018 12:21:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>02/23/2018 12:20:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>12/19/2017 10:54:03</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.OData.dll">
+      <publishTime>02/23/2018 12:20:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>12/19/2017 10:54:03</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>12/19/2017 10:54:01</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>02/23/2018 12:20:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>02/23/2018 12:20:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>02/23/2018 12:20:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>02/23/2018 12:20:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>02/23/2018 12:20:54</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>02/23/2018 12:21:10</publishTime>
+    </File>
+    <File Include="bin/WebMatrix.Data.dll">
+      <publishTime>07/09/2013 11:05:10</publishTime>
+    </File>
+    <File Include="bin/WebMatrix.WebData.dll">
+      <publishTime>12/19/2017 10:54:05</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Data.Edm.resources.dll">
+      <publishTime>02/23/2018 12:20:56</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Data.OData.resources.dll">
+      <publishTime>02/23/2018 12:21:00</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Spatial.resources.dll">
+      <publishTime>02/23/2018 12:21:08</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/Microsoft.Data.Edm.resources.dll">
+      <publishTime>02/23/2018 12:20:56</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/Microsoft.Data.OData.resources.dll">
+      <publishTime>02/23/2018 12:21:00</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/System.Spatial.resources.dll">
+      <publishTime>02/23/2018 12:21:08</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css.map">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/.gitignore">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/bower.json">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/css/bootstrap-toggle.css">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/css/bootstrap-toggle.min.css">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/css/bootstrap2-toggle.css">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/css/bootstrap2-toggle.min.css">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/doc/header.png">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/doc/nyt.png">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/doc/nytdev.svg">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/doc/script.js">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/doc/stylesheet.css">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/Gruntfile.js">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/index.html">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/js/bootstrap-toggle.js">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/js/bootstrap-toggle.min.js">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/js/bootstrap-toggle.min.js.map">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/js/bootstrap2-toggle.js">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/js/bootstrap2-toggle.min.js">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/js/bootstrap2-toggle.min.js.map">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/LICENSE">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/package.json">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap-toggle-master/README.md">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css.map">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css.map">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/custom-css/custom.css">
+      <publishTime>01/30/2019 14:23:38</publishTime>
+    </File>
+    <File Include="Content/custom-css/datepicker.css">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/custom-css/login.css">
+      <publishTime>03/02/2018 14:49:26</publishTime>
+    </File>
+    <File Include="Content/custom-css/PrintingSatoPrinterCss.css">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/custom-css/responsive.css">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/custom-css/side_menu.css">
+      <publishTime>03/02/2018 14:49:26</publishTime>
+    </File>
+    <File Include="Content/datepickers.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/dropzone/css/basic.css">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/dropzone/css/dropzone.css">
+      <publishTime>02/23/2018 12:19:52</publishTime>
+    </File>
+    <File Include="Content/dropzone/css/stylus/basic.styl">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/dropzone/css/stylus/dropzone.styl">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/dropzone/dropzone-amd-module.js">
+      <publishTime>02/23/2018 12:19:54</publishTime>
+    </File>
+    <File Include="Content/dropzone/dropzone-amd-module.min.js">
+      <publishTime>02/23/2018 12:19:54</publishTime>
+    </File>
+    <File Include="Content/dropzone/dropzone.js">
+      <publishTime>02/23/2018 12:19:54</publishTime>
+    </File>
+    <File Include="Content/dropzone/dropzone.min.js">
+      <publishTime>02/23/2018 12:19:54</publishTime>
+    </File>
+    <File Include="Content/dropzone/images/spritemap%402x.png">
+      <publishTime>02/23/2018 12:19:52</publishTime>
+    </File>
+    <File Include="Content/dropzone/images/spritemap.png">
+      <publishTime>02/23/2018 12:19:52</publishTime>
+    </File>
+    <File Include="Content/font-awesome/css/font-awesome.css">
+      <publishTime>02/23/2018 12:19:54</publishTime>
+    </File>
+    <File Include="Content/font-awesome/css/font-awesome.min.css">
+      <publishTime>02/23/2018 12:19:54</publishTime>
+    </File>
+    <File Include="Content/font-awesome/fonts/fontawesome-webfont.eot">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/fonts/fontawesome-webfont.svg">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/fonts/fontawesome-webfont.ttf">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/fonts/fontawesome-webfont.woff">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/fonts/fontawesome-webfont.woff2">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/fonts/FontAwesome.otf">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/HELP-US-OUT.txt">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/animated.less">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/bordered-pulled.less">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/core.less">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/fixed-width.less">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/font-awesome.less">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/icons.less">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/larger.less">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/list.less">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/mixins.less">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/path.less">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/rotated-flipped.less">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/screen-reader.less">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/stacked.less">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/less/variables.less">
+      <publishTime>02/23/2018 12:19:56</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/font-awesome.scss">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_animated.scss">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_bordered-pulled.scss">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_core.scss">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_fixed-width.scss">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_icons.scss">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_larger.scss">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_list.scss">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_mixins.scss">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_path.scss">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_rotated-flipped.scss">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_screen-reader.scss">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_stacked.scss">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/font-awesome/scss/_variables.scss">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/front-css/bootstrap.css">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/front-css/bootstrap.min.css">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/front-css/custom.css">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/front-css/shop-homepage.css">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/front-css/slick.css">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/logo.png">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/Nepal-Sarkar.jpg">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/css/bootstrap-theme.css">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/css/bootstrap-theme.css.map">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/css/bootstrap-theme.min.css">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/css/bootstrap.css">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/css/bootstrap.css.map">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/css/bootstrap.min.css">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/images/ndp_bg_wave.png">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/images/ndp_buttons.png">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/images/ndp_date_bg.png">
+      <publishTime>02/23/2018 12:19:58</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/index.html">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/js/bootstrap.js">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/js/bootstrap.min.js">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/js/jquery-2.1.0.min.js">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/js/jquery.js">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/nepali.datepicker.v2.2.min.css">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/nepali.datepicker.v2.2/nepali.datepicker.v2.2.min.js">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_flat_75_ffffff_40x100.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_55_fbf9ee_1x400.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_65_ffffff_1x400.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_75_dadada_1x400.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_75_e6e6e6_1x400.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_222222_256x240.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_2e83ff_256x240.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_454545_256x240.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_888888_256x240.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_cd0a0a_256x240.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery-ui.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.accordion.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.all.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.autocomplete.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.base.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.button.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.core.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.datepicker.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.dialog.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.progressbar.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.resizable.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.selectable.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.slider.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.tabs.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery.ui.theme.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-bg_flat_75_ffffff_40x100.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-bg_glass_55_fbf9ee_1x400.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-bg_glass_65_ffffff_1x400.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-bg_glass_75_dadada_1x400.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-bg_glass_75_e6e6e6_1x400.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-bg_glass_95_fef1ec_1x400.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-icons_222222_256x240.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-icons_2e83ff_256x240.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-icons_454545_256x240.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-icons_888888_256x240.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/images/ui-icons_cd0a0a_256x240.png">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery-ui.min.css">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.accordion.min.css">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.autocomplete.min.css">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.button.min.css">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.core.min.css">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.datepicker.min.css">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.dialog.min.css">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.progressbar.min.css">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.resizable.min.css">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.selectable.min.css">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.slider.min.css">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.tabs.min.css">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/themes/base/minified/jquery.ui.theme.min.css">
+      <publishTime>02/23/2018 12:20:00</publishTime>
+    </File>
+    <File Include="Content/toastr/customalert.js">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/toastr/loader.min.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/toastr/toastr.min.css">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/toastr/toastr.min.js">
+      <publishTime>02/23/2018 12:20:02</publishTime>
+    </File>
+    <File Include="Content/toastr/WorkForce.js">
+      <publishTime>01/29/2019 16:02:42</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/.bowerrc">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/.gitattributes">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/.gitignore">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/.jshintrc">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/.npmignore">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/banner.jpg">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/bower.json">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/CONTRIBUTORS.md">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/ar.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/bg.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/by.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/ca.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/cs.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/da.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/de.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/el.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/es.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/es_ar.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/fa.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/fi.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/fr.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/he.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/hr.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/hu.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/id.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/it.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/ja.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/ko.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/mn.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/my.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/nl.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/no_nb.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/ph.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/pl.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/pt.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/pt_br.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/ro.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/rs.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/rs_latin.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/ru.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/sk.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/sv.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/tr.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/ua.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/vi.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/zh_cn.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/langs/zh_tw.min.js">
+      <publishTime>02/23/2018 12:19:22</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/base64/trumbowyg.base64.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/base64/trumbowyg.base64.min.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/cleanpaste/trumbowyg.cleanpaste.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/cleanpaste/trumbowyg.cleanpaste.min.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/colors/trumbowyg.colors.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/colors/trumbowyg.colors.min.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/colors/ui/sass/trumbowyg.colors.scss">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/colors/ui/trumbowyg.colors.css">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/colors/ui/trumbowyg.colors.min.css">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/emoji/trumbowyg.emoji.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/emoji/trumbowyg.emoji.min.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/insertaudio/trumbowyg.insertaudio.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/insertaudio/trumbowyg.insertaudio.min.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/noembed/trumbowyg.noembed.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/noembed/trumbowyg.noembed.min.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/pasteimage/trumbowyg.pasteimage.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/pasteimage/trumbowyg.pasteimage.min.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/preformatted/trumbowyg.preformatted.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/preformatted/trumbowyg.preformatted.min.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/table/trumbowyg.table.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/table/trumbowyg.table.min.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/template/trumbowyg.template.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/template/trumbowyg.template.min.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/upload/trumbowyg.upload.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/plugins/upload/trumbowyg.upload.min.js">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/trumbowyg.js">
+      <publishTime>02/23/2018 12:19:26</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/trumbowyg.min.js">
+      <publishTime>02/23/2018 12:19:26</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/ui/icons.svg">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/ui/sass/trumbowyg.scss">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/ui/trumbowyg.css">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/dist/ui/trumbowyg.min.css">
+      <publishTime>02/23/2018 12:19:24</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/.gitignore">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/.jshintrc">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/css/main.css">
+      <publishTime>02/23/2018 12:19:26</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/documentation.html">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/documentation/index.html">
+      <publishTime>02/23/2018 12:19:26</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/documentation/plugins/base64.html">
+      <publishTime>02/23/2018 12:19:26</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/documentation/plugins/colors.html">
+      <publishTime>02/23/2018 12:19:26</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/documentation/plugins/emoji.html">
+      <publishTime>02/23/2018 12:19:26</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/documentation/plugins/insertaudio.html">
+      <publishTime>02/23/2018 12:19:26</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/documentation/plugins/noembed.html">
+      <publishTime>02/23/2018 12:19:26</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/documentation/plugins/template.html">
+      <publishTime>02/23/2018 12:19:26</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/documentation/plugins/upload.html">
+      <publishTime>02/23/2018 12:19:26</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/examples/css/main.css">
+      <publishTime>02/23/2018 12:19:26</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/examples/index.html">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/examples/js/highlight.js">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/examples/js/runExampleCode.js">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/examples/plugins/base64.html">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/examples/plugins/colors.html">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/examples/plugins/emoji.html">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/examples/plugins/insertaudio.html">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/examples/plugins/noembed.html">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/examples/plugins/template.html">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/examples/plugins/upload.html">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/favicon.png">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/font/panton.eot">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/font/panton.ttf">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/font/panton.woff">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/font/panton.woff2">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/gulpfile.js">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/humans.txt">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/img/beer.svg">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/img/globe.svg">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/img/introduction-customizable.svg">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/img/introduction-html.svg">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/img/introduction-lightweight.svg">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/img/logo-doc.svg">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/img/logo.svg">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/img/packages/99ko.svg">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/img/packages/angular.svg">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/img/packages/django.svg">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/img/packages/october.svg">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/img/packages/rails.svg">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/img/packages/react.svg">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/img/packages/rip.svg">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/img/packages/vue.svg">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/img/packages/yii.svg">
+      <publishTime>02/23/2018 12:19:28</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/index.html">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/js/main.js">
+      <publishTime>02/23/2018 12:19:30</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/js/vendor/highlight.js">
+      <publishTime>02/23/2018 12:19:30</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/js/vendor/jquery-3.2.1.min.js">
+      <publishTime>02/23/2018 12:19:30</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js">
+      <publishTime>02/23/2018 12:19:30</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/package-lock.json">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/package.json">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/README.md">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/robots.txt">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/scss/main.scss">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/scss/_base.scss">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/scss/_buttons.scss">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/scss/_documentation.scss">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/scss/_donate.scss">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/scss/_font.scss">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/scss/_footer.scss">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/scss/_get-started.scss">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/scss/_header.scss">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/scss/_highlightjs-github.scss">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/scss/_introduction.scss">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/scss/_languages.scss">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/scss/_normalize.scss">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/scss/_plugins-packages.scss">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/docs/scss/_section.scss">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/examples/css/main.css">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/examples/index.html">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/examples/plugins/base64.html">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/examples/plugins/colors.html">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/examples/plugins/emoji.html">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/examples/plugins/insertaudio.html">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/examples/plugins/noembed.html">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/examples/plugins/template.html">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/examples/plugins/upload.html">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/gulpfile.js">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/index.html">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/ISSUE_TEMPLATE.md">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/LICENSE">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/package-lock.json">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/package.json">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/base64/trumbowyg.base64.js">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/base64/ui/icons/base64.svg">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/cleanpaste/trumbowyg.cleanpaste.js">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/colors/trumbowyg.colors.js">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/colors/ui/icons/back-color.svg">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/colors/ui/icons/fore-color.svg">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/colors/ui/sass/trumbowyg.colors.scss">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/emoji/trumbowyg.emoji.js">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/emoji/ui/icons/emoji.svg">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/emoji/ui/trumbowyg.emoji.css">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/insertaudio/trumbowyg.insertaudio.js">
+      <publishTime>02/23/2018 12:19:34</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/insertaudio/ui/icons/insert-audio.svg">
+      <publishTime>02/23/2018 12:19:32</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/noembed/trumbowyg.noembed.js">
+      <publishTime>02/23/2018 12:19:34</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/noembed/ui/icons/noembed.svg">
+      <publishTime>02/23/2018 12:19:34</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/pasteimage/trumbowyg.pasteimage.js">
+      <publishTime>02/23/2018 12:19:34</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/preformatted/trumbowyg.preformatted.js">
+      <publishTime>02/23/2018 12:19:34</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/preformatted/ui/icons/preformatted.svg">
+      <publishTime>02/23/2018 12:19:34</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/table/trumbowyg.table.js">
+      <publishTime>02/23/2018 12:19:34</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/template/trumbowyg.template.js">
+      <publishTime>02/23/2018 12:19:34</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/upload/trumbowyg.upload.js">
+      <publishTime>02/23/2018 12:19:34</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/upload/trumbowyg.upload.php">
+      <publishTime>02/23/2018 12:19:34</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/plugins/upload/ui/icons/upload.svg">
+      <publishTime>02/23/2018 12:19:34</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/README.md">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/ar.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/bg.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/by.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/ca.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/cs.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/da.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/de.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/el.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/en.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/es.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/es_ar.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/fa.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/fi.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/fr.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/he.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/hr.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/hu.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/id.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/it.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/ja.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/ko.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/mn.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/my.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/nl.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/no_nb.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/ph.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/pl.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/pt.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/pt_br.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/ro.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/rs.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/rs_latin.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/ru.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/sk.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/sv.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/tr.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/ua.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/vi.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/zh_cn.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/langs/zh_tw.js">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/trumbowyg.js">
+      <publishTime>02/23/2018 12:19:38</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/blockquote.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/bold.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/close.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/create-link.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/del.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/em.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/fullscreen.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/h1.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/h2.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/h3.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/h4.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/horizontal-rule.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/insert-image.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/italic.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/justify-center.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/justify-full.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/justify-left.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/justify-right.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/link.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/ordered-list.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/p.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/redo.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/removeformat.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/strikethrough.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/strong.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/subscript.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/superscript.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/table.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/underline.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/undo.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/unlink.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/unordered-list.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/icons/view-html.svg">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Trumbowyg-master/src/ui/sass/trumbowyg.scss">
+      <publishTime>02/23/2018 12:19:36</publishTime>
+    </File>
+    <File Include="Content/Uploads/default.png">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/Uploads/DownloadPublications/0226cff0865a45f6bde2b3d6f1bcd8b6__Content_Uploads_NoticeFiles_d9eec2ac0af2460a8266fac8372dcc07_download.png">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Uploads/DownloadPublications/32067f55c70f43fb965124d529edae02_18_sequential logic implementation 3.pdf">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Uploads/DownloadPublications/56111ffd14774efc983b1506c4fe1db0_Assignment 2017.pdf">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Uploads/DownloadPublications/f9382b8606cc4fd08956b36419898c2b_CMS%28website%29 Proposal.doc">
+      <publishTime>02/23/2018 12:19:44</publishTime>
+    </File>
+    <File Include="Content/Uploads/EmployeeImage/379db4466b8c4e29abedaa91581367b0_Photo.jpg">
+      <publishTime>02/23/2018 12:19:48</publishTime>
+    </File>
+    <File Include="Content/Uploads/EmployeeImage/4f441efba9b44d98ba4ae8e31c414069_psw.jpg">
+      <publishTime>02/23/2018 12:19:48</publishTime>
+    </File>
+    <File Include="Content/Uploads/EmployeeImage/f01a05c8ba1d4526ba144bb22762108d_download.jpg">
+      <publishTime>02/23/2018 12:19:48</publishTime>
+    </File>
+    <File Include="Content/Uploads/EmployeeImage/f244cc425fd440afb3183dd52f467022_Bishwoprakashpandit.jpg">
+      <publishTime>02/23/2018 12:19:48</publishTime>
+    </File>
+    <File Include="Content/Uploads/EmployeeImage/f524940b20774d2898f5c68725173c93_dhana ram.jpg">
+      <publishTime>02/23/2018 12:19:48</publishTime>
+    </File>
+    <File Include="Content/Uploads/EmployeeImage/fe10c2fc443d49c48eccac9615219146_Desert.jpg">
+      <publishTime>02/23/2018 12:19:48</publishTime>
+    </File>
+    <File Include="Content/Uploads/EmployeeImage/fe257c4cd92a44d1816531b54e3646ee_images.jpg">
+      <publishTime>02/23/2018 12:19:48</publishTime>
+    </File>
+    <File Include="Content/Uploads/NoticeFiles/0c1134d90eff4e5b893c1e40bdf7dfb3_CMS%28website%29 Proposal.doc">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/Uploads/NoticeFiles/617d3fcfe2334f878b52478e5be2450a_ramesh_cv.docx">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/Uploads/NoticeFiles/6cc7a45f96fa4e959a8f27615bd329dd_CMS%28website%29 Proposal.doc">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/Uploads/NoticeFiles/a7c2d18944a046fd8223c46fc2562476_ramesh_cv.docx">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/Uploads/NoticeFiles/d9eec2ac0af2460a8266fac8372dcc07_download.png">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/Uploads/NoticeFiles/f450251a923145b1982f0f97851530a1_rabitacv.docx">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="Content/Uploads/NoticeFiles/fc1d5eae58db429e81a7c3afbc21ffbc_CMS%28website%29 Proposal.doc">
+      <publishTime>02/23/2018 12:19:50</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>02/23/2018 12:20:46</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>02/23/2018 12:20:46</publishTime>
+    </File>
+    <File Include="Images/accent.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Images/bullet.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Images/heroAccent.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Images/orderedList0.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Images/orderedList1.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Images/orderedList2.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Images/orderedList3.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Images/orderedList4.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Images/orderedList5.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Images/orderedList6.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Images/orderedList7.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Images/orderedList8.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Images/orderedList9.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>02/23/2018 12:20:46</publishTime>
+    </File>
+    <File Include="Scripts/bootbox.min.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/datepicker.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/datepicker/images/ui-icons_444444_256x240.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Scripts/datepicker/images/ui-icons_555555_256x240.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Scripts/datepicker/images/ui-icons_777620_256x240.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Scripts/datepicker/images/ui-icons_777777_256x240.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Scripts/datepicker/images/ui-icons_cc0000_256x240.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Scripts/datepicker/images/ui-icons_ffffff_256x240.png">
+      <publishTime>02/23/2018 12:20:04</publishTime>
+    </File>
+    <File Include="Scripts/datepicker/jquery-ui.js">
+      <publishTime>02/23/2018 12:20:06</publishTime>
+    </File>
+    <File Include="Scripts/datepicker/jquery-ui.min.css">
+      <publishTime>02/23/2018 12:20:06</publishTime>
+    </File>
+    <File Include="Scripts/datepicker/jquery-ui.min.js">
+      <publishTime>02/23/2018 12:20:06</publishTime>
+    </File>
+    <File Include="Scripts/datepicker/jquery.timepicker.css">
+      <publishTime>02/23/2018 12:20:06</publishTime>
+    </File>
+    <File Include="Scripts/datepicker/jquery.timepicker.min.js">
+      <publishTime>02/23/2018 12:20:06</publishTime>
+    </File>
+    <File Include="Scripts/datepicker/slick.min.js">
+      <publishTime>02/23/2018 12:20:06</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.12.2.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.12.2.min.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.7.1.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.7.1.min.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.8.2.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.8.2.min.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.8.20.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.8.20.min.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.8.24.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.8.24.min.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery.form.min.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery.table2excel.js">
+      <publishTime>01/31/2019 13:33:40</publishTime>
+    </File>
+    <File Include="Scripts/jquery.table2excel.min.js">
+      <publishTime>01/31/2019 13:33:44</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.min.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/knockout-2.1.0.debug.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/knockout-2.1.0.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/knockout-2.2.0.debug.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/knockout-2.2.0.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.5.3.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>02/23/2018 12:20:10</publishTime>
+    </File>
+    <File Include="Views/Account/ExternalLoginConfirmation.cshtml">
+      <publishTime>02/23/2018 12:20:12</publishTime>
+    </File>
+    <File Include="Views/Account/ExternalLoginFailure.cshtml">
+      <publishTime>02/23/2018 12:20:12</publishTime>
+    </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>03/02/2018 14:49:26</publishTime>
+    </File>
+    <File Include="Views/Account/Manage.cshtml">
+      <publishTime>02/23/2018 12:20:12</publishTime>
+    </File>
+    <File Include="Views/Account/Register.cshtml">
+      <publishTime>02/23/2018 12:20:12</publishTime>
+    </File>
+    <File Include="Views/Account/_ChangePasswordPartial.cshtml">
+      <publishTime>02/23/2018 12:20:12</publishTime>
+    </File>
+    <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
+      <publishTime>02/23/2018 12:20:12</publishTime>
+    </File>
+    <File Include="Views/Account/_RemoveExternalLoginsPartial.cshtml">
+      <publishTime>02/23/2018 12:20:12</publishTime>
+    </File>
+    <File Include="Views/Account/_SetPasswordPartial.cshtml">
+      <publishTime>02/23/2018 12:20:12</publishTime>
+    </File>
+    <File Include="Views/Audit/AuditIndex.cshtml">
+      <publishTime>05/22/2018 17:35:26</publishTime>
+    </File>
+    <File Include="Views/BankInformation/BankInformationIndex.cshtml">
+      <publishTime>01/30/2019 18:13:05</publishTime>
+    </File>
+    <File Include="Views/BankInformation/BankTransactionIndex.cshtml">
+      <publishTime>01/31/2019 10:50:03</publishTime>
+    </File>
+    <File Include="Views/BankInformation/CreateEditBankTransaction.cshtml">
+      <publishTime>01/31/2019 10:56:12</publishTime>
+    </File>
+    <File Include="Views/BankInformation/_CreateEditBankAccount.cshtml">
+      <publishTime>01/30/2019 18:16:18</publishTime>
+    </File>
+    <File Include="Views/CashBook/CashBookIndex.cshtml">
+      <publishTime>01/31/2019 11:12:56</publishTime>
+    </File>
+    <File Include="Views/Goods/CreateSubGoods.cshtml">
+      <publishTime>01/29/2019 13:15:14</publishTime>
+    </File>
+    <File Include="Views/Goods/Index.cshtml">
+      <publishTime>01/30/2019 17:07:30</publishTime>
+    </File>
+    <File Include="Views/Goods/StockLedger.cshtml">
+      <publishTime>01/31/2019 13:50:03</publishTime>
+    </File>
+    <File Include="Views/Goods/_CreateEditGoods.cshtml">
+      <publishTime>01/30/2019 17:14:25</publishTime>
+    </File>
+    <File Include="Views/Goods/_CreateSubGoods.cshtml">
+      <publishTime>01/29/2019 13:15:33</publishTime>
+    </File>
+    <File Include="Views/Goods/_SubGoodsView.cshtml">
+      <publishTime>01/29/2019 13:09:29</publishTime>
+    </File>
+    <File Include="Views/Home/About.cshtml">
+      <publishTime>02/23/2018 12:20:12</publishTime>
+    </File>
+    <File Include="Views/Home/Contact.cshtml">
+      <publishTime>02/23/2018 12:20:12</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>05/22/2018 15:08:14</publishTime>
+    </File>
+    <File Include="Views/Party/PartyIndex.cshtml">
+      <publishTime>01/30/2019 16:44:37</publishTime>
+    </File>
+    <File Include="Views/Party/_CreateEditParty.cshtml">
+      <publishTime>01/30/2019 17:00:01</publishTime>
+    </File>
+    <File Include="Views/Setup/abcded.cshtml">
+      <publishTime>08/05/2018 12:34:38</publishTime>
+    </File>
+    <File Include="Views/Setup/AccountHeadIndex.cshtml">
+      <publishTime>08/02/2018 17:40:52</publishTime>
+    </File>
+    <File Include="Views/Setup/AccountSubHeadIndex.cshtml">
+      <publishTime>08/02/2018 17:06:30</publishTime>
+    </File>
+    <File Include="Views/Setup/AccountSubTypeIndex.cshtml">
+      <publishTime>08/02/2018 17:39:16</publishTime>
+    </File>
+    <File Include="Views/Setup/AccountTypeIndex.cshtml">
+      <publishTime>08/02/2018 16:48:34</publishTime>
+    </File>
+    <File Include="Views/Setup/ConfigChoiceCategoryList.cshtml">
+      <publishTime>02/27/2018 14:43:24</publishTime>
+    </File>
+    <File Include="Views/Setup/ConfigChoiceList.cshtml">
+      <publishTime>02/27/2018 14:43:40</publishTime>
+    </File>
+    <File Include="Views/Setup/DownloadPublicationList.cshtml">
+      <publishTime>02/27/2018 14:43:36</publishTime>
+    </File>
+    <File Include="Views/Setup/GradeIndex.cshtml">
+      <publishTime>08/05/2018 18:52:24</publishTime>
+    </File>
+    <File Include="Views/Setup/GradeSectionClassIndex.cshtml">
+      <publishTime>08/05/2018 23:07:12</publishTime>
+    </File>
+    <File Include="Views/Setup/ProgrammeFundAllocationIndex.cshtml">
+      <publishTime>08/02/2018 17:43:38</publishTime>
+    </File>
+    <File Include="Views/Setup/ProgrammeIndex.cshtml">
+      <publishTime>08/02/2018 17:28:28</publishTime>
+    </File>
+    <File Include="Views/Setup/ProvinceIndex.cshtml">
+      <publishTime>08/06/2018 14:40:40</publishTime>
+    </File>
+    <File Include="Views/Setup/SectionIndex.cshtml">
+      <publishTime>08/05/2018 19:05:50</publishTime>
+    </File>
+    <File Include="Views/Setup/StudentProfileIndex.cshtml">
+      <publishTime>08/05/2018 13:38:30</publishTime>
+    </File>
+    <File Include="Views/Setup/UserRolesIndex.cshtml">
+      <publishTime>01/30/2019 16:39:17</publishTime>
+    </File>
+    <File Include="Views/Setup/_CreateAccountHead.cshtml">
+      <publishTime>08/07/2018 00:23:30</publishTime>
+    </File>
+    <File Include="Views/Setup/_CreateAccountSubType.cshtml">
+      <publishTime>07/30/2018 09:08:34</publishTime>
+    </File>
+    <File Include="Views/Setup/_CreateAccountType.cshtml">
+      <publishTime>07/30/2018 09:09:40</publishTime>
+    </File>
+    <File Include="Views/Setup/_CreateEditAccountSubHead.cshtml">
+      <publishTime>08/02/2018 13:29:32</publishTime>
+    </File>
+    <File Include="Views/Setup/_CreateEditConfigChoice.cshtml">
+      <publishTime>02/27/2018 14:43:44</publishTime>
+    </File>
+    <File Include="Views/Setup/_CreateEditConfigChoiceCategory.cshtml">
+      <publishTime>02/23/2018 12:20:14</publishTime>
+    </File>
+    <File Include="Views/Setup/_CreateEditDownloadPublication.cshtml">
+      <publishTime>02/27/2018 14:43:42</publishTime>
+    </File>
+    <File Include="Views/Setup/_CreateEditProgramme.cshtml">
+      <publishTime>08/02/2018 13:38:24</publishTime>
+    </File>
+    <File Include="Views/Setup/_CreateEditProgrammeFund.cshtml">
+      <publishTime>08/02/2018 13:30:56</publishTime>
+    </File>
+    <File Include="Views/Setup/_CreateEditProvince.cshtml">
+      <publishTime>08/06/2018 16:04:44</publishTime>
+    </File>
+    <File Include="Views/Setup/_CreateEditRole.cshtml">
+      <publishTime>02/23/2018 12:20:14</publishTime>
+    </File>
+    <File Include="Views/Setup/_CreateEditStudent.cshtml">
+      <publishTime>08/05/2018 13:25:58</publishTime>
+    </File>
+    <File Include="Views/Setup/_CreateGrade.cshtml">
+      <publishTime>08/06/2018 13:29:34</publishTime>
+    </File>
+    <File Include="Views/Setup/_CreateGradeSection.cshtml">
+      <publishTime>08/06/2018 13:30:58</publishTime>
+    </File>
+    <File Include="Views/Setup/_CreateSection.cshtml">
+      <publishTime>08/05/2018 19:08:30</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>02/23/2018 12:20:14</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>01/31/2019 13:34:41</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.Login.cshtml">
+      <publishTime>02/23/2018 12:20:14</publishTime>
+    </File>
+    <File Include="Views/Shared/_LoginPartial.cshtml">
+      <publishTime>02/23/2018 12:20:14</publishTime>
+    </File>
+    <File Include="Views/Transactions/Adjustment.cshtml">
+      <publishTime>02/03/2019 10:38:31</publishTime>
+    </File>
+    <File Include="Views/Transactions/GetPayment.cshtml">
+      <publishTime>02/23/2018 12:20:16</publishTime>
+    </File>
+    <File Include="Views/Transactions/Index.cshtml">
+      <publishTime>01/31/2019 13:56:21</publishTime>
+    </File>
+    <File Include="Views/Transactions/MakePayment.cshtml">
+      <publishTime>02/23/2018 12:20:16</publishTime>
+    </File>
+    <File Include="Views/Transactions/Purchases.cshtml">
+      <publishTime>02/06/2019 10:34:21</publishTime>
+    </File>
+    <File Include="Views/Transactions/Sales.cshtml">
+      <publishTime>02/06/2019 10:37:12</publishTime>
+    </File>
+    <File Include="Views/Transactions/SalesPurchaseChart.cshtml">
+      <publishTime>02/27/2018 12:38:52</publishTime>
+    </File>
+    <File Include="Views/Transactions/TransactionsLedger.cshtml">
+      <publishTime>01/31/2019 13:39:41</publishTime>
+    </File>
+    <File Include="Views/Transactions/ViewPayments.cshtml">
+      <publishTime>01/30/2019 17:40:31</publishTime>
+    </File>
+    <File Include="Views/Transactions/_AddItemToListView.cshtml">
+      <publishTime>02/01/2019 11:26:19</publishTime>
+    </File>
+    <File Include="Views/Transactions/_AddItemToSalesListView.cshtml">
+      <publishTime>02/01/2019 11:24:39</publishTime>
+    </File>
+    <File Include="Views/Transactions/_CreatePayments.cshtml">
+      <publishTime>01/30/2019 17:53:01</publishTime>
+    </File>
+    <File Include="Views/Transactions/_PrintSalesBill.cshtml">
+      <publishTime>02/01/2019 11:18:22</publishTime>
+    </File>
+    <File Include="Views/Transactions/_ReceiptBillPrint.cshtml">
+      <publishTime>01/28/2019 18:12:02</publishTime>
+    </File>
+    <File Include="Views/User/UserLists.cshtml">
+      <publishTime>01/30/2019 16:36:27</publishTime>
+    </File>
+    <File Include="Views/User/_CreateUser.cshtml">
+      <publishTime>01/30/2019 16:50:48</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>02/23/2018 12:20:16</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>02/23/2018 12:20:16</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>10/12/2019 09:58:37</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,172 @@
+﻿@model POSModel.ResourceCopyModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">Resource Copy</h4>
+        </div>
+        @using (Html.BeginForm("CreateResourceCopy", "SetUp", FormMethod.Post, new { id = "CreateResourceCopy-form" }))
+        {
+            <div class="modal-body">
+                <div class="content-box">
+                    @Html.HiddenFor(model => model.GenerationId)
+
+
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.ResourceCopyId)
+                                    @Html.DropDownListFor(x => x.ResourceCopyId, ViewBag.ResourceGenerationList as SelectList, "Choose one", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ResourceCopyId)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.ResourceId)
+                                    @Html.DropDownListFor(x => x.ResourceId, ViewBag.ResourceNameList as SelectList, "Choose one", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ResourceId)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.ResourceCopyCount)
+                                    @Html.TextBoxFor(model => model.ResourceCopyCount, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ResourceCopyCount)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.ResourceCopyNumber)
+                                    @Html.TextBoxFor(model => model.ResourceCopyNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ResourceCopyNumber)
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.PublishedDate)
+                                    @Html.TextBoxFor(model => model.GenerationDateNepali, new { @class = "nepali-calendar form-control" })
+                                    @Html.ValidationMessageFor(model => model.PublishedDate)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.Edition)
+                                    @Html.TextBoxFor(model => model.Edition, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Edition)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.Remarks)
+                                    @Html.TextBoxFor(model => model.Remarks, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Remarks)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.IsAvailable)
+                                    @Html.CheckBoxFor(model => model.IsAvailable, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.IsAvailable)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.IsActive)
+                                    @Html.CheckBoxFor(model => model.IsActive, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.IsActive)
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="btn-groups modal-footer">
+                @if (Model.ResourceCopyId == 0)
+                {
+
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save Change</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+        $(function () {
+
+            $('#CreateResourceCopy-form').ajaxForm({
+
+                beforeSubmit: function () {
+                    $('#CreateResourceCopy-form').removeData("validator").removeData("unobtrusiveValidation");
+                    $.validator.unobtrusive.parse($('#CreateResourceCopy-form'));
+                    if ($("#CreateResourceCopy-form").valid()) {
+                        WorkForce.loader.show();
+                    } else {
+                        return false;
+                    }
+                },
+                success: function (result) {
+                    if (result.Success) {
+                        WorkForce.loader.hide();
+                        ShowMessage("success", "success", result.Msg);
+                        $('#pop-up-div').modal('hide');
+                        location.href = '@Url.Content("~/SetUp/ResourceCopyIndex")';
+                    } else {
+                        WorkForce.loader.hide();
+                        ShowMessage("error", "error", result.Msg);
+                    }
+
+
+                },
+                error: function () {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", "error in calling ajax!!");
+                }
+
+            });
+        });
+
+
+    $('.nepali-calendar').nepaliDatePicker({
+        npdMonth: true,
+        npdYear: true,
+    });
+
+</script>

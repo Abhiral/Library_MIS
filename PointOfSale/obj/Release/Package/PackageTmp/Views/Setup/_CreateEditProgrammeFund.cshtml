@@ -1,0 +1,216 @@
+﻿@model POSModel.ProgrammeFundAllocationAccHeadModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">Programme Fund Allocation</h4>
+        </div>
+        @using (Html.BeginForm("CreateEditProgrammeFundAllocation", "SetUp", FormMethod.Post, new { id = "programme-fund-form" }))
+        {
+            <div class="modal-body">
+                <div class="content-box">
+                    @Html.HiddenFor(model => model.AccHeadDetailID)
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.AccountHeadID)
+                                    @Html.DropDownListFor(model => model.AccountHeadID, ViewBag.AccountHead as SelectList,
+  "-- Select --", new { @class = "form-control", onchange = "GetAccountHeadListByAccountHeadID" })
+                                    @Html.ValidationMessageFor(model => model.AccountHeadID)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.ProgrammID)
+                                    @Html.DropDownListFor(model => model.ProgrammID, ViewBag.Programme as SelectList,
+"-- Select --", new { @class = "form-control", onchange = "GetProgrammeListByProgrammID" })
+                                    @Html.ValidationMessageFor(model => model.ProgrammID)
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.DetailsID)
+                                    @Html.TextBoxFor(model => model.DetailsID, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DetailsID)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.FundSourceID)
+                                    @Html.TextBoxFor(model => model.FundSourceID, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.FundSourceID)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.FundProvider)
+                                    @Html.TextBoxFor(model => model.FundProvider, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.FundProvider)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+
+                                    @Html.LabelFor(model => model.Amount)
+                                    @Html.TextBoxFor(model => model.Amount, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Amount)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+
+                                    @Html.LabelFor(model => model.UsedAmount)
+                                    @Html.TextBoxFor(model => model.UsedAmount, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.UsedAmount)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+
+                                    @Html.LabelFor(model => model.RemainingAmount)
+                                    @Html.TextBoxFor(model => model.RemainingAmount, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.RemainingAmount)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+
+                                    @Html.LabelFor(model => model.ThapAmount)
+                                    @Html.TextBoxFor(model => model.ThapAmount, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ThapAmount)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+
+                                    @Html.LabelFor(model => model.GhatAmount)
+                                    @Html.TextBoxFor(model => model.GhatAmount, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.GhatAmount)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.FYID)
+                                    @Html.DropDownListFor(model => model.FYID, ViewBag.FiscalYear as SelectList,
+"-- Select --", new { @class = "form-control", onchange = "GetFiscalYearByFYID" })
+                                    @Html.ValidationMessageFor(model => model.FYID)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+
+                                    @Html.LabelFor(model => model.DistributedDate)
+                                    @Html.TextBoxFor(model => model.DistributedDate, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DistributedDate)
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.Status)
+                                    @Html.CheckBoxFor(model => model.Status, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Status)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+
+                                    @Html.LabelFor(model => model.OrganisationID)
+                                    @Html.TextBoxFor(model => model.OrganisationID, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.OrganisationID)
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-groups modal-footer">
+                @if (Model.AccHeadDetailID == 0)
+                {
+
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save Change</button>
+                }
+            </div>
+        }
+    </div>
+
+</div>
+
+<script>
+    $(function () {
+        $.validator.unobtrusive.parse('#programme-fund-form');
+        $('#programme-fund-form').ajaxForm({
+
+            beforeSubmit: function () {
+                $('#programme-fund-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#programme-fund-form'));
+                if ($("#programme-fund-form").valid()) {
+                    WorkForce.loader.show();
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                if (result.Success) {
+                    WorkForce.loader.hide();
+                    ShowMessage("success", "success", result.Msg);
+                    $('#pop-up-div').modal('hide');
+                    location.href = '@Url.Content("~/SetUp/ProgrammeFundAllocationIndex")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+
+
+            },
+            error: function () {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in calling ajax!!");
+            }
+
+        });
+    });
+</script>
+

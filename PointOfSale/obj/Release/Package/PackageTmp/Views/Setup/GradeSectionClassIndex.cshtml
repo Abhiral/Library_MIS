@@ -1,0 +1,97 @@
+﻿@model POSModel.GradeSectionClassModel
+
+@{
+    ViewBag.Title = "GradeSectionClassIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+}
+
+<div class="title clearfix">
+    <h3>Grade Section Class</h3>
+</div>
+<button id="AddGradeSectionClass" class="btn btn-add pull-right"><i class="fa fa-plus"></i> Add New</button>
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="width-30">
+                        S.N.
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.GradeId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Section)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EducationYear)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ClassTeacher)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.GradeSectionClassList)
+                {
+                    <tr>
+                        <td>
+                            @counter <a href="#" onclick="AddEditGradeSectionClass('@item.Id')"><i class="fa fa-edit"></i></a>
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Grade)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Section)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EducationalYearName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ClassTeacher)
+                        </td>
+
+
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+
+
+    $('#AddGradeSectionClass').on('click', function () {
+        AddEditGradeSectionClass();
+    });
+
+    function AddEditGradeSectionClass(uniqueId)
+    {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/SetUp/CreateGradeSectionClass")',
+            data: { gradeSectionClassId: uniqueId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+</script>

@@ -1,0 +1,134 @@
+﻿@model POSModel.GoodsModel
+
+@{
+    ViewBag.Title = "Create";
+
+    }
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">Goods </h4>
+        </div>
+        @using (Html.BeginForm("CreateEditGoods", "Goods", FormMethod.Post, new { id = "goods-entry-form" }))
+        {
+            <div class="modal-body">
+                <div class="content-box">
+                        
+                    @Html.ValidationSummary(true)
+                    <div class="row equal-h">
+                        <div class="col-sm-6 col-md-6">
+                            <label>Item Name</label>
+                            @Html.HiddenFor(model => model.GoodsId)
+                            @Html.TextBoxFor(x => x.GoodsName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.GoodsName)
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <label>Unit Type</label>
+                            @Html.DropDownListFor(x => x.UnitTypeId, new SelectList(POSBLL.CommonService.GetConfigChoices("Unit Type"), "SelectId", "SelectText"), "---Select---", new { @class = "form-control", @id = "dropdown" })
+                            @Html.ValidationMessageFor(x => x.UnitTypeId)
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <label>Manufacturer</label>
+                            @Html.TextBoxFor(x => x.Manufacturer, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Manufacturer)
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <label>Default Rate</label>
+                            @Html.TextBoxFor(x => x.DefaultRate, new { @Value = (Model.DefaultRate > 0 ? Model.DefaultRate.ToString() : string.Empty), @class = "form-control", placeholder = "0" })
+                            @Html.ValidationMessageFor(x => x.DefaultRate)
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+                            <label>Default Discount (%)</label>
+                            @Html.TextBoxFor(x => x.DiscountPercentage, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.DiscountPercentage)
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+                            <div class="checkbox-sty-2">
+                                <div>
+                                    @Html.CheckBoxFor(x => x.HasSubCategory, new { @class = "form-control" })
+                                    <label for="HasSubCategory">Has Sub Category?</label>
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(x => x.HasSubCategory)
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+                            <div class="checkbox-sty-2">
+                                <div>
+                                    @Html.CheckBoxFor(x => x.IsActive, new { @class = "form-control" })
+                                    <label for="IsActive">Is Active?</label>
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(x => x.IsActive)
+                        </div>
+                        <div class="col-md-12">
+                            <label>Remarks</label>
+                            @Html.TextAreaFor(x => x.Remarks, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Remarks)
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="btn-groups modal-footer">
+                @if (Model.GoodsId == 0)
+                {
+
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save Change</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+<script>
+    $(function () {
+        $.validator.unobtrusive.parse('#goods-entry-form');
+        $('#goods-entry-form').ajaxForm({
+            beforeSubmit: function () {
+                $('#goods-entry-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#goods-entry-form'));
+                if ($("#goods-entry-form").valid()) {
+
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                if (result.Success) {
+                    WorkForce.loader.hide();
+
+                    $('#pop-up-div').modal('hide');
+                    location.href = '@Url.Content("~/Goods/Index")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+
+
+            },
+            error: function () {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in calling ajax!!");
+            }
+
+        });
+    });
+
+
+</script>

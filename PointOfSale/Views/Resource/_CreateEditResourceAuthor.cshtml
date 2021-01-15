@@ -1,0 +1,125 @@
+﻿@model POSModel.ResourceAuthorModel
+
+@{
+    ViewBag.Title = "CreateEditResourceAuthor";
+}
+
+<h2>_CreateEditResourceAuthor</h2>
+
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">Author</h4>
+        </div>
+        @using (Html.BeginForm("CreateEditResourceAuthor", "Resource", FormMethod.Post, new { id = "resource-author-form" }))
+        {
+            <div class="modal-body">
+                <div class="content-box">
+                    @Html.HiddenFor(model => model.AuthorId)
+
+
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.Author)
+                                    @Html.TextBoxFor(model => model.Author, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Author)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+
+                                    @Html.LabelFor(model => model.Nationality)
+                                    @*@Html.TextBoxFor(model => model.Nationality, new { @class = "form-control" })*@
+                                    @Html.DropDownListFor(x => x.Nationality, ViewBag.CountryName as SelectList, "Choose one", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Nationality)
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+
+                                    @Html.LabelFor(model => model.Genere)
+                                    @Html.TextBoxFor(model => model.Genere, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Genere)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.IsActive)
+                                    @Html.CheckBoxFor(model => model.IsActive, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.IsActive)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="btn-groups modal-footer">
+                @if (Model.AuthorId == 0)
+                {
+
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save Change</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(function () {
+
+        $('#resource-author-form').ajaxForm({
+
+            beforeSubmit: function () {
+                $('#resource-author-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#resource-author-form'));
+                if ($("#resource-author-form").valid()) {
+                    WorkForce.loader.show();
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                if (result.Success) {
+                    WorkForce.loader.hide();
+                    ShowMessage("success", "success", result.Msg);
+                    $('#pop-up-div').modal('hide');
+                    location.href = '@Url.Content("~/Resource/ResourceAuthorIndex")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+
+
+            },
+            error: function () {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in calling ajax!!");
+            }
+
+        });
+    });
+</script>
+

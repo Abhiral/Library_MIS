@@ -1,0 +1,138 @@
+﻿@model POSModel.DownloadPublicationModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">Download Publication </h4>
+        </div>
+        @using (Html.BeginForm("CreateEditDownloadPublication", "Setup", FormMethod.Post, new { id = "s-form" }))
+        {
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.ImageChange)
+            <div class="modal-body">
+                <div class="content-box">
+
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.DownloadCaptionEnglish)
+                                    @Html.TextBoxFor(model => model.DownloadCaptionEnglish, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DownloadCaptionEnglish)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.DownloadCaptionNepali)
+                                    @Html.TextBoxFor(model => model.DownloadCaptionNepali, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DownloadCaptionNepali)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.IsDownloads)
+                                    @Html.CheckBoxFor(model => model.IsDownloads, new { Checked = Model.IsDownloads })
+                                    @Html.ValidationMessageFor(model => model.IsDownloads)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    <div class="form-control-file input-group">
+                                        <input type="file" multiple accept="image/*" name="postedFileImage" id="imagePicker" onchange="document.getElementById('image-file-text').value = this.value.replace(/^.*\\/, '')">
+                                        @*@Html.TextBoxFor(x => x.ImageName, new { @CssClassPropertyAttribute = "form-control,readonly ", placeholder = "Select Image File" })*@
+                                        @if (Model.FileLocation != null)
+                                        {
+                                            string ImgLocation = @Url.Content("~/" + Model.FileLocation);
+                                            <a href='@Url.Content("~/Setup/Download?fileLocation=" + ImgLocation)' target="_blank">Download File</a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.IsActive)
+                                    @Html.CheckBoxFor(model => model.IsActive, new { Checked=Model.IsActive })
+                                    @Html.ValidationMessageFor(model => model.IsActive)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-groups modal-footer">
+                @if (Model.Id == 0)
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save Change</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+<script>
+    $(function () {
+        $.validator.unobtrusive.parse('#s-form');
+        $('#s-form').ajaxForm({
+            beforeSubmit: function () {
+                $('#s-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#s-form'));
+                if ($("#s-form").valid()) {
+                    WorkForce.loader.show();
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                if (result.Success) {
+                    WorkForce.loader.hide();
+                    ShowMessage("success", "success", result.Msg);
+                    $('#pop-up-div').modal('hide');
+                    location.href = '@Url.Content("~/Setup/DownloadPublicationList")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+            },
+            error: function () {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in calling ajax!!");
+            }
+
+        });
+    });
+
+    $('#imagePicker').on('change', function () {
+        if (this.files && this.files[0]) {            
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                //$('#JobSeekerImage').attr('src', e.target.result);
+                $('#ImageChange').val(true);
+            }
+
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+</script>

@@ -1,0 +1,10 @@
+E:\projects\PointOfSale\POSModel\bin\Release\POSModel.dll
+E:\projects\PointOfSale\POSModel\bin\Release\POSModel.pdb
+E:\projects\PointOfSale\POSModel\obj\Release\POSModel.csprojResolveAssemblyReference.cache
+E:\projects\PointOfSale\POSModel\obj\Release\POSModel.dll
+E:\projects\PointOfSale\POSModel\obj\Release\POSModel.pdb
+F:\Dot.Net\POS\trunk\PointOfSale\POSModel\bin\Release\POSModel.dll
+F:\Dot.Net\POS\trunk\PointOfSale\POSModel\bin\Release\POSModel.pdb
+F:\Dot.Net\POS\trunk\PointOfSale\POSModel\obj\Release\POSModel.csprojResolveAssemblyReference.cache
+F:\Dot.Net\POS\trunk\PointOfSale\POSModel\obj\Release\POSModel.dll
+F:\Dot.Net\POS\trunk\PointOfSale\POSModel\obj\Release\POSModel.pdb

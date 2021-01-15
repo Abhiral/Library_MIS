@@ -1,0 +1,145 @@
+﻿@model POSModel.BanktransactionsModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">@if (Model.BankTransactionId == 0) 
+                                    { <span>Add Transaction</span>}
+                                    else
+                                    {
+                                      <span>Edit Transaction</span>  
+                                    }
+                                    </h4>
+        </div>
+        @using (Html.BeginForm("CreateEditBankTransaction", "BankInformation", FormMethod.Post, new { id = "b-form" }))
+        {
+            <div class="modal-body">
+                <div class="content-box">
+                    @Html.HiddenFor(model => model.BankTransactionId)
+                    @Html.ValidationSummary(true)
+                    <div class="row equal-h">
+                        <div class="col-sm-6 col-md-6">
+                                                        @Html.LabelFor(x => x.TransactionDateNepali)
+                            @Html.TextBoxFor(x => x.TransactionDateNepali, new { @class = "form-control nepali-calendar" })
+                            @Html.ValidationMessageFor(x => x.TransactionDateNepali)
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+                                                    @Html.LabelFor(model => model.BankName)
+
+                            @Html.DropDownListFor(model => model.BankInformationId, new SelectList(POSBLL.CommonService.GetBankList(), "Id", "BankName"),
+                                    "-- Select --", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.BankInformationId)
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            @Html.LabelFor(model => model.TransactionType)
+                                                        @Html.DropDownListFor(model => model.TransactionTypeId, new SelectList(POSBLL.CommonService.GetConfigChoices("BankTransactionType"), "SelectId", "SelectText"), "-- Select --", new { @class = "form-control" })
+                                                                                    @Html.ValidationMessageFor(model => model.TransactionTypeId)
+                        </div>
+                           
+                        <div class="col-sm-6 col-md-6">
+                            @Html.LabelFor(model => model.TransactionAmount)
+                            @Html.TextBoxFor(model => model.TransactionAmount, "{0:#.#}", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TransactionAmount)
+                        </div>
+                            
+                        <div class="col-sm-6 col-md-6">
+                            @Html.LabelFor(model => model.TransactionBy)
+                            @Html.TextBoxFor(model => model.TransactionBy, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TransactionBy)
+                        </div>
+                          
+                        <div class="col-sm-6 col-md-6">
+                            <div class="checkbox-sty-2">
+                                <div>
+                                    @Html.CheckBoxFor(x => x.IsActive, new { @class = "form-control" })
+                                    <label for="IsActive">Is Active?</label>
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(x => x.IsActive)
+                        </div>
+
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.Remarks)
+                            @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Remarks)
+                        </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            <div class="btn-groups modal-footer">
+                @if (Model.BankTransactionId==0)
+                {
+
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save Change</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+<script>
+    $(function () {
+
+
+        $('.Date').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "yy-mm-dd"
+        });
+        $('.nepali-calendar').nepaliDatePicker({
+            npdMonth: true,
+            npdYear: true,
+        });
+
+        $.validator.unobtrusive.parse('#b-form');
+        $('#b-form').ajaxForm({
+            beforeSubmit: function () {
+                $('#b-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#b-form'));
+                if ($("#b-form").valid()) {
+                    debugger;
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                //console.log(result);
+                debugger;
+                if (result.Success) {
+                    WorkForce.loader.hide();
+                    ShowMessage("success", "success", result.Msg);
+
+                    $('#pop-up-div-transaction').modal('hide');
+                    location.href = '@Url.Content("~/BankInformation/BankTransactionIndex")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+
+
+            },
+            error: function () {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in calling ajax!!");
+            }
+
+        });
+    });
+
+
+</script>

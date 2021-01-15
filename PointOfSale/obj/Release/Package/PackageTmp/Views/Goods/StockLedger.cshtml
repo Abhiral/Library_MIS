@@ -1,0 +1,323 @@
+﻿@model POSModel.TransactionSearchModel
+@using POSBLL
+
+@{
+    ViewBag.Title = "Stock";
+    int counter = 1;
+
+    decimal balanceFigure, totalDebit, totalCredit, purchaseAmt, salesAmt, adjustmentAmt, purchaseQuantity, saleQuantity, adjustmentQuantity;
+    balanceFigure = totalDebit = totalCredit = purchaseAmt = salesAmt = purchaseQuantity = saleQuantity = adjustmentAmt = adjustmentQuantity = 0;
+}
+<div class="main-title clearfix">
+    <h3>Stock Ledgers</h3>
+</div>
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="search-sec search-sty-1 search-sec3">
+    @using (Html.BeginForm("StockLedger", "Goods", FormMethod.Post, new { id = "ledger-form" }))
+    {
+        <div class="select-sty">
+            @Html.HiddenFor(model => model.IsExcel)
+            <div class="item form-group">
+                @Html.LabelFor(model => model.FromDateNepali)
+                @Html.TextBoxFor(model => model.FromDateNepali, new { @class = "form-control nepali-calendar" })
+            </div>
+            <div class="item form-group">
+                @Html.LabelFor(model => model.ToDateNepali)
+                @Html.TextBoxFor(model => model.ToDateNepali, new { @class = "form-control nepali-calendar" })
+            </div>
+            <div class="item form-group">
+                @Html.LabelFor(x => x.GoodsId)
+                @Html.DropDownListFor(x => x.GoodsId, new SelectList(POSBLL.CommonService.GetGoodsList(), "SelectId", "SelectText"), "-- Select --", new { @class = "form-control", id = "goodsId" })
+            </div>
+
+
+            <div class="item form-group">
+                @Html.LabelFor(model => model.TransactionTypeId)
+                @Html.DropDownListFor(model => model.TransactionTypeId, new SelectList(POSBLL.CommonService.GetConfigChoices("Transaction Type"), "SelectId", "SelectText"), "-- Select --", new { @class = "form-control" })
+            </div>
+           
+            <div class="item form-group">
+                @Html.LabelFor(model => model.CreatedBy)
+                @Html.DropDownListFor(model => model.CreatedBy, new SelectList(POSBLL.CommonService.GetUsers("All"), "SelectId", "SelectText"), "-- Select --", new { @class = "form-control" })
+            </div>
+            <div class="item form-group">
+                <button type="submit" id="Search-Records" class="btn btn-add">Search</button>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="text-right">
+    <button onclick="Exportexcel()" class="btn btn-excel-flie"><i class="fa fa-file-excel-o" aria-hidden="true"></i>Export To Excel</button>
+</div>
+@if (Model.Ledgers.Count > 0)
+{
+    <div class="content-table">
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-striped table-hover" id="stock-ledger-table">
+                <thead>
+                    
+                    <tr>
+                        <th colspan="7" class="text-center">
+
+                            Stock Ledger for  @ViewBag.GoodsName from @ViewBag.fromDate to @ViewBag.toDate
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            S.N.
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.TransactionDateNepali)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.Particulars)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.BillNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayName("In")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Out")
+                        </th>
+
+                        <th>
+                            @Html.DisplayName("Balance")
+
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Ledgers)
+                    {
+                        <tr>
+                            <td>
+                                @counter
+                            </td>
+
+                            <td>
+
+                                @item.TransactionDateNepali
+
+                            </td>
+                            <td>
+                                @item.Particulars
+                            </td>
+                            <td>
+                                @item.BillNumber
+                            </td>
+                            @if (@item.DebitCredit == "Debit")
+                            {
+                                <td class="text-right">
+                                    @string.Format("{0:0.00}", Math.Abs(@item.Quantity))
+                                </td>
+                                <td></td>
+                                balanceFigure += Math.Abs(item.Quantity);
+                                totalDebit += Math.Abs(item.Quantity);
+                            }
+                            else if (@item.DebitCredit == "Credit")
+                            {
+                                <td></td>
+                                <td class="text-right">
+                                    @string.Format("{0:0.00}", Math.Abs(@item.Quantity))
+                                </td>
+                                balanceFigure -= Math.Abs(item.Quantity);
+                                totalCredit += Math.Abs(item.Quantity);
+                            }
+                            else
+                            {
+                                if (item.Quantity > 0)
+                                {
+                                    <td class="text-right">
+                                        @string.Format("{0:0.00}", Math.Abs(@item.Quantity))
+                                    </td>
+                                    <td></td>
+                                    balanceFigure += item.Quantity;
+                                    totalDebit += item.Quantity;
+                                }
+                                else
+                                {
+                                    <td></td>
+                                    <td class="text-right">
+                                        @string.Format("{0:0.00}", Math.Abs(@item.Quantity))
+                                    </td>
+                                    balanceFigure -= Math.Abs(item.Quantity);
+                                    totalCredit += Math.Abs(item.Quantity);
+
+                                }
+
+                            }
+
+
+                            @if (balanceFigure >= 0)
+                            {
+                                <td class="text-right">
+                                    @string.Format("{0:0.00}", @Math.Abs(balanceFigure))
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="text-right">
+                                    ( @string.Format("{0:0.00}", @Math.Abs(balanceFigure)) )
+                                </td>
+                            }
+
+                            @if (item.TransactionType == "Sales")
+                            {
+                                saleQuantity += item.Quantity;
+                                salesAmt += item.Amount;
+                            }
+                            else if (item.TransactionType == "Purchase")
+                            {
+                                purchaseQuantity += item.Quantity;
+                                purchaseAmt += item.Amount;
+                            }
+
+
+                            else
+                            {
+                                adjustmentQuantity += item.Quantity;
+                                adjustmentAmt += item.Amount;
+
+                            }
+
+                        </tr>
+                            counter++;
+                    }
+                    <tr class="text-right">
+                        <td colspan="4">Total</td>
+                        <td>@string.Format("{0:0.00}", totalDebit)</td>
+                        <td>@string.Format("{0:0.00}", totalCredit)</td>
+                        @if (balanceFigure >= 0)
+                        {
+                            <td class="text-right">
+                                @string.Format("{0:0.00}", @Math.Abs(balanceFigure))
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="text-right">
+                                ( @string.Format("{0:0.00}", @Math.Abs(balanceFigure)) )
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+                    @if (Model.TransactionTypeId == null)
+                    {
+
+                        <tr style="font-weight:bold; text-align:right">
+                            <td colspan="5">Rate : @POSBLL.CommonService.GetCurrencyFormat(Model.DefaultRate)</td>
+                            <td colspan="2">Remaining Stock Amount: @POSBLL.CommonService.GetCurrencyFormat((Model.DefaultRate * balanceFigure))</td>
+                        </tr>
+
+                        <tr style="font-weight: bold; text-align: right">
+                            <td colspan="3">
+
+                                Total Purchase Amount : Rs @CommonService.GetCurrencyFormat(purchaseAmt)
+                            </td>
+                            <td colspan="4" style="text-align:left">Total Purchase Quantity : @purchaseQuantity</td>
+                        </tr>
+
+                        <tr style="font-weight: bold; text-align: right">
+                            <td colspan="3">
+
+                                Total Sales Amount : Rs @CommonService.GetCurrencyFormat(salesAmt)
+                            </td>
+                            <td colspan="4" style="text-align:left">Total Sales Quantity : @saleQuantity</td>
+                        </tr>
+
+                        <tr style="font-weight: bold; text-align: right">
+                            <td colspan="3">
+
+                                Total Adjustment Amount : Rs @CommonService.GetCurrencyFormat(adjustmentAmt)
+                            </td>
+                            <td colspan="4" style="text-align:left">Total Adjustment Quantity : @adjustmentQuantity</td>
+                        </tr>
+
+
+
+                    }
+
+                    else
+                    {
+                        if (Model.TransactionType == "Sales")
+                        {
+                            <tr>
+                                <td colspan="7" style="text-align: center; font-weight: bold">
+                                    Total Sales Amount = Rs @CommonService.GetCurrencyFormat(salesAmt)
+                                </td>
+                            </tr>
+                        }
+                        else if (Model.TransactionType == "Purchase")
+                        {
+                            <tr>
+                                <td colspan="7" style="text-align: center; font-weight: bold">
+                                    Total Purchase Amount = Rs @CommonService.GetCurrencyFormat(purchaseAmt)
+                                </td>
+                            </tr>
+                        }
+
+                        else
+                        {
+                            <tr>
+                                <td colspan="7" style="text-align: center; font-weight: bold">
+                                    Total Adjustment Amount = Rs @CommonService.GetCurrencyFormat(adjustmentAmt)
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div>
+        <p>
+            No Transactions Found !!
+        </p>
+    </div>
+}
+<script>
+    $(function () {
+        $('#Excel-Records').on('click', function () {
+            var goodsId = $('#goodsId option:selected').val();
+            if (goodsId == null) {
+                ShowMessage('warning', 'warning', 'please select goods item to search stock !!');
+                return false;
+            }
+            $('#IsExcel').val('True');
+        });
+
+        $('#Search-Records').on('click', function () {
+
+            var goodsId = $('#goodsId option:selected').val();
+            if (goodsId == null || goodsId == "") {
+                ShowMessage('warning', 'warning', 'please select goods item to search stock !!');
+                return false;
+            }
+            $('#IsExcel').val('False');
+        });
+    });
+
+    function Exportexcel() {
+        $("#stock-ledger-table").table2excel({
+            name: "Stock Ledger",
+            filename: "Stock Ledger",
+            fileext: ".xls"
+        });
+    }
+
+</script>
+
+

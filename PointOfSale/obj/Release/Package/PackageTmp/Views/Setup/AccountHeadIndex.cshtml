@@ -1,0 +1,150 @@
+﻿
+
+
+@model POSModel.AccountHeadModel
+
+@{
+    ViewBag.Title = "AccountHeadIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+}
+
+<div class="title clearfix">
+    <h3>Account Head </h3>
+</div>
+<button id="AddEditAccountHead" class="btn btn-add pull-right"><i class="fa fa-plus"></i> Add New</button>
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="width-30">
+                        S.N.
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountTypeID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountSubTypeID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountHeadNameEnglish)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountHeadNameNepali)
+                    </th>
+                    
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+
+                    <th>Sub Heads</th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.CreatedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifiedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifiedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OrganisationID)
+                    </th>*@
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.AccountHeadList)
+                {
+                    <tr>
+                        <td>
+                            @counter <a href="#" onclick="AddEditAccountHead('@item.AccountHeadID')"><i class="fa fa-edit"></i></a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountSubType)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountHeadNameEnglish)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountHeadNameNepali)
+                        </td>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+
+                        <td><a href='@Url.Content("~/Setup/AccountSubHeadIndex?accHeadId=")@item.AccountHeadID'>view</a></td>
+
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.CreatedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrganisationID)
+                        </td>*@
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+
+
+    $('#AddEditAccountHead').on('click', function () {
+        AddEditAccountHead();
+    });
+
+    function AddEditAccountHead(uniqueId)
+    {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/SetUp/CreateEditAccountHead")',
+            data: { accountHeadId: uniqueId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+</script>

@@ -1,0 +1,92 @@
+﻿@model POSModel.GradeModel
+
+@{
+    ViewBag.Title = "GradeIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+}
+
+<div class="title clearfix">
+    <h3>Grade</h3>
+</div>
+<button id="AddGrade" class="btn btn-add pull-right"><i class="fa fa-plus"></i> Add New</button>
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="width-30">
+                        S.N.
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.GradeNameEng)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GradeNameNep)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Remarks)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.GradeList)
+                {
+                    <tr>
+                        <td>
+                            @counter <a href="#" onclick="AddEditGrade('@item.Id')"><i class="fa fa-edit"></i></a>
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GradeNameEng)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GradeNameNep)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Remarks)
+                        </td>
+                        
+
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+
+
+    $('#AddGrade').on('click', function () {
+        AddEditGrade();
+    });
+
+    function AddEditGrade(uniqueId)
+    {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/SetUp/CreateGrade")',
+            data: { gradeId: uniqueId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+</script>
+   

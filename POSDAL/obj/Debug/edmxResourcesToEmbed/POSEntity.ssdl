@@ -1,0 +1,503 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PointOfSaleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ConfigChoice">
+    <Key>
+      <PropertyRef Name="ChoiceId" />
+    </Key>
+    <Property Name="ChoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="Choice" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="ChoiceDescription" Type="varchar" MaxLength="50" />
+    <Property Name="ChoiceNepali" Type="nvarchar" MaxLength="500" />
+    <Property Name="Val" Type="varchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConfigChoiceCategory">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Category" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="CategoryNepali" Type="nvarchar" MaxLength="500" />
+    <Property Name="CategoryDescription" Type="varchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="date" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedDate" Type="date" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="DateConversion_TblNepaliCalender">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="YearID" Type="nvarchar" MaxLength="50" />
+    <Property Name="MonthID" Type="nvarchar" MaxLength="50" />
+    <Property Name="E_Start_Date" Type="datetime" />
+    <Property Name="E_End_Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Grade">
+    <Key>
+      <PropertyRef Name="GradeId" />
+    </Key>
+    <Property Name="GradeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GradeNameEng" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="GradeNameNep" Type="nvarchar" MaxLength="250" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="date" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedDate" Type="date" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ResourceAuthor">
+    <Key>
+      <PropertyRef Name="AuthorId" />
+    </Key>
+    <Property Name="AuthorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Author" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nationality" Type="int" Nullable="false" />
+    <Property Name="Genere" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="date" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedDate" Type="date" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="ResourceCopy">
+    <Key>
+      <PropertyRef Name="ResourceCopyId" />
+    </Key>
+    <Property Name="ResourceCopyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GenerationId" Type="int" Nullable="false" />
+    <Property Name="ResourceId" Type="int" Nullable="false" />
+    <Property Name="ResourceCopyCount" Type="int" Nullable="false" />
+    <Property Name="ResourceCopyNumber" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Remarks" Type="varchar" MaxLength="500" />
+    <Property Name="IsAvailable" Type="bit" Nullable="false" />
+    <Property Name="PublishedDate" Type="date" Nullable="false" />
+    <Property Name="Edition" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="date" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedDate" Type="date" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="ResourceGeneration">
+    <Key>
+      <PropertyRef Name="GenerationId" />
+    </Key>
+    <Property Name="GenerationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ResourceId" Type="int" Nullable="false" />
+    <Property Name="GenerationDate" Type="date" Nullable="false" />
+    <Property Name="GenerationCopyCount" Type="int" Nullable="false" />
+    <Property Name="Remarks" Type="varchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="date" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedDate" Type="date" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="ResourceIssue">
+    <Key>
+      <PropertyRef Name="IssueId" />
+    </Key>
+    <Property Name="IssueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ResourceCopyId" Type="int" Nullable="false" />
+    <Property Name="IssueDate" Type="date" Nullable="false" />
+    <Property Name="ReturnBackDate" Type="date" Nullable="false" />
+    <Property Name="Remarks" Type="varchar" MaxLength="500" />
+    <Property Name="Subscriber" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="date" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedDate" Type="date" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="ReturnedDate" Type="date" />
+  </EntityType>
+  <EntityType Name="ResourcePublication">
+    <Key>
+      <PropertyRef Name="PublicationId" />
+    </Key>
+    <Property Name="PublicationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Publisher" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PublisherOrigin" Type="int" Nullable="false" />
+    <Property Name="Genere" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="date" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedDate" Type="date" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="ResourceSetup">
+    <Key>
+      <PropertyRef Name="ResourceId" />
+    </Key>
+    <Property Name="ResourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ResourceTypeId" Type="int" Nullable="false" />
+    <Property Name="PublicationId" Type="int" />
+    <Property Name="PublicationName" Type="varchar" MaxLength="250" />
+    <Property Name="AuthorId" Type="int" />
+    <Property Name="AuthorName" Type="varchar" MaxLength="250" />
+    <Property Name="ResourceName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Remarks" Type="varchar" MaxLength="1000" />
+    <Property Name="GradeId" Type="int" />
+    <Property Name="SubjectId" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="date" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedDate" Type="date" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="ResourceSubscriber">
+    <Key>
+      <PropertyRef Name="SubscriberId" />
+    </Key>
+    <Property Name="SubscriberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="250" />
+    <Property Name="LastName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="IsStudent" Type="bit" Nullable="false" />
+    <Property Name="IsEmployee" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="date" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedDate" Type="date" />
+    <Property Name="ModifiedBy" Type="int" />
+    <Property Name="MemberDate" Type="date" Nullable="false" />
+    <Property Name="MembershipNumber" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ResourceType">
+    <Key>
+      <PropertyRef Name="ResourceTypeId" />
+    </Key>
+    <Property Name="ResourceTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ResourceTypeName" Type="varchar" MaxLength="100" />
+    <Property Name="ResourceTypeCode" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="date" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedDate" Type="date" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="SubjectId" />
+    </Key>
+    <Property Name="SubjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="date" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedDate" Type="date" />
+    <Property Name="ModifiedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="IsConfirmed" Type="bit" />
+    <Property Name="LastPasswordFailureDate" Type="datetime" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PasswordChangedDate" Type="datetime" />
+    <Property Name="PasswordSalt" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ProviderUserId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_UsersInRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ConfigChoice_ConfigChoiceCategory">
+    <End Role="ConfigChoiceCategory" Type="Self.ConfigChoiceCategory" Multiplicity="1" />
+    <End Role="ConfigChoice" Type="Self.ConfigChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConfigChoiceCategory">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="ConfigChoice">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceAuthor_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="ResourceAuthor" Type="Self.ResourceAuthor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="ResourceAuthor">
+        <PropertyRef Name="Nationality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceCopy_ResourceGeneration">
+    <End Role="ResourceGeneration" Type="Self.ResourceGeneration" Multiplicity="1" />
+    <End Role="ResourceCopy" Type="Self.ResourceCopy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourceGeneration">
+        <PropertyRef Name="GenerationId" />
+      </Principal>
+      <Dependent Role="ResourceCopy">
+        <PropertyRef Name="GenerationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceCopy_ResourceSetup">
+    <End Role="ResourceSetup" Type="Self.ResourceSetup" Multiplicity="1" />
+    <End Role="ResourceCopy" Type="Self.ResourceCopy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourceSetup">
+        <PropertyRef Name="ResourceId" />
+      </Principal>
+      <Dependent Role="ResourceCopy">
+        <PropertyRef Name="ResourceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceGeneration_ResourceSetup">
+    <End Role="ResourceSetup" Type="Self.ResourceSetup" Multiplicity="1" />
+    <End Role="ResourceGeneration" Type="Self.ResourceGeneration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourceSetup">
+        <PropertyRef Name="ResourceId" />
+      </Principal>
+      <Dependent Role="ResourceGeneration">
+        <PropertyRef Name="ResourceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceIssue_ResourceCopy">
+    <End Role="ResourceCopy" Type="Self.ResourceCopy" Multiplicity="1" />
+    <End Role="ResourceIssue" Type="Self.ResourceIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourceCopy">
+        <PropertyRef Name="ResourceCopyId" />
+      </Principal>
+      <Dependent Role="ResourceIssue">
+        <PropertyRef Name="ResourceCopyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceIssue_ResourceSubscriber">
+    <End Role="ResourceSubscriber" Type="Self.ResourceSubscriber" Multiplicity="1" />
+    <End Role="ResourceIssue" Type="Self.ResourceIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourceSubscriber">
+        <PropertyRef Name="SubscriberId" />
+      </Principal>
+      <Dependent Role="ResourceIssue">
+        <PropertyRef Name="Subscriber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourcePublication_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="ResourcePublication" Type="Self.ResourcePublication" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="ResourcePublication">
+        <PropertyRef Name="PublisherOrigin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceSetup_Grade">
+    <End Role="Grade" Type="Self.Grade" Multiplicity="0..1" />
+    <End Role="ResourceSetup" Type="Self.ResourceSetup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grade">
+        <PropertyRef Name="GradeId" />
+      </Principal>
+      <Dependent Role="ResourceSetup">
+        <PropertyRef Name="GradeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceSetup_ResourceAuthor">
+    <End Role="ResourceAuthor" Type="Self.ResourceAuthor" Multiplicity="0..1" />
+    <End Role="ResourceSetup" Type="Self.ResourceSetup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourceAuthor">
+        <PropertyRef Name="AuthorId" />
+      </Principal>
+      <Dependent Role="ResourceSetup">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceSetup_ResourcePublication">
+    <End Role="ResourcePublication" Type="Self.ResourcePublication" Multiplicity="0..1" />
+    <End Role="ResourceSetup" Type="Self.ResourceSetup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourcePublication">
+        <PropertyRef Name="PublicationId" />
+      </Principal>
+      <Dependent Role="ResourceSetup">
+        <PropertyRef Name="PublicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceSetup_ResourceType">
+    <End Role="ResourceType" Type="Self.ResourceType" Multiplicity="1" />
+    <End Role="ResourceSetup" Type="Self.ResourceSetup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourceType">
+        <PropertyRef Name="ResourceTypeId" />
+      </Principal>
+      <Dependent Role="ResourceSetup">
+        <PropertyRef Name="ResourceTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceSetup_Subject">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
+    <End Role="ResourceSetup" Type="Self.ResourceSetup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="ResourceSetup">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RoleId">
+    <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="webpages_Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="EnglishDateToNepali" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="englishDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="FuncEnglishDateToNepali" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="englishDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="FuncNepaliDateToEnglish" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="date">
+    <Parameter Name="nepaliDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="NepaliDateToEnglish" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nepaliDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SpGetUserList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SpGetUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userRole" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="PointOfSaleModelStoreContainer">
+    <EntitySet Name="ConfigChoice" EntityType="Self.ConfigChoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConfigChoiceCategory" EntityType="Self.ConfigChoiceCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DateConversion_TblNepaliCalender" EntityType="Self.DateConversion_TblNepaliCalender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResourceAuthor" EntityType="Self.ResourceAuthor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResourceCopy" EntityType="Self.ResourceCopy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResourceGeneration" EntityType="Self.ResourceGeneration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResourceIssue" EntityType="Self.ResourceIssue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResourcePublication" EntityType="Self.ResourcePublication" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResourceSetup" EntityType="Self.ResourceSetup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResourceSubscriber" EntityType="Self.ResourceSubscriber" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResourceType" EntityType="Self.ResourceType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="webpages_Membership" EntityType="Self.webpages_Membership" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="Self.webpages_OAuthMembership" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="webpages_Roles" EntityType="Self.webpages_Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="webpages_UsersInRoles" EntityType="Self.webpages_UsersInRoles" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ConfigChoice_ConfigChoiceCategory" Association="Self.FK_ConfigChoice_ConfigChoiceCategory">
+      <End Role="ConfigChoiceCategory" EntitySet="ConfigChoiceCategory" />
+      <End Role="ConfigChoice" EntitySet="ConfigChoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceAuthor_Country" Association="Self.FK_ResourceAuthor_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="ResourceAuthor" EntitySet="ResourceAuthor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceCopy_ResourceGeneration" Association="Self.FK_ResourceCopy_ResourceGeneration">
+      <End Role="ResourceGeneration" EntitySet="ResourceGeneration" />
+      <End Role="ResourceCopy" EntitySet="ResourceCopy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceCopy_ResourceSetup" Association="Self.FK_ResourceCopy_ResourceSetup">
+      <End Role="ResourceSetup" EntitySet="ResourceSetup" />
+      <End Role="ResourceCopy" EntitySet="ResourceCopy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceGeneration_ResourceSetup" Association="Self.FK_ResourceGeneration_ResourceSetup">
+      <End Role="ResourceSetup" EntitySet="ResourceSetup" />
+      <End Role="ResourceGeneration" EntitySet="ResourceGeneration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceIssue_ResourceCopy" Association="Self.FK_ResourceIssue_ResourceCopy">
+      <End Role="ResourceCopy" EntitySet="ResourceCopy" />
+      <End Role="ResourceIssue" EntitySet="ResourceIssue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceIssue_ResourceSubscriber" Association="Self.FK_ResourceIssue_ResourceSubscriber">
+      <End Role="ResourceSubscriber" EntitySet="ResourceSubscriber" />
+      <End Role="ResourceIssue" EntitySet="ResourceIssue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourcePublication_Country" Association="Self.FK_ResourcePublication_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="ResourcePublication" EntitySet="ResourcePublication" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceSetup_Grade" Association="Self.FK_ResourceSetup_Grade">
+      <End Role="Grade" EntitySet="Grade" />
+      <End Role="ResourceSetup" EntitySet="ResourceSetup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceSetup_ResourceAuthor" Association="Self.FK_ResourceSetup_ResourceAuthor">
+      <End Role="ResourceAuthor" EntitySet="ResourceAuthor" />
+      <End Role="ResourceSetup" EntitySet="ResourceSetup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceSetup_ResourcePublication" Association="Self.FK_ResourceSetup_ResourcePublication">
+      <End Role="ResourcePublication" EntitySet="ResourcePublication" />
+      <End Role="ResourceSetup" EntitySet="ResourceSetup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceSetup_ResourceType" Association="Self.FK_ResourceSetup_ResourceType">
+      <End Role="ResourceType" EntitySet="ResourceType" />
+      <End Role="ResourceSetup" EntitySet="ResourceSetup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceSetup_Subject" Association="Self.FK_ResourceSetup_Subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="ResourceSetup" EntitySet="ResourceSetup" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RoleId" Association="Self.fk_RoleId">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

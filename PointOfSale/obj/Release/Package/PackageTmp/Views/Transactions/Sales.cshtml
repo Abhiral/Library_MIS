@@ -1,0 +1,365 @@
+﻿@model POSModel.TransactionMasterModel
+@{
+    ViewBag.Title = "Sales";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="main-title">
+    <h3>Sales</h3>
+</div>
+
+<div class="box-border">
+    @using (Html.BeginForm("Sales", "Transactions", FormMethod.Post, new { id = "sales-form" }))
+    {
+
+        <div class="checkbox-sty-1 form-group">
+            <div>
+                @Html.CheckBoxFor(x => x.IsParty)
+                @Html.LabelFor(x => x.IsParty)
+              
+            </div>
+                 @Html.ValidationMessageFor(model => model.IsParty)
+        </div>
+
+
+        <div class="select-sty select-sty-3">
+            <div class="party-section">
+                <div class="item  form-group">
+                    @Html.HiddenFor(x => x.TransactionMasterID)
+                    @Html.LabelFor(x => x.PartyId)
+                    @Html.DropDownListFor(x => x.PartyId, new SelectList(@POSBLL.CommonService.GetPartiesByType("Customer"), "SelectId", "SelectText"), "-- Select one --", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.PartyId)
+                </div>
+            </div>
+
+            <div class="non-party-section">
+                <div class="item  form-group">
+                    @Html.LabelFor(x => x.PartyName)
+                    @Html.TextBoxFor(x => x.PartyName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.PartyName)
+                </div>
+            </div>
+
+            <div class="item  form-group">
+                @Html.LabelFor(x => x.TransactionTypeId)
+                @Html.HiddenFor(x => x.TransactionTypeId)
+                @Html.DropDownList("TransactionTypes", new SelectList(@POSBLL.CommonService.GetConfigChoices("Transaction Type"), "SelectId", "SelectText", Model.TransactionTypeId), "-- Select one --", new { @disabled = "disabled", @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.TransactionTypeId)
+            </div>
+            <div class="item  form-group">
+                @Html.LabelFor(x => x.BillNumber)
+                @Html.TextBoxFor(x => x.BillNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.BillNumber)
+            </div>
+            <div class="item  form-group">
+                @Html.LabelFor(x => x.TransactionDateNepali)
+                @Html.TextBoxFor(x => x.TransactionDateNepali, new { @class = "form-control nepali-calendar" })
+                @Html.ValidationMessageFor(x => x.TransactionDateNepali)
+            </div>
+            <div class="item  form-group">
+                <div class="checkbox-sty-2">
+                    <div>
+
+                        @Html.CheckBoxFor(model => model.IsActive, new { @class = "form-control" })
+                        @Html.LabelFor(model => model.IsActive)
+                    </div>
+                </div>
+
+                @Html.ValidationMessageFor(model => model.IsActive)
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(x => x.Remarks)
+                @Html.TextAreaFor(x => x.Remarks, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Remarks)
+            </div>
+
+            <div class="item  form-group">
+                <div class="checkbox-sty-2">
+                    <div>
+
+                        @Html.CheckBoxFor(model => model.MakePayment, new { @class = "form-control" })
+                        @Html.LabelFor(model => model.MakePayment)
+                    </div>
+                </div>
+
+                @Html.ValidationMessageFor(model => model.MakePayment)
+            </div>
+        </div>
+
+
+        <div class="add-purchase-item-section">
+            <div class="add-items">
+                <fieldset>
+
+                    <legend>Add Items</legend>
+
+                    <div class="row">
+                        <div class="col-sm-4 col-md-4">
+                            @Html.LabelFor(x => x.GoodsId)
+                            @Html.DropDownListFor(x => x.GoodsId, new SelectList(POSBLL.CommonService.GetGoodsList(), "SelectId", "SelectText"), "-- Select --", new { @class = "form-control" })
+
+                        </div>
+                        <div class="col-sm-4 col-md-4">
+                            @Html.LabelFor(x => x.Quantity)
+                            @Html.TextBoxFor(x => x.Quantity, new { @Value = (Model.Quantity > 0 ? Model.Quantity.ToString() : string.Empty), @class = "form-control", placeholder = "0" })
+
+                        </div>
+                        <div class="col-sm-4 col-md-4 text-left">
+                            <a class="btn btn-add" id="add-item-to-list"><i class="fa fa-plus"></i>Add</a>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="purchase-items">
+                <fieldset>
+                    <legend> Sales Items</legend>
+
+                    <div class="content-table">
+                        <div id="items-table-div" class="table-sty-1" style="overflow:auto;max-height:400px">
+                            <div id="items-list" class="table-header" style="font-weight: 600;">
+                                <div class="sec-sn item">
+                                    SN.
+                                </div>
+                                <div class="sec-item item">
+                                    Item
+                                </div>
+                                <div class="sec-rate item">
+                                    Rate
+                                </div>
+                                <div class="sec-rate item">
+                                    Discount (%)
+                                </div>
+                                <div class="sec-Quantity item">
+                                    Quantity
+                                </div>
+                                <div class="sec-total item">
+                                    Total
+                                </div>
+                                <div class="sec-action item">
+                                    Action
+                                </div>
+                            </div>
+
+                            @if (Model.TransactionDetails != null)
+                            {
+                                int counter = 1;
+                                foreach (var item in Model.TransactionDetails)
+                                {
+                                    ViewBag.Counter = counter;
+                                    @Html.Partial("_AddItemToListView", item)
+                                    counter++;
+
+                                }
+                            }
+                        </div>
+
+                    </div>
+
+                </fieldset>
+            </div>
+            <div class="show-grand-total text-center">
+                @Html.LabelFor(x => x.GrandTotal)
+                <span>Rs.</span>
+                <span class="grand-total-value">
+                    @Html.DisplayFor(x => x.GrandTotal, new { Value = String.Format("{0:0.00}", Model.GrandTotal) })
+                </span>
+            </div>
+        </div>
+
+        <div class=" btn-groups text-right">
+            <button id="submitbutton" class="btn btn-save"><i class="fa fa-save"></i>Save</button>
+        </div>
+
+    }
+
+</div>
+
+<div id="billPrint"></div>
+
+
+<script>
+    $(function () {
+        $('#sales-form').ajaxForm({
+            beforeSubmit: function () {
+                $('#Quantity').val(0);
+                $('#sales-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#sales-form'));
+                if ($("#sales-form").valid()) {
+                    if ($('div.indivisual-row').length == 0) {
+                        ShowMessage("error", "error", 'Add atleast one item in the purchase list !!');
+                        return false;
+                    }
+                    WorkForce.loader.show();
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+
+                if (result) {
+                    WorkForce.loader.hide();
+                    ShowMessage("success", "success", result.Msg);
+                    $('#pop-up-div').modal('hide');
+                    $('#billPrint').html(result);
+                    printBill(AfterBillPrint);
+                }
+
+                else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+            },
+            error: function (result) {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in Saving data!!");
+                var responseText = JSON.parse(result.responseText);
+                if (responseText.IsSessionOut) {
+                    location.href = responseText.Redirect;
+                }
+            }
+        });
+        $('#GoodsId').removeAttr('name');
+        $('#Quantity').removeAttr('name');
+    });
+
+    $('#Quantity').on('keyup', function (k) {
+        var code = k.which;
+        if (code == 13) {
+            $('#add-item-to-list').click();
+        }
+    });
+    function DeleteRow(e) {
+        var confirmValue = confirm("Are you sure to delete this Item ?");
+        if (confirmValue) {
+            $(e).closest('div.indivisual-row').remove();
+            CalculateGrandTotal();
+        }
+    }
+    $('#add-item-to-list').on('click', function () {
+        var goodsId = $('#GoodsId option:selected').val();
+        if (goodsId == null || goodsId == '') {
+            ShowMessage("warning", "warning", 'Please select item first !!!');
+            return false;
+
+        }
+        var goodsInList = $('.indivisual-row.table-body').find('input.Goods-Id');
+        var duplicate = false;
+        $.each(goodsInList, function (eachitemindex, eachItem) {
+            var individualGoodId = $(eachItem).val();
+            if (goodsId == individualGoodId) {
+
+                duplicate = true;
+            }
+        });
+        if (duplicate) {
+            ShowMessage("warning", "warning", 'Selected Item is already Listed !!!');
+            return false;
+        }
+
+
+        var counter = $('.indivisual-row.table-body').length;
+        counter++;
+        var data = {
+            GoodsId: $('#GoodsId option:selected').val(),
+            counter: counter,
+            Quantity: $('#Quantity').val(),
+        }
+        WorkForce.loader.show();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/Transactions/AddItemToSalesListView")',
+            data: data,
+            success: function (result) {
+                if (result) {
+                    $('#items-table-div').append(result);
+                    $('#GoodsId').val('');
+                    $('#Quantity').val('');
+                    CalculateGrandTotal();
+                }
+                WorkForce.loader.hide();
+            },
+            error: function (ex) {
+                WorkForce.loader.hide();
+                console.log(ex);
+            }
+        });
+    });
+
+    //$('#submitbutton').on('click', function () {
+    //    debugger;
+    //    $('#sales-form').submit();
+    //});
+    function CalculateGrandTotal(e) {
+        if (e != null) {
+            var quantity = $(e.target).closest('.indivisual-row').find('.good-quantity').val();
+            var rate = $(e.target).closest('.indivisual-row').find('.good-rate').val();
+            var discountPercentage = $(e.target).closest('.indivisual-row').find('.good-discountPercentage').val();
+
+            $(e.target).closest('.indivisual-row').find('.good-total').val((quantity * rate) - (discountPercentage / 100 * (quantity * rate)));
+        }
+
+        var grandTotal = 0;
+        $('.good-total').each(function () {
+            grandTotal += Number($(this).val());
+        });
+        $('.grand-total-value').html(grandTotal);
+    }
+
+    $(document).on('change', '.good-rate', function (e) {
+        CalculateGrandTotal(e);
+    });
+    $(document).on('change', '.good-quantity', function (e) {
+        CalculateGrandTotal(e);
+    });
+    $(document).on('change', '.good-discountPercentage', function (e) {
+        CalculateGrandTotal(e);
+    });
+    $(function () {
+        $('.non-party-section').css('display', 'none');
+        $('#IsParty').on('change', function () {
+            var chk = $('#IsParty').prop('checked');
+            if (chk) {
+                $('.party-section').css('display', 'block');
+                $('.non-party-section').css('display', 'none');
+            }
+            else {
+                $('.party-section').css('display', 'none');
+                $('.non-party-section').css('display', 'block');
+            }
+        })
+    });
+
+    function printBill(AfterBillPrint) {
+        var printContent = document.getElementById("billPrint");
+        var num;
+        var uniqueName = new Date();
+        var windowName = 'Print' + uniqueName.getTime();
+        var printing = window.open(num, windowName);
+        printing.document.write(printContent.outerHTML);
+        printing.document.close();
+        printing.focus();
+        printing.print();
+        printing.close();
+        AfterBillPrint();
+
+    }
+    function AfterBillPrint() {
+        var transactionId = $('#TransactionMasterID').val();
+        var makePayment = $('#MakePayment').val();
+        if (makePayment=='True') {
+            location.href = '@Url.Content("~/Transactions/ViewPayments?transactionId=")' + transactionId + '&makePayment=True';
+
+        }
+        else {
+            var fromDate = $('#TransactionDateNepali').val();
+            var toDate = $('#TransactionDateNepali').val();
+            var transactionType = $('#TransactionTypeId').val();
+            var partyId = $('#PartyId').val();
+            location.href = '@Url.Content("~/Transactions/Index?FromDateNepali=")' + fromDate + "&ToDateNepali=" + toDate + "&TransactionTypeId=" + transactionType + "&PartyId=" + partyId;
+        }
+
+    }
+
+</script>

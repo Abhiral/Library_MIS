@@ -1,0 +1,121 @@
+﻿@model POSModel.ConfigChoiceModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">Config Choice </h4>
+        </div>
+        @using (Html.BeginForm("CreateEditConfigChoice", "Setup", FormMethod.Post, new { id = "cc-form" }))
+        {
+            @Html.HiddenFor(model => model.ChoiceId)
+            @Html.HiddenFor(model => model.CategoryId)
+            <div class="modal-body">
+                <div class="content-box">
+
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.Choice)
+                                    @Html.TextBoxFor(model => model.Choice, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Choice)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.ChoiceNepali)
+                                    @Html.TextBoxFor(model => model.ChoiceNepali, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ChoiceNepali)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.ChoiceDescription)
+                                    @Html.TextBoxFor(model => model.ChoiceDescription, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ChoiceDescription)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.Val)
+                                    @Html.TextBoxFor(model => model.Val, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Val)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.IsActive)
+                                    @Html.CheckBoxFor(model => model.IsActive, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.IsActive)
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="btn-groups modal-footer">
+                    @if (Model.ChoiceId == 0)
+                    {
+                        <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save Change</button>
+                    }
+                </div>
+            </div>
+        }
+
+    </div>
+    <script>
+        $(function () {
+            $.validator.unobtrusive.parse('#cc-form');
+            $('#cc-form').ajaxForm({
+                beforeSubmit: function () {
+                    $('#cc-form').removeData("validator").removeData("unobtrusiveValidation");
+                    $.validator.unobtrusive.parse($('#cc-form'));
+                    if ($("#cc-form").valid()) {
+                        WorkForce.loader.show();
+                    } else {
+                        return false;
+                    }
+                },
+                success: function (result) {
+                    if (result.Success) {
+                        WorkForce.loader.hide();
+                        ShowMessage("success", "success", result.Msg);
+                        $('#pop-up-div').modal('hide');
+                        var categoryId = $("#CategoryId").val();
+                        location.href = '@Url.Content("~/Setup/ConfigChoiceList?catId=")' + categoryId;
+                    } else {
+                        WorkForce.loader.hide();
+                        ShowMessage("error", "error", result.Msg);
+                    }
+                },
+                error: function () {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", "error in calling ajax!!");
+                }
+
+            });
+        });
+    </script>

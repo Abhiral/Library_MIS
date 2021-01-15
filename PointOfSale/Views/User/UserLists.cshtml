@@ -1,0 +1,132 @@
+﻿@model PointOfSale.Models.UserProfile
+@{
+    int counter = 1;
+    //string ApplicationRole = "";
+    //ApplicationRole = Roles.GetRolesForUser().FirstOrDefault();
+    ViewBag.Title = "Users";
+}
+<div class="main-title">
+    <h3>Users</h3>
+</div>
+
+<div class="clearfix"></div>
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+
+<div class="text-right">
+    <a href="#"class="btn btn-sm btn-add" id="AddEditButton"><i class="fa fa-plus-circle"></i>Add New</a>
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>SN.</th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Mobile No
+                    </th>
+                    <th>User Name</th>
+                    <th>Role</th>
+                    <th>Is Active</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.UserList)
+                {
+                    <tr>
+                        <td>@counter</td>
+                        <td>
+
+                            <a id="@item.UserId" href='#' onclick="AddEditFunction('@item.UserId')"><i class="fa fa-edit"></i> @item.FullName</a>
+
+                        </td>
+                        <td>@item.MobileNumber</td>
+                        <td>@item.UserName</td>
+                        <td>@item.RoleName</td>
+                        <td>@Html.CheckBoxFor(x => item.CanLogin)</td>
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@*<div class="user-top ut">
+    <div class="row">
+        <div class="col-md-2 col-sm-6 col-xs-7 form-group">
+            <a href="#" class="btn btn-sm btn-success pull-right" id="AddEditButton"><i class="fa fa-plus-circle"></i>Add New</a>
+        </div>
+
+    </div>
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>SN.</th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Mobile No
+                    </th>
+                    <th>User Name</th>
+                    <th>Role</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.UserList)
+                {
+                    <tr>
+                        <td>@counter</td>
+                        <td>
+
+                            <a id="@item.UserId" href='#' onclick="AddEditFunction('@item.UserId')">@item.FullName</a>
+
+                        </td>
+                        <td>@item.MobileNumber</td>
+                        <td>@item.UserName</td>
+                        <td>@item.RoleName</td>
+
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>*@
+<script>
+    $('#AddEditButton').on('click', function () {
+        AddEditFunction();
+    });
+
+    function AddEditFunction(userId) {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/User/CreateEditUser")',
+            data: { UserId: userId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+    function Search() {
+        var organizationId = $('#OrganizationId option:selected').val();
+        var departmentId = $('#DepartmentId option:selected').val();
+        var activeType = $('#ActiveStatus option:selected').text();
+        location.href = '@Url.Content("~/User/UserLists?organizationId=")' + organizationId + '&departmentId=' + departmentId + '&activeType=' + activeType;
+    }
+</script>

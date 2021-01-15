@@ -1,0 +1,87 @@
+﻿@model POSModel.ConfigChoiceModel
+@{
+    ViewBag.Title = "ConfigChoice Index";
+    int counter = 1;
+}
+<div class="title">
+    <h3>Config Choice</h3>
+</div>
+
+<button id="AddEditButton" class="btn btn-add pull-right"><i class="fa fa-plus"></i>Add New</button>
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+@Html.LabelFor(model => model.CategoryName) :
+<a href='@Url.Content("~/Setup/ConfigChoiceCategoryList")'>@Model.CategoryName</a>
+@Html.HiddenFor(x => x.CategoryId)
+
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>SN.</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Choice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ChoiceDescription)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Val)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ConfigChoiceList)
+                {
+                    <tr>
+                        <td>@counter</td>
+                        <td>
+                            <a id="@item.ChoiceId" href='#' onclick="AddEditFunction('@item.ChoiceId')">@item.Choice</a>
+                        </td>
+                        <td>
+                            @item.ChoiceDescription
+                        </td>
+                        <td>
+                            @item.Val
+                        </td>
+                        <td>
+                            <input type="checkbox" checked="@item.IsActive" />
+                        </td>
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $('#AddEditButton').on('click', function () {
+        AddEditFunction();
+    });
+
+    function AddEditFunction(choiceId) {
+        var categoryId = $("#CategoryId").val();
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/Setup/CreateEditConfigChoice")',
+            data: {
+                categoryId: categoryId,
+                choiceId: choiceId
+            },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+            },
+            error: function () {
+            }
+        });
+    }
+</script>

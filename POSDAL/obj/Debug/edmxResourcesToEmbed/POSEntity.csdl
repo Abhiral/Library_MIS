@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PointOfSaleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PointOfSaleEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="EnglishDateToNepali" ReturnType="Collection(String)">
+      <Parameter Name="englishDate" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="NepaliDateToEnglish" ReturnType="Collection(DateTime)">
+      <Parameter Name="nepaliDate" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SpGetTransactionPayments" ReturnType="Collection(PointOfSaleModel.SpGetTransactionPayments_Result)">
+      <Parameter Name="transactionId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SpGetTransactions" ReturnType="Collection(PointOfSaleModel.SpGetTransactions_Result)">
+      <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="toDate" Mode="In" Type="DateTime" />
+      <Parameter Name="transactionType" Mode="In" Type="Int32" />
+      <Parameter Name="party" Mode="In" Type="Int32" />
+      <Parameter Name="createdBy" Mode="In" Type="Int32" />
+      <Parameter Name="isActive" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="SpGetTransactionsLedger" ReturnType="Collection(PointOfSaleModel.SpGetTransactionsLedger_Result)">
+      <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="toDate" Mode="In" Type="DateTime" />
+      <Parameter Name="transactionType" Mode="In" Type="Int32" />
+      <Parameter Name="party" Mode="In" Type="Int32" />
+      <Parameter Name="createdBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SpGetUserList" ReturnType="Collection(PointOfSaleModel.SpGetUserList_Result)" />
+    <FunctionImport Name="SpGetUsers" ReturnType="Collection(PointOfSaleModel.SpGetUsers_Result)">
+      <Parameter Name="userRole" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SpGetMonthWiseTransaction" />
+    <FunctionImport Name="SpGetStockLedger" ReturnType="Collection(PointOfSaleModel.SpGetStockLedger_Result)">
+      <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="toDate" Mode="In" Type="DateTime" />
+      <Parameter Name="transactionType" Mode="In" Type="Int32" />
+      <Parameter Name="createdBy" Mode="In" Type="Int32" />
+      <Parameter Name="goodsId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="ConfigChoices" EntityType="PointOfSaleModel.ConfigChoice" />
+    <EntitySet Name="ConfigChoiceCategories" EntityType="PointOfSaleModel.ConfigChoiceCategory" />
+    <EntitySet Name="Countries" EntityType="PointOfSaleModel.Country" />
+    <EntitySet Name="DateConversion_TblNepaliCalender" EntityType="PointOfSaleModel.DateConversion_TblNepaliCalender" />
+    <EntitySet Name="Grades" EntityType="PointOfSaleModel.Grade" />
+    <EntitySet Name="ResourceAuthors" EntityType="PointOfSaleModel.ResourceAuthor" />
+    <EntitySet Name="ResourceCopies" EntityType="PointOfSaleModel.ResourceCopy" />
+    <EntitySet Name="ResourceGenerations" EntityType="PointOfSaleModel.ResourceGeneration" />
+    <EntitySet Name="ResourcePublications" EntityType="PointOfSaleModel.ResourcePublication" />
+    <EntitySet Name="ResourceSetups" EntityType="PointOfSaleModel.ResourceSetup" />
+    <EntitySet Name="ResourceSubscribers" EntityType="PointOfSaleModel.ResourceSubscriber" />
+    <EntitySet Name="ResourceTypes" EntityType="PointOfSaleModel.ResourceType" />
+    <EntitySet Name="Subjects" EntityType="PointOfSaleModel.Subject" />
+    <EntitySet Name="webpages_Membership" EntityType="PointOfSaleModel.webpages_Membership" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="PointOfSaleModel.webpages_OAuthMembership" />
+    <EntitySet Name="webpages_Roles" EntityType="PointOfSaleModel.webpages_Roles" />
+    <EntitySet Name="webpages_UsersInRoles" EntityType="PointOfSaleModel.webpages_UsersInRoles" />
+    <AssociationSet Name="FK_ConfigChoice_ConfigChoiceCategory" Association="PointOfSaleModel.FK_ConfigChoice_ConfigChoiceCategory">
+      <End Role="ConfigChoiceCategory" EntitySet="ConfigChoiceCategories" />
+      <End Role="ConfigChoice" EntitySet="ConfigChoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceAuthor_Country" Association="PointOfSaleModel.FK_ResourceAuthor_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="ResourceAuthor" EntitySet="ResourceAuthors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourcePublication_Country" Association="PointOfSaleModel.FK_ResourcePublication_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="ResourcePublication" EntitySet="ResourcePublications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceSetup_Grade" Association="PointOfSaleModel.FK_ResourceSetup_Grade">
+      <End Role="Grade" EntitySet="Grades" />
+      <End Role="ResourceSetup" EntitySet="ResourceSetups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceSetup_ResourceAuthor" Association="PointOfSaleModel.FK_ResourceSetup_ResourceAuthor">
+      <End Role="ResourceAuthor" EntitySet="ResourceAuthors" />
+      <End Role="ResourceSetup" EntitySet="ResourceSetups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceCopy_ResourceGeneration" Association="PointOfSaleModel.FK_ResourceCopy_ResourceGeneration">
+      <End Role="ResourceGeneration" EntitySet="ResourceGenerations" />
+      <End Role="ResourceCopy" EntitySet="ResourceCopies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceCopy_ResourceSetup" Association="PointOfSaleModel.FK_ResourceCopy_ResourceSetup">
+      <End Role="ResourceSetup" EntitySet="ResourceSetups" />
+      <End Role="ResourceCopy" EntitySet="ResourceCopies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceGeneration_ResourceSetup" Association="PointOfSaleModel.FK_ResourceGeneration_ResourceSetup">
+      <End Role="ResourceSetup" EntitySet="ResourceSetups" />
+      <End Role="ResourceGeneration" EntitySet="ResourceGenerations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceSetup_ResourcePublication" Association="PointOfSaleModel.FK_ResourceSetup_ResourcePublication">
+      <End Role="ResourcePublication" EntitySet="ResourcePublications" />
+      <End Role="ResourceSetup" EntitySet="ResourceSetups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceSetup_ResourceType" Association="PointOfSaleModel.FK_ResourceSetup_ResourceType">
+      <End Role="ResourceType" EntitySet="ResourceTypes" />
+      <End Role="ResourceSetup" EntitySet="ResourceSetups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceSetup_Subject" Association="PointOfSaleModel.FK_ResourceSetup_Subject">
+      <End Role="Subject" EntitySet="Subjects" />
+      <End Role="ResourceSetup" EntitySet="ResourceSetups" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RoleId" Association="PointOfSaleModel.fk_RoleId">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+    <EntitySet Name="ResourceIssues" EntityType="PointOfSaleModel.ResourceIssue" />
+    <AssociationSet Name="FK_ResourceIssue_ResourceCopy" Association="PointOfSaleModel.FK_ResourceIssue_ResourceCopy">
+      <End Role="ResourceCopy" EntitySet="ResourceCopies" />
+      <End Role="ResourceIssue" EntitySet="ResourceIssues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResourceIssue_ResourceSubscriber" Association="PointOfSaleModel.FK_ResourceIssue_ResourceSubscriber">
+      <End Role="ResourceSubscriber" EntitySet="ResourceSubscribers" />
+      <End Role="ResourceIssue" EntitySet="ResourceIssues" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="SpGetTransactionPayments_Result">
+    <Property Type="Int32" Name="TransactionMasterID" Nullable="false" />
+    <Property Type="Int32" Name="PaymentId" Nullable="false" />
+    <Property Type="Decimal" Name="PaymentAmount" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="PaymentType" Nullable="false" MaxLength="500" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="CreatedByName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="UpdateByName" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="PaymentDate" Nullable="false" />
+    <Property Type="String" Name="PaymentDateNepali" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Remarks" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+    <Property Type="DateTime" Name="UpdatedDate" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SpGetTransactions_Result">
+    <Property Type="Int32" Name="TransactionMasterID" Nullable="false" />
+    <Property Type="DateTime" Name="TransactionDate" Nullable="false" />
+    <Property Type="String" Name="TransactionDateNepali" Nullable="true" MaxLength="20" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="TransactionType" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="PartyName" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="ContactPerson" Nullable="false" MaxLength="500" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="38" Scale="4" />
+    <Property Type="String" Name="BilledBy" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="SpGetTransactionsLedger_Result">
+    <Property Type="Int32" Name="TransactionMasterID" Nullable="false" />
+    <Property Type="String" Name="TransactionDateNepali" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="TransactionDate" Nullable="false" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="TransactionType" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="DebitCredit" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="Particulars" Nullable="false" MaxLength="514" />
+    <Property Type="Decimal" Name="Amount" Nullable="false" Precision="38" Scale="4" />
+    <Property Type="String" Name="BilledBy" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SpGetUserList_Result">
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="56" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="500" />
+    <Property Type="Boolean" Name="CanLogin" Nullable="true" />
+    <Property Type="Int32" Name="RoleId" Nullable="false" />
+    <Property Type="String" Name="RoleName" Nullable="false" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="SpGetUsers_Result">
+    <Property Type="Int32" Name="SelectId" Nullable="false" />
+    <Property Type="String" Name="selectText" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="SpGetStockLedger_Result">
+    <Property Type="Int32" Name="TransactionMasterID" Nullable="false" />
+    <Property Type="String" Name="TransactionDateNepali" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="TransactionDate" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="TransactionType" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="BillNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DebitCredit" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Particulars" Nullable="true" MaxLength="514" />
+    <Property Type="Decimal" Name="Quantity" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="BilledBy" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="GoodsName" Nullable="false" MaxLength="500" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="ConfigChoice">
+    <Key>
+      <PropertyRef Name="ChoiceId" />
+    </Key>
+    <Property Name="ChoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="Choice" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ChoiceDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ChoiceNepali" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Val" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ConfigChoiceCategory" Relationship="PointOfSaleModel.FK_ConfigChoice_ConfigChoiceCategory" FromRole="ConfigChoice" ToRole="ConfigChoiceCategory" />
+  </EntityType>
+  <EntityType Name="ConfigChoiceCategory">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryNepali" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ConfigChoices" Relationship="PointOfSaleModel.FK_ConfigChoice_ConfigChoiceCategory" FromRole="ConfigChoiceCategory" ToRole="ConfigChoice" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="0" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="ResourceAuthors" Relationship="PointOfSaleModel.FK_ResourceAuthor_Country" FromRole="Country" ToRole="ResourceAuthor" />
+    <NavigationProperty Name="ResourcePublications" Relationship="PointOfSaleModel.FK_ResourcePublication_Country" FromRole="Country" ToRole="ResourcePublication" />
+  </EntityType>
+  <EntityType Name="DateConversion_TblNepaliCalender">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YearID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MonthID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="E_Start_Date" Type="DateTime" Precision="3" />
+    <Property Name="E_End_Date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Grade">
+    <Key>
+      <PropertyRef Name="GradeId" />
+    </Key>
+    <Property Name="GradeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GradeNameEng" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="GradeNameNep" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="0" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ResourceSetups" Relationship="PointOfSaleModel.FK_ResourceSetup_Grade" FromRole="Grade" ToRole="ResourceSetup" />
+  </EntityType>
+  <EntityType Name="ResourceAuthor">
+    <Key>
+      <PropertyRef Name="AuthorId" />
+    </Key>
+    <Property Name="AuthorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Author" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nationality" Type="Int32" Nullable="false" />
+    <Property Name="Genere" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="0" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="Country" Relationship="PointOfSaleModel.FK_ResourceAuthor_Country" FromRole="ResourceAuthor" ToRole="Country" />
+    <NavigationProperty Name="ResourceSetups" Relationship="PointOfSaleModel.FK_ResourceSetup_ResourceAuthor" FromRole="ResourceAuthor" ToRole="ResourceSetup" />
+  </EntityType>
+  <EntityType Name="ResourceCopy">
+    <Key>
+      <PropertyRef Name="ResourceCopyId" />
+    </Key>
+    <Property Name="ResourceCopyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GenerationId" Type="Int32" Nullable="false" />
+    <Property Name="ResourceId" Type="Int32" Nullable="false" />
+    <Property Name="ResourceCopyCount" Type="Int32" Nullable="false" />
+    <Property Name="ResourceCopyNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsAvailable" Type="Boolean" Nullable="false" />
+    <Property Name="PublishedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Edition" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="0" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="ResourceGeneration" Relationship="PointOfSaleModel.FK_ResourceCopy_ResourceGeneration" FromRole="ResourceCopy" ToRole="ResourceGeneration" />
+    <NavigationProperty Name="ResourceSetup" Relationship="PointOfSaleModel.FK_ResourceCopy_ResourceSetup" FromRole="ResourceCopy" ToRole="ResourceSetup" />
+    <NavigationProperty Name="ResourceIssues" Relationship="PointOfSaleModel.FK_ResourceIssue_ResourceCopy" FromRole="ResourceCopy" ToRole="ResourceIssue" />
+  </EntityType>
+  <EntityType Name="ResourceGeneration">
+    <Key>
+      <PropertyRef Name="GenerationId" />
+    </Key>
+    <Property Name="GenerationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ResourceId" Type="Int32" Nullable="false" />
+    <Property Name="GenerationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="GenerationCopyCount" Type="Int32" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="0" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="ResourceCopies" Relationship="PointOfSaleModel.FK_ResourceCopy_ResourceGeneration" FromRole="ResourceGeneration" ToRole="ResourceCopy" />
+    <NavigationProperty Name="ResourceSetup" Relationship="PointOfSaleModel.FK_ResourceGeneration_ResourceSetup" FromRole="ResourceGeneration" ToRole="ResourceSetup" />
+  </EntityType>
+  <EntityType Name="ResourcePublication">
+    <Key>
+      <PropertyRef Name="PublicationId" />
+    </Key>
+    <Property Name="PublicationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Publisher" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PublisherOrigin" Type="Int32" Nullable="false" />
+    <Property Name="Genere" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="0" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="Country" Relationship="PointOfSaleModel.FK_ResourcePublication_Country" FromRole="ResourcePublication" ToRole="Country" />
+    <NavigationProperty Name="ResourceSetups" Relationship="PointOfSaleModel.FK_ResourceSetup_ResourcePublication" FromRole="ResourcePublication" ToRole="ResourceSetup" />
+  </EntityType>
+  <EntityType Name="ResourceSetup">
+    <Key>
+      <PropertyRef Name="ResourceId" />
+    </Key>
+    <Property Name="ResourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ResourceTypeId" Type="Int32" Nullable="false" />
+    <Property Name="PublicationId" Type="Int32" />
+    <Property Name="PublicationName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="AuthorId" Type="Int32" />
+    <Property Name="AuthorName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ResourceName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="GradeId" Type="Int32" />
+    <Property Name="SubjectId" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="0" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="Grade" Relationship="PointOfSaleModel.FK_ResourceSetup_Grade" FromRole="ResourceSetup" ToRole="Grade" />
+    <NavigationProperty Name="ResourceAuthor" Relationship="PointOfSaleModel.FK_ResourceSetup_ResourceAuthor" FromRole="ResourceSetup" ToRole="ResourceAuthor" />
+    <NavigationProperty Name="ResourceCopies" Relationship="PointOfSaleModel.FK_ResourceCopy_ResourceSetup" FromRole="ResourceSetup" ToRole="ResourceCopy" />
+    <NavigationProperty Name="ResourceGenerations" Relationship="PointOfSaleModel.FK_ResourceGeneration_ResourceSetup" FromRole="ResourceSetup" ToRole="ResourceGeneration" />
+    <NavigationProperty Name="ResourcePublication" Relationship="PointOfSaleModel.FK_ResourceSetup_ResourcePublication" FromRole="ResourceSetup" ToRole="ResourcePublication" />
+    <NavigationProperty Name="ResourceType" Relationship="PointOfSaleModel.FK_ResourceSetup_ResourceType" FromRole="ResourceSetup" ToRole="ResourceType" />
+    <NavigationProperty Name="Subject" Relationship="PointOfSaleModel.FK_ResourceSetup_Subject" FromRole="ResourceSetup" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="ResourceSubscriber">
+    <Key>
+      <PropertyRef Name="SubscriberId" />
+    </Key>
+    <Property Name="SubscriberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="IsStudent" Type="Boolean" Nullable="false" />
+    <Property Name="IsEmployee" Type="Boolean" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="0" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="MemberDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MembershipNumber" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ResourceIssues" Relationship="PointOfSaleModel.FK_ResourceIssue_ResourceSubscriber" FromRole="ResourceSubscriber" ToRole="ResourceIssue" />
+  </EntityType>
+  <EntityType Name="ResourceType">
+    <Key>
+      <PropertyRef Name="ResourceTypeId" />
+    </Key>
+    <Property Name="ResourceTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ResourceTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ResourceTypeCode" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="0" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="ResourceSetups" Relationship="PointOfSaleModel.FK_ResourceSetup_ResourceType" FromRole="ResourceType" ToRole="ResourceSetup" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="SubjectId" />
+    </Key>
+    <Property Name="SubjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubjectName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="0" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <NavigationProperty Name="ResourceSetups" Relationship="PointOfSaleModel.FK_ResourceSetup_Subject" FromRole="Subject" ToRole="ResourceSetup" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ConfirmationToken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IsConfirmed" Type="Boolean" />
+    <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderUserId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="webpages_UsersInRoles" Relationship="PointOfSaleModel.fk_RoleId" FromRole="webpages_Roles" ToRole="webpages_UsersInRoles" />
+  </EntityType>
+  <EntityType Name="webpages_UsersInRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="webpages_Roles" Relationship="PointOfSaleModel.fk_RoleId" FromRole="webpages_UsersInRoles" ToRole="webpages_Roles" />
+  </EntityType>
+  <Association Name="FK_ConfigChoice_ConfigChoiceCategory">
+    <End Type="PointOfSaleModel.ConfigChoiceCategory" Role="ConfigChoiceCategory" Multiplicity="1" />
+    <End Type="PointOfSaleModel.ConfigChoice" Role="ConfigChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConfigChoiceCategory">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="ConfigChoice">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceAuthor_Country">
+    <End Type="PointOfSaleModel.Country" Role="Country" Multiplicity="1" />
+    <End Type="PointOfSaleModel.ResourceAuthor" Role="ResourceAuthor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="ResourceAuthor">
+        <PropertyRef Name="Nationality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourcePublication_Country">
+    <End Type="PointOfSaleModel.Country" Role="Country" Multiplicity="1" />
+    <End Type="PointOfSaleModel.ResourcePublication" Role="ResourcePublication" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="ResourcePublication">
+        <PropertyRef Name="PublisherOrigin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceSetup_Grade">
+    <End Type="PointOfSaleModel.Grade" Role="Grade" Multiplicity="0..1" />
+    <End Type="PointOfSaleModel.ResourceSetup" Role="ResourceSetup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grade">
+        <PropertyRef Name="GradeId" />
+      </Principal>
+      <Dependent Role="ResourceSetup">
+        <PropertyRef Name="GradeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceSetup_ResourceAuthor">
+    <End Type="PointOfSaleModel.ResourceAuthor" Role="ResourceAuthor" Multiplicity="0..1" />
+    <End Type="PointOfSaleModel.ResourceSetup" Role="ResourceSetup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourceAuthor">
+        <PropertyRef Name="AuthorId" />
+      </Principal>
+      <Dependent Role="ResourceSetup">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceCopy_ResourceGeneration">
+    <End Type="PointOfSaleModel.ResourceGeneration" Role="ResourceGeneration" Multiplicity="1" />
+    <End Type="PointOfSaleModel.ResourceCopy" Role="ResourceCopy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourceGeneration">
+        <PropertyRef Name="GenerationId" />
+      </Principal>
+      <Dependent Role="ResourceCopy">
+        <PropertyRef Name="GenerationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceCopy_ResourceSetup">
+    <End Type="PointOfSaleModel.ResourceSetup" Role="ResourceSetup" Multiplicity="1" />
+    <End Type="PointOfSaleModel.ResourceCopy" Role="ResourceCopy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourceSetup">
+        <PropertyRef Name="ResourceId" />
+      </Principal>
+      <Dependent Role="ResourceCopy">
+        <PropertyRef Name="ResourceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceGeneration_ResourceSetup">
+    <End Type="PointOfSaleModel.ResourceSetup" Role="ResourceSetup" Multiplicity="1" />
+    <End Type="PointOfSaleModel.ResourceGeneration" Role="ResourceGeneration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourceSetup">
+        <PropertyRef Name="ResourceId" />
+      </Principal>
+      <Dependent Role="ResourceGeneration">
+        <PropertyRef Name="ResourceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceSetup_ResourcePublication">
+    <End Type="PointOfSaleModel.ResourcePublication" Role="ResourcePublication" Multiplicity="0..1" />
+    <End Type="PointOfSaleModel.ResourceSetup" Role="ResourceSetup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourcePublication">
+        <PropertyRef Name="PublicationId" />
+      </Principal>
+      <Dependent Role="ResourceSetup">
+        <PropertyRef Name="PublicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceSetup_ResourceType">
+    <End Type="PointOfSaleModel.ResourceType" Role="ResourceType" Multiplicity="1" />
+    <End Type="PointOfSaleModel.ResourceSetup" Role="ResourceSetup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourceType">
+        <PropertyRef Name="ResourceTypeId" />
+      </Principal>
+      <Dependent Role="ResourceSetup">
+        <PropertyRef Name="ResourceTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceSetup_Subject">
+    <End Type="PointOfSaleModel.Subject" Role="Subject" Multiplicity="0..1" />
+    <End Type="PointOfSaleModel.ResourceSetup" Role="ResourceSetup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="ResourceSetup">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RoleId">
+    <End Type="PointOfSaleModel.webpages_Roles" Role="webpages_Roles" Multiplicity="1" />
+    <End Type="PointOfSaleModel.webpages_UsersInRoles" Role="webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="webpages_Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ResourceIssue">
+    <Key>
+      <PropertyRef Name="IssueId" />
+    </Key>
+    <Property Name="IssueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ResourceCopyId" Type="Int32" Nullable="false" />
+    <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ReturnBackDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Subscriber" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="0" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="ReturnedDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="ResourceCopy" Relationship="PointOfSaleModel.FK_ResourceIssue_ResourceCopy" FromRole="ResourceIssue" ToRole="ResourceCopy" />
+    <NavigationProperty Name="ResourceSubscriber" Relationship="PointOfSaleModel.FK_ResourceIssue_ResourceSubscriber" FromRole="ResourceIssue" ToRole="ResourceSubscriber" />
+  </EntityType>
+  <Association Name="FK_ResourceIssue_ResourceCopy">
+    <End Type="PointOfSaleModel.ResourceCopy" Role="ResourceCopy" Multiplicity="1" />
+    <End Type="PointOfSaleModel.ResourceIssue" Role="ResourceIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourceCopy">
+        <PropertyRef Name="ResourceCopyId" />
+      </Principal>
+      <Dependent Role="ResourceIssue">
+        <PropertyRef Name="ResourceCopyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResourceIssue_ResourceSubscriber">
+    <End Type="PointOfSaleModel.ResourceSubscriber" Role="ResourceSubscriber" Multiplicity="1" />
+    <End Type="PointOfSaleModel.ResourceIssue" Role="ResourceIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResourceSubscriber">
+        <PropertyRef Name="SubscriberId" />
+      </Principal>
+      <Dependent Role="ResourceIssue">
+        <PropertyRef Name="Subscriber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

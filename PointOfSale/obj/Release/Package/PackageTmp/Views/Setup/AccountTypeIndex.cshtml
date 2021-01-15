@@ -1,0 +1,132 @@
+﻿@model POSModel.AccountTypeModel
+
+@{
+    ViewBag.Title = "AccountTypeIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+}
+
+<div class="title clearfix">
+    <h3>Account Type </h3>
+</div>
+<button id="AddAccountType" class="btn btn-add pull-right"><i class="fa fa-plus"></i> Add New</button>
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="width-30">
+                        S.N.
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountTypeNameEnglish)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountTypeNameNepali)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountTypeCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+
+                    <th>
+                        Account Sub Type
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.CreatedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifiedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifiedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OrganisationID)
+                    </th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.AccountTypeList)
+                {
+                    <tr>
+                        <td>
+                            @counter <a href="#" onclick="EditAccountType('@item.AccountTypeID')"><i class="fa fa-edit"></i></a>
+                        </td>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountTypeNameEnglish)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountTypeNameNepali)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountTypeCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                            
+                        <td><a href='@Url.Content("~/Setup/AccountSubTypeIndex?accountTypeId=")@item.AccountTypeID'>View</a></td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.CreatedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrganisationID)
+                        </td>*@
+
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+
+
+    $('#AddAccountType').on('click', function () {
+        EditAccountType();
+    });
+
+    function EditAccountType(uniqueId)
+    {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/SetUp/CreateEditAccountTypes")',
+            data: { accountTypeId: uniqueId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+</script>

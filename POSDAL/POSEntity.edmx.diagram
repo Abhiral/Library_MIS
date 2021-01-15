@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e8cf898586e1427eb5acbd2ab80acc34" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="PointOfSaleModel.ConfigChoice" Width="1.5" PointX="14" PointY="4" />
+        <EntityTypeShape EntityType="PointOfSaleModel.ConfigChoiceCategory" Width="1.5" PointX="11.75" PointY="4.25" />
+        <EntityTypeShape EntityType="PointOfSaleModel.Country" Width="1.5" PointX="0.75" PointY="6.25" />
+        <EntityTypeShape EntityType="PointOfSaleModel.DateConversion_TblNepaliCalender" Width="1.5" PointX="5.75" PointY="0.875" />
+        <EntityTypeShape EntityType="PointOfSaleModel.Grade" Width="1.5" PointX="3" PointY="15.5" />
+        <EntityTypeShape EntityType="PointOfSaleModel.ResourceAuthor" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="PointOfSaleModel.ResourceCopy" Width="1.5" PointX="9.75" PointY="7.5" />
+        <EntityTypeShape EntityType="PointOfSaleModel.ResourceGeneration" Width="1.5" PointX="7.5" PointY="11" />
+        <EntityTypeShape EntityType="PointOfSaleModel.ResourcePublication" Width="1.5" PointX="3" PointY="8" />
+        <EntityTypeShape EntityType="PointOfSaleModel.ResourceSetup" Width="1.5" PointX="5.25" PointY="5" />
+        <EntityTypeShape EntityType="PointOfSaleModel.ResourceSubscriber" Width="1.5" PointX="9.75" PointY="2.75" />
+        <EntityTypeShape EntityType="PointOfSaleModel.ResourceType" Width="1.5" PointX="3" PointY="12" />
+        <EntityTypeShape EntityType="PointOfSaleModel.Subject" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="PointOfSaleModel.webpages_Membership" Width="1.5" PointX="9.75" PointY="12.875" />
+        <EntityTypeShape EntityType="PointOfSaleModel.webpages_OAuthMembership" Width="1.5" PointX="11.75" PointY="12.875" />
+        <EntityTypeShape EntityType="PointOfSaleModel.webpages_Roles" Width="1.5" PointX="11.75" PointY="1" />
+        <EntityTypeShape EntityType="PointOfSaleModel.webpages_UsersInRoles" Width="1.5" PointX="14" PointY="1" />
+        <AssociationConnector Association="PointOfSaleModel.FK_ConfigChoice_ConfigChoiceCategory" />
+        <AssociationConnector Association="PointOfSaleModel.FK_ResourceAuthor_Country" />
+        <AssociationConnector Association="PointOfSaleModel.FK_ResourcePublication_Country" />
+        <AssociationConnector Association="PointOfSaleModel.FK_ResourceSetup_Grade" />
+        <AssociationConnector Association="PointOfSaleModel.FK_ResourceSetup_ResourceAuthor" />
+        <AssociationConnector Association="PointOfSaleModel.FK_ResourceCopy_ResourceGeneration" />
+        <AssociationConnector Association="PointOfSaleModel.FK_ResourceCopy_ResourceSetup" />
+        <AssociationConnector Association="PointOfSaleModel.FK_ResourceGeneration_ResourceSetup" />
+        <AssociationConnector Association="PointOfSaleModel.FK_ResourceSetup_ResourcePublication" />
+        <AssociationConnector Association="PointOfSaleModel.FK_ResourceSetup_ResourceType" />
+        <AssociationConnector Association="PointOfSaleModel.FK_ResourceSetup_Subject" />
+        <AssociationConnector Association="PointOfSaleModel.fk_RoleId" />
+        <EntityTypeShape EntityType="PointOfSaleModel.ResourceIssue" Width="1.5" PointX="12" PointY="7.375" />
+        <AssociationConnector Association="PointOfSaleModel.FK_ResourceIssue_ResourceCopy" />
+        <AssociationConnector Association="PointOfSaleModel.FK_ResourceIssue_ResourceSubscriber" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

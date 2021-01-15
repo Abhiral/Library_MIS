@@ -1,0 +1,57 @@
+﻿@using FormCollectionHelper
+
+@model POSModel.GoodsModel
+
+@using (Html.BeginCollectionItem("Goods"))
+{
+    <div class="indivisual-row row" style="margin-bottom:10px;">
+        <div class="col-md-1">
+            @ViewBag.Counter
+        </div>
+        <div class="col-md-2">
+            @Html.HiddenFor(model => model.GoodsId)
+            @Html.TextBoxFor(model => model.GoodsName, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.GoodsName)
+        </div>
+        <div class="col-md-1">
+            @Html.DropDownListFor(x => x.UnitTypeId, new SelectList(POSBLL.CommonService.GetConfigChoices("Unit Type"), "SelectId", "SelectText"), "---Select---", new { @class = "form-control", @id = "dropdown" })
+            @Html.ValidationMessageFor(model => model.UnitTypeId)
+        </div>
+        <div class="col-md-1">
+            @Html.TextBoxFor(model => model.DefaultRate, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.DefaultRate)
+        </div>
+        <div class="col-md-1">
+            @Html.TextBoxFor(model => model.DiscountPercentage, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.DiscountPercentage)
+        </div>
+        <div class="col-md-2">
+            @Html.TextBoxFor(model => model.Manufacturer, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.Manufacturer)
+        </div>
+        <div class="col-md-1">
+            @Html.CheckBoxFor(model => model.IsActive)
+        </div>
+        <div class="col-md-2">
+            @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.Remarks)
+        </div>
+       
+            <div class="col-md-1">
+                <button type="button" onclick="DeleteRow(this)" class="row-button btn btn-sm btn-danger btn-delete"><i class="fa fa-trash-o"></i> Remove</button>
+            </div>
+        
+    </div>
+}
+<script>
+    $(function () {
+        @*$('#Weight').val(@Model.TotalWeight);*@
+        $('#items-table-div').scrollTop($('#items-table-div').prop('scrollHeight'))
+    });
+    function DeleteRow(e) {
+        var confirmValue = confirm("Are you sure to delete this Item ?");
+        if (confirmValue) {
+            $(e).closest('div.indivisual-row').remove();
+        }
+    }
+</script>

@@ -1,0 +1,155 @@
+﻿@model POSModel.ResourceCopyModel
+           @using POSBLL
+
+@{
+    ViewBag.Title = "ResourceCopyIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+}
+
+<div class="title clearfix">
+    <h3>Resource Copy</h3>
+</div>
+@*<button id="AddCopy" class="btn btn-add pull-right"><i class="fa fa-plus"></i> Add New</button>*@
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="width-30">
+                        S.N.
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.ResourceName)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.ResourceCopyNumber)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.PublishedDate)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Edition)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Remarks)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsAvailable)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+
+                    <th>
+                        Resource Issue
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ResourceCopyList)
+                {
+                    <tr>
+                        <td>
+                            @counter <a href="#" onclick="AddEditResourceCopy('@item.ResourceCopyId')"><i class="fa fa-edit"></i></a>
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => item.ResourceName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => item.ResourceCopyNumber)
+                        </td>
+
+                        <td>
+                            @CommonService.GetCurrentNepaliDate(item.PublishedDate)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => item.Edition)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => item.Remarks)
+                        </td>
+
+                        <td>
+                            @Html.CheckBoxFor(modelItem => item.IsAvailable)
+                        </td>
+
+                        <td>
+                            @Html.CheckBoxFor(modelItem => item.IsActive)
+                        </td>
+
+                        <td>
+                            <button type="button" class="btn btn-primary" onclick="ResourceIssue(@item.ResourceCopyId)">Issue</button>
+                        </td>
+
+
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+
+
+    $('#AddCopy').on('click', function () {
+        AddEditResourceCopy();
+    });
+
+    function AddEditResourceCopy(uniqueId) {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/SetUp/CreateResourceCopy")',
+            data: { ResourceCopyId: uniqueId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+
+    function ResourceIssue(resourceCopyId) {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/Setup/CreateResourceIssue")',
+            data: { resourceCopyId: resourceCopyId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+</script>

@@ -1,0 +1,91 @@
+﻿@model POSModel.ResourceTypeModel
+
+@{
+    ViewBag.Title ="ResourceTypeIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+}
+
+<div class="title clearfix">
+    <h3>Resource Type</h3>
+</div>
+<button id="AddResourceType" class="btn btn-add pull-right"><i class="fa fa-plus"></i> Add New</button>
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="width-30">
+                        S.N.
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.ResourceTypeName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ResourceTypeCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ResourceTypeList)
+                {
+                <tr>
+                    <td>
+                        @counter <a href="#" onclick="AddEditResourceType('@item.ResourceTypeId')"><i class="fa fa-edit"></i></a>
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ResourceTypeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ResourceTypeCode)
+                    </td>
+                    <td>
+                        @Html.CheckBoxFor(modelItem => item.IsActive, new { @disabled = "disabled" })
+                    </td>
+
+
+                </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+
+
+    $('#AddResourceType').on('click', function () {
+        AddEditResourceType();
+    });
+
+    function AddEditResourceType(uniqueId)
+    {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/Resource/CreateEditResourceType")',
+            data: { resourceTypeId: uniqueId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+</script>

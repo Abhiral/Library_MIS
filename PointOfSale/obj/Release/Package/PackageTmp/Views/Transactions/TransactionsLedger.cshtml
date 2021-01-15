@@ -1,0 +1,254 @@
+﻿@model POSModel.TransactionSearchModel
+
+@{
+    ViewBag.Title = "Transactions";
+    int counter = 1;
+    decimal balanceFigure = 0;
+    decimal totalDebit = 0;
+    decimal totalCredit = 0;
+}
+<div class="main-title clearfix">
+    <h3>Transactions Ledgers</h3>
+</div>
+
+<div class="search-sec search-sty-1 search-sec3">
+    @using (Html.BeginForm("TransactionsLedger", "Transactions", FormMethod.Post, new { id = "ledger-form" }))
+    {
+        <div class="select-sty">
+            @Html.HiddenFor(model => model.IsExcel)
+            <div class="item form-group">
+                @Html.LabelFor(model => model.FromDateNepali)
+                @Html.TextBoxFor(model => model.FromDateNepali, new { @class = "form-control nepali-calendar",autocomplete="off" })
+            </div>
+            <div class="item form-group">
+                @Html.LabelFor(model => model.ToDateNepali)
+                @Html.TextBoxFor(model => model.ToDateNepali, new { @class = "form-control nepali-calendar", autocomplete = "off" })
+            </div>
+            <div class="item form-group">
+                @Html.LabelFor(model => model.TransactionTypeId)
+                @Html.DropDownListFor(model => model.TransactionTypeId, new SelectList(POSBLL.CommonService.GetConfigChoices("Transaction Type"), "SelectId", "SelectText"), "-- Select --", new { @class = "form-control" })
+            </div>
+            <div class="item form-group">
+                @Html.LabelFor(model => model.PartyId)
+                @{
+        if (Model.TransactionTypeId != null)
+        {
+            int salesType = POSBLL.CommonService.GetConfigChoices("Transaction Type").Where(x => x.SelectText == "Sales").Select(x => x.SelectId).FirstOrDefault();
+            if (salesType == Model.TransactionTypeId)
+            {
+                @Html.DropDownListFor(model => model.PartyId, new SelectList(POSBLL.CommonService.GetPartiesByType("Customer"), "SelectId", "SelectText"), "-- Select --", new { @class = "form-control" })
+            }
+            else
+            {
+                @Html.DropDownListFor(model => model.PartyId, new SelectList(POSBLL.CommonService.GetPartiesByType("Vender"), "SelectId", "SelectText"), "-- Select --", new { @class = "form-control" })
+            }
+
+        }
+        else
+        {
+            @Html.DropDownListFor(model => model.PartyId, new SelectList(new List<POSBLL.SelectModel>(), "SelectId", "SelectText"), "-- Select --", new { @class = "form-control" })
+        }
+                }
+
+
+            </div>
+            <div class="item form-group">
+                @Html.LabelFor(model => model.CreatedBy)
+                @Html.DropDownListFor(model => model.CreatedBy, new SelectList(POSBLL.CommonService.GetUsers("All"), "SelectId", "SelectText"), "-- Select --", new { @class = "form-control" })
+            </div>
+
+            <div class="item form-group">
+                <button type="submit" id="Search-Records" class="btn btn-add">Search</button>
+            </div>
+        </div>
+    }
+
+</div>
+
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="text-right">
+    <button onclick="Exportexcel()" class="btn btn-excel-flie"><i class="fa fa-file-excel-o" aria-hidden="true"></i>Export To Excel</button>
+</div>
+@if (Model.Ledgers.Count > 0)
+{
+    <div class="content-table">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover" id="transaction-detail-table">
+                <thead>
+
+                    <tr class="text-center">
+                        <td colspan="8">
+                            <h3>Transaction Ledger</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="text-center"><b>From Date :</b>&nbsp;@POSBLL.CommonService.GetCurrentNepaliDate(Convert.ToDateTime(Model.FromDate))</td>
+                        <td colspan="4" class="text-center"><b>To Date :</b>&nbsp;@POSBLL.CommonService.GetCurrentNepaliDate(Convert.ToDateTime(Model.ToDate))</td>
+                    </tr>
+                    <tr>
+                        <th>
+                            S.N.
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.TransactionDateNepali)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.Particulars)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.BillNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.Debit)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.Credit)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.DrCr)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.Balance)
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Ledgers)
+                    {
+                        <tr>
+                            <td>
+                                @*<a href="@Url.Content("~/Transactions/EditTransactions?transactionId="+item.TransactionMasterID)"><i class="fa fa-edit"></i> @counter</a>*@
+                                @counter
+                            </td>
+
+                            <td>
+
+                                @item.TransactionDateNepali
+
+                            </td>
+                            <td>
+                                @item.Particulars
+                            </td>
+                            <td>
+                                @item.BillNumber
+                            </td>
+                            @if (@item.DebitCredit == "Debit")
+                            {
+                                <td class="text-right">
+                                    @string.Format("{0:0.00}", @Math.Abs(item.Amount))
+                                </td>
+                                <td></td>
+                                balanceFigure += @Math.Abs(item.Amount);
+                                totalDebit += @Math.Abs(item.Amount);
+                                <td>
+                                    Dr
+                                </td>
+                            }
+                            else
+                            {
+                                <td></td>
+                                <td class="text-right">
+                                    @string.Format("{0:0.00}", @Math.Abs(item.Amount))
+                                </td>
+                                balanceFigure -= @Math.Abs(item.Amount);
+                                totalCredit += @Math.Abs(item.Amount);
+                                <td>
+                                    Cr
+                                </td>
+                            }
+
+
+                            <td class="text-right">
+                                @string.Format("{0:0.00}", @Math.Abs(balanceFigure))
+                            </td>
+
+                        </tr>
+                            counter++;
+                    }
+                    <tr class="text-right">
+                        <td colspan="4">Total</td>
+                        <td>@string.Format("{0:0.00}", totalDebit)</td>
+                        <td>@string.Format("{0:0.00}", totalCredit)</td>
+                        <td></td>
+                        @if (balanceFigure >= 0)
+                        {
+                            <td class="text-right">
+                                @string.Format("{0:0.00}", @Math.Abs(balanceFigure))
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="text-right">
+                                ( @string.Format("{0:0.00}", @Math.Abs(balanceFigure)) )
+                            </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div>
+        <p>
+            No Transactions Found !!
+        </p>
+    </div>
+}
+<script>
+    $(function () {
+        $('#Excel-Records').on('click', function () { $('#IsExcel').val('True'); });
+    });
+    $(function () {
+        $('#Search-Records').on('click', function () { $('#IsExcel').val('False'); });
+    });
+    $('#TransactionTypeId').on('change', function () {
+        var transactionTypeId = $('#TransactionTypeId option:selected').val();
+        if (transactionTypeId != "") {
+            WorkForce.loader.show();
+            $.ajax({
+                url: '@Url.Content("~/Transactions/GetTransactionWiseParty")',
+                data: { transactionTypeId: transactionTypeId },
+                success: function (result) {
+                    if (result) {
+                        var optionList = "<option>--Select--</option>";
+                        $.each(result, function (parties, party) {
+                            optionList += "<option value=" + party.SelectId + ">" + party.SelectText + "</option>";
+                        });
+
+                        $('#PartyId').html(optionList);
+                    }
+                    WorkForce.loader.hide();
+                },
+                error: function (err) {
+                    if (err.statusText == 'Unauthorized') {
+                        ShowMessage('error', 'error', 'Please Login to Continue !!');
+                    } else {
+                        ShowMessage('error', 'error', 'Error !!');
+                    }
+                    WorkForce.loader.hide();
+                }
+            });
+
+        } else {
+            var optionList = "<option>--Select--</option>";
+            $('#PartyId').html(optionList);
+        }
+    });
+
+    function Exportexcel() {
+        $("#transaction-detail-table").table2excel({
+            name: "Transaction Detail",
+            filename: "Transaction Detail",
+            fileext: ".xls"
+        });
+    }
+
+</script>
+
+

@@ -1,0 +1,130 @@
+﻿
+@model POSModel.AccountTypeModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">Account Type </h4>
+        </div>
+        @using (Html.BeginForm("CreateEditAccountTypes", "SetUp", FormMethod.Post, new { id = "account-type-form" }))
+        {
+            <div class="modal-body">
+                <div class="content-box">
+                    @Html.HiddenFor(model => model.AccountTypeID)
+
+
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.AccountTypeNameEnglish)
+                                    @Html.TextBoxFor(model => model.AccountTypeNameEnglish, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.AccountTypeNameEnglish)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    
+                                    @Html.LabelFor(model => model.AccountTypeNameNepali)
+                                    @Html.TextBoxFor(model => model.AccountTypeNameNepali, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.AccountTypeNameNepali)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.AccountTypeCode)
+                                    @Html.TextBoxFor(model => model.AccountTypeCode, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.AccountTypeCode)
+                                </div>
+                            </div>
+
+                            
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.Status)
+                                    @Html.CheckBoxFor(model => model.Status, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Status)
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                  
+                                    @Html.LabelFor(model => model.OrganisationID)
+                                    @Html.TextBoxFor(model => model.OrganisationID, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.OrganisationID)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="btn-groups modal-footer">
+                @if (Model.AccountTypeID == 0)
+                {
+
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save Change</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $.validator.unobtrusive.parse('#account-type-form');
+        $('#account-type-form').ajaxForm({
+           
+            beforeSubmit: function () {
+                $('#account-type-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#account-type-form'));
+                if ($("#account-type-form").valid()) {
+                    WorkForce.loader.show();
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                if (result.Success) {
+                    WorkForce.loader.hide();
+                    ShowMessage("success", "success", result.Msg);
+                    $('#pop-up-div').modal('hide');
+                    location.href = '@Url.Content("~/SetUp/AccountTypeIndex")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+
+
+            },
+            error: function () {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in calling ajax!!");
+            }
+
+        });
+    });
+</script>

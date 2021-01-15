@@ -1,0 +1,108 @@
+﻿@model POSModel.ProvinceModel
+
+@{
+    ViewBag.Title = "ProvinceIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+}
+
+<div class="title clearfix">
+    <h3>Province </h3>
+</div>
+<button id="AddProvince" class="btn btn-add pull-right"><i class="fa fa-plus"></i> Add New</button>
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="width-30">
+                        S.N.
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProvinceNameEng)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProvinceNameNep)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PlaceCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProvinceCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LatLong)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ProvinceList)
+                {
+                    <tr>
+                        <td>
+                            @counter <a href="#" onclick="AddEditProvince('@item.ProvinceId')"><i class="fa fa-edit"></i></a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProvinceNameEng)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProvinceNameNep)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PlaceCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProvinceCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LatLong)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActive)
+                        </td>
+
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+
+
+    $('#AddProvince').on('click', function () {
+        AddEditProvince();
+    });
+
+    function AddEditProvince(uniqueId)
+    {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/SetUp/CreateEditProvince")',
+            data: { provinceId: uniqueId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+</script>
+

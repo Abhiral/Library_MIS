@@ -1,0 +1,239 @@
+﻿@model POSModel.TransactionSearchModel
+
+@{
+    ViewBag.Title = "Transactions";
+    int counter = 1;
+
+}
+<div class="main-title clearfix">
+    <h3>Transactions</h3>
+</div>
+<div class="button-group-1 text-right">
+    <button id="AddEditPurchase" class="btn btn-add text-right"><i class="fa fa-plus"></i> Add New Purchase</button>
+    <button id="AddEditSales" class="btn btn-add text-right"><i class="fa fa-plus"></i> Add New Sales</button>
+    <button id="AddEditAdjustment" class="btn btn-add text-right"><i class="fa fa-plus"></i> Add New Adjustment</button>
+</div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="table-overflow">
+    <div class="search-sec search-sty-1 search-sec3">
+        @using (Html.BeginForm("Index", "Transactions", FormMethod.Post, new { id = "purchase-form" }))
+        {
+        <div class="select-sty">
+
+            <div class="item  form-group">
+                @Html.LabelFor(model => model.FromDateNepali)
+                @Html.TextBoxFor(model => model.FromDateNepali, new { @class = "form-control nepali-calendar" })
+            </div>
+            <div class="item  form-group">
+                @Html.LabelFor(model => model.ToDateNepali)
+                @Html.TextBoxFor(model => model.ToDateNepali, new { @class = "form-control nepali-calendar" })
+            </div>
+            <div class="item  form-group">
+                @Html.LabelFor(model => model.TransactionTypeId)
+                @Html.DropDownListFor(model => model.TransactionTypeId, new SelectList(POSBLL.CommonService.GetConfigChoices("Transaction Type"), "SelectId", "SelectText"), "-Select-", new { @class = "form-control" })
+            </div>
+            <div class="item  form-group">
+                @Html.LabelFor(model => model.PartyId)
+                @{
+            if (Model.TransactionTypeId != null)
+            {
+                int salesType = POSBLL.CommonService.GetConfigChoices("Transaction Type").Where(x => x.SelectText == "Sales").Select(x => x.SelectId).FirstOrDefault();
+                if (salesType == Model.TransactionTypeId)
+                {
+                    @Html.DropDownListFor(model => model.PartyId, new SelectList(POSBLL.CommonService.GetPartiesByType("Customer"), "SelectId", "SelectText"), "-Select-", new { @class = "form-control" })
+                }
+                else
+                {
+                    @Html.DropDownListFor(model => model.PartyId, new SelectList(POSBLL.CommonService.GetPartiesByType("Vender"), "SelectId", "SelectText"), "-Select-", new { @class = "form-control" })
+                }
+
+            }
+            else
+            {
+                @Html.DropDownListFor(model => model.PartyId, new SelectList(new List<POSBLL.SelectModel>(), "SelectId", "SelectText"), "-Select-", new { @class = "form-control" })
+            }
+                }
+
+            </div>
+            <div class="item  form-group">
+                @Html.LabelFor(model => model.CreatedBy)
+                @Html.DropDownListFor(model => model.CreatedBy, new SelectList(POSBLL.CommonService.GetUsers("All"), "SelectId", "SelectText"), "-Select-", new { @class = "form-control" })
+            </div>
+            <div class="item  form-group">
+                <label>Active Status</label>
+                @Html.DropDownListFor(model => model.IsActive, new SelectList(POSBLL.CommonService.GetTrueFalse(), "Value", "Text"), "-Select-", new { @class = "form-control" })
+            </div>
+
+            <div class="item  form-group">
+                <button type="submit" id="Search-Records" class="btn btn-add">Search</button>
+            </div>
+
+        </div>
+        }
+
+    </div>
+</div>
+@if (Model.Transactions.Count > 0)
+{
+    <div class="content-table">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            S.N.
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(x => x.PartyName)
+                        </th>
+                        <th>
+                            @Html.DisplayName("Contact Person")
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.TransactionType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.TransactionDateNepali)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.BillNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.Amount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.BilledBy)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.IsActive)
+                        </th>
+                        <th>
+                            @Html.DisplayName("Action")
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Transactions)
+                    {
+                        <tr>
+                            <td>
+                                <a href="@Url.Content("~/Transactions/EditTransactions?transactionId="+item.TransactionMasterID)"><i class="fa fa-edit"></i> @counter</a>
+                            </td>
+
+
+                            <td>
+                                @item.PartyName
+
+                            </td>
+
+
+                            <td>
+
+                                @item.ContactPerson
+
+                            </td>
+                            <td>
+                                @item.TransactionType
+                            </td>
+                            <td>
+                                @item.TransactionDateNepali
+                            </td>
+                            <td>
+                                @item.BillNumber
+                            </td>
+                            <td class="text-right">
+                                @string.Format("{0:0.00}", @item.Amount)
+                            </td>
+                            <td>
+                                @item.BilledBy
+                            </td>
+                            <td>
+                                @Html.CheckBoxFor(x => item.IsActive, new { @disabled = "disabled" })
+                            </td>
+                            <td>
+                                <a href="@Url.Content("~/Transactions/ViewPayments?transactionId=" + item.TransactionMasterID)">  View Payments</a>
+                            </td>
+
+                        </tr>
+                        counter++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div>
+        <p>
+            No Transactions Found !!
+        </p>
+    </div>
+}
+<script>
+    $(function () {
+
+    });
+    $('#TransactionTypeId').on('change', function () {
+        var transactionTypeId = $('#TransactionTypeId option:selected').val();
+        var transactionText = $('#TransactionTypeId option:selected').text();
+        if (transactionTypeId != "" && transactionText!="Adjustment") {
+            WorkForce.loader.show();
+            $.ajax({
+                url: '@Url.Content("~/Transactions/GetTransactionWiseParty")',
+                data: { transactionTypeId: transactionTypeId },
+                success: function (result) {
+                    if (result) {
+                        var optionList = "<option>--Select--</option>";
+                        $.each(result, function (parties, party) {
+                            optionList += "<option value=" + party.SelectId + ">" + party.SelectText + "</option>";
+                        });
+
+                        $('#PartyId').html(optionList);
+
+                    }
+                    WorkForce.loader.hide();
+                },
+                error: function (err) {
+                    if (err.statusText == 'Unauthorized') {
+                        ShowMessage('error', 'error', 'Please Login to Continue !!');
+                    } else {
+                        ShowMessage('error', 'error', 'Error !!');
+                    }
+                    WorkForce.loader.hide();
+                }
+            });
+
+        } else {
+            var optionList = "<option value>--Select--</option>";
+            $('#PartyId').html(optionList);
+        }
+    });
+
+    $('#AddEditPurchase').on('click', function () {
+        location.href = '@Url.Content("~/Transactions/Purchases")';
+    });
+    $('#AddEditSales').on('click', function () {
+        location.href = '@Url.Content("~/Transactions/Sales")';
+    });
+    $('#AddEditGetPayments').on('click', function () {
+        location.href = '@Url.Content("~/Transactions/GetPayment")';
+    });
+    $('#AddEditMakePayments').on('click', function () {
+        location.href = '@Url.Content("~/Transactions/MakePayment")';
+    });
+    $('#AddEditAdjustment').on('click', function () {
+        location.href = '@Url.Content("~/Transactions/Adjustment")';
+    });
+
+    @*$('#Search-Records').on('click', function () {
+        var activeType = $('#IsActive').prop('checked');
+        location.href = '@Url.Content("~/Goods/Index?activeType=")' + activeType;
+    });*@
+</script>
+
+

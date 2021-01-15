@@ -1,0 +1,166 @@
+E:\projects\PointOfSale\POSBLL\bin\Debug\POSBLL.dll
+E:\projects\PointOfSale\POSBLL\bin\Debug\POSBLL.pdb
+E:\projects\PointOfSale\POSBLL\bin\Debug\EntityFramework.dll
+E:\projects\PointOfSale\POSBLL\bin\Debug\POSDAL.dll
+E:\projects\PointOfSale\POSBLL\bin\Debug\POSModel.dll
+E:\projects\PointOfSale\POSBLL\bin\Debug\System.Web.Http.dll
+E:\projects\PointOfSale\POSBLL\bin\Debug\System.Net.Http.Formatting.dll
+E:\projects\PointOfSale\POSBLL\bin\Debug\Newtonsoft.Json.dll
+E:\projects\PointOfSale\POSBLL\bin\Debug\POSDAL.pdb
+E:\projects\PointOfSale\POSBLL\bin\Debug\POSModel.pdb
+E:\projects\PointOfSale\POSBLL\bin\Debug\EntityFramework.xml
+E:\projects\PointOfSale\POSBLL\bin\Debug\System.Web.Http.xml
+E:\projects\PointOfSale\POSBLL\bin\Debug\System.Net.Http.Formatting.xml
+E:\projects\PointOfSale\POSBLL\obj\Debug\POSBLL.csprojResolveAssemblyReference.cache
+E:\projects\PointOfSale\POSBLL\obj\Debug\POSBLL.dll
+E:\projects\PointOfSale\POSBLL\obj\Debug\POSBLL.pdb
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.csprojResolveAssemblyReference.cache
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.dll
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.pdb
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\POSBLL.dll
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\POSBLL.pdb
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\EntityFramework.dll
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\POSDAL.dll
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\POSModel.dll
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Http.dll
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.dll
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.Extensions.dll
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\WebMatrix.WebData.dll
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\System.Net.Http.Formatting.dll
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\Newtonsoft.Json.dll
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\POSDAL.pdb
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\POSModel.pdb
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\EntityFramework.xml
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Http.xml
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.xml
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.Extensions.xml
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\WebMatrix.WebData.xml
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\System.Net.Http.Formatting.xml
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\POSBLL.dll
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\POSBLL.pdb
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\EntityFramework.dll
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\POSDAL.dll
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\POSModel.dll
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Http.dll
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.dll
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.Extensions.dll
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\WebMatrix.WebData.dll
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\System.Net.Http.Formatting.dll
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\POSDAL.pdb
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\POSModel.pdb
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\EntityFramework.xml
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Http.xml
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.xml
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.Extensions.xml
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\WebMatrix.WebData.xml
+E:\point of sale repo\trunk\PointOfSale\POSBLL\bin\Debug\System.Net.Http.Formatting.xml
+E:\point of sale repo\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.csprojResolveAssemblyReference.cache
+E:\point of sale repo\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.dll
+E:\point of sale repo\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.pdb
+E:\Asp.net\PointOfSale\POSBLL\bin\Debug\POSBLL.dll
+E:\Asp.net\PointOfSale\POSBLL\bin\Debug\POSBLL.pdb
+E:\Asp.net\PointOfSale\POSBLL\bin\Debug\EntityFramework.dll
+E:\Asp.net\PointOfSale\POSBLL\bin\Debug\POSDAL.dll
+E:\Asp.net\PointOfSale\POSBLL\bin\Debug\POSModel.dll
+E:\Asp.net\PointOfSale\POSBLL\bin\Debug\System.Web.Http.dll
+E:\Asp.net\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.Extensions.dll
+E:\Asp.net\PointOfSale\POSBLL\bin\Debug\System.Net.Http.Formatting.dll
+E:\Asp.net\PointOfSale\POSBLL\bin\Debug\Newtonsoft.Json.dll
+E:\Asp.net\PointOfSale\POSBLL\bin\Debug\POSDAL.pdb
+E:\Asp.net\PointOfSale\POSBLL\bin\Debug\POSModel.pdb
+E:\Asp.net\PointOfSale\POSBLL\bin\Debug\EntityFramework.xml
+E:\Asp.net\PointOfSale\POSBLL\bin\Debug\System.Web.Http.xml
+E:\Asp.net\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.Extensions.xml
+E:\Asp.net\PointOfSale\POSBLL\bin\Debug\System.Net.Http.Formatting.xml
+E:\Asp.net\PointOfSale\POSBLL\obj\Debug\POSBLL.csprojResolveAssemblyReference.cache
+E:\Asp.net\PointOfSale\POSBLL\obj\Debug\POSBLL.dll
+E:\Asp.net\PointOfSale\POSBLL\obj\Debug\POSBLL.pdb
+G:\Dot.Net\PointOfSale\POSBLL\bin\Debug\POSBLL.dll
+G:\Dot.Net\PointOfSale\POSBLL\bin\Debug\POSBLL.pdb
+G:\Dot.Net\PointOfSale\POSBLL\bin\Debug\EntityFramework.dll
+G:\Dot.Net\PointOfSale\POSBLL\bin\Debug\POSDAL.dll
+G:\Dot.Net\PointOfSale\POSBLL\bin\Debug\POSModel.dll
+G:\Dot.Net\PointOfSale\POSBLL\bin\Debug\System.Web.Http.dll
+G:\Dot.Net\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.Extensions.dll
+G:\Dot.Net\PointOfSale\POSBLL\bin\Debug\System.Net.Http.Formatting.dll
+G:\Dot.Net\PointOfSale\POSBLL\bin\Debug\Newtonsoft.Json.dll
+G:\Dot.Net\PointOfSale\POSBLL\bin\Debug\POSDAL.pdb
+G:\Dot.Net\PointOfSale\POSBLL\bin\Debug\POSModel.pdb
+G:\Dot.Net\PointOfSale\POSBLL\bin\Debug\EntityFramework.xml
+G:\Dot.Net\PointOfSale\POSBLL\bin\Debug\System.Web.Http.xml
+G:\Dot.Net\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.Extensions.xml
+G:\Dot.Net\PointOfSale\POSBLL\bin\Debug\System.Net.Http.Formatting.xml
+G:\Dot.Net\PointOfSale\POSBLL\obj\Debug\POSBLL.csprojResolveAssemblyReference.cache
+G:\Dot.Net\PointOfSale\POSBLL\obj\Debug\POSBLL.dll
+G:\Dot.Net\PointOfSale\POSBLL\obj\Debug\POSBLL.pdb
+F:\Dot.Net\PointOfSale\POSBLL\bin\Debug\POSBLL.dll
+F:\Dot.Net\PointOfSale\POSBLL\bin\Debug\POSBLL.pdb
+F:\Dot.Net\PointOfSale\POSBLL\bin\Debug\EntityFramework.dll
+F:\Dot.Net\PointOfSale\POSBLL\bin\Debug\POSDAL.dll
+F:\Dot.Net\PointOfSale\POSBLL\bin\Debug\POSModel.dll
+F:\Dot.Net\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.Extensions.dll
+F:\Dot.Net\PointOfSale\POSBLL\bin\Debug\POSDAL.pdb
+F:\Dot.Net\PointOfSale\POSBLL\bin\Debug\POSModel.pdb
+F:\Dot.Net\PointOfSale\POSBLL\bin\Debug\EntityFramework.xml
+F:\Dot.Net\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.Extensions.xml
+F:\Dot.Net\PointOfSale\POSBLL\obj\Debug\POSBLL.csprojResolveAssemblyReference.cache
+F:\Dot.Net\PointOfSale\POSBLL\obj\Debug\POSBLL.dll
+F:\Dot.Net\PointOfSale\POSBLL\obj\Debug\POSBLL.pdb
+F:\Dot.Net\POS\trunk\PointOfSale\POSBLL\bin\Debug\POSBLL.dll
+F:\Dot.Net\POS\trunk\PointOfSale\POSBLL\bin\Debug\POSBLL.pdb
+F:\Dot.Net\POS\trunk\PointOfSale\POSBLL\bin\Debug\EntityFramework.dll
+F:\Dot.Net\POS\trunk\PointOfSale\POSBLL\bin\Debug\POSDAL.dll
+F:\Dot.Net\POS\trunk\PointOfSale\POSBLL\bin\Debug\POSModel.dll
+F:\Dot.Net\POS\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.Extensions.dll
+F:\Dot.Net\POS\trunk\PointOfSale\POSBLL\bin\Debug\POSDAL.pdb
+F:\Dot.Net\POS\trunk\PointOfSale\POSBLL\bin\Debug\POSModel.pdb
+F:\Dot.Net\POS\trunk\PointOfSale\POSBLL\bin\Debug\EntityFramework.xml
+F:\Dot.Net\POS\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.Extensions.xml
+F:\Dot.Net\POS\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.csprojResolveAssemblyReference.cache
+F:\Dot.Net\POS\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.dll
+F:\Dot.Net\POS\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.pdb
+D:\POS\trunk\PointOfSale\POSBLL\bin\Debug\POSBLL.dll
+D:\POS\trunk\PointOfSale\POSBLL\bin\Debug\POSBLL.pdb
+D:\POS\trunk\PointOfSale\POSBLL\bin\Debug\EntityFramework.dll
+D:\POS\trunk\PointOfSale\POSBLL\bin\Debug\POSDAL.dll
+D:\POS\trunk\PointOfSale\POSBLL\bin\Debug\POSModel.dll
+D:\POS\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.Extensions.dll
+D:\POS\trunk\PointOfSale\POSBLL\bin\Debug\POSDAL.pdb
+D:\POS\trunk\PointOfSale\POSBLL\bin\Debug\POSModel.pdb
+D:\POS\trunk\PointOfSale\POSBLL\bin\Debug\EntityFramework.xml
+D:\POS\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.Extensions.xml
+D:\POS\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.csprojResolveAssemblyReference.cache
+D:\POS\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.dll
+D:\POS\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.pdb
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\POSBLL.dll
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\POSBLL.pdb
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\POSDAL.dll
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\POSModel.dll
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\POSDAL.pdb
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\POSModel.pdb
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\EntityFramework.xml
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.Extensions.xml
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.dll
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.pdb
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Http.dll
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\System.Net.Http.Formatting.dll
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\Newtonsoft.Json.dll
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Http.xml
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\System.Net.Http.Formatting.xml
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.csprojResolveAssemblyReference.cache
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\POSBLL.dll
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\POSBLL.pdb
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\POSDAL.dll
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\POSModel.dll
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Http.dll
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\System.Net.Http.Formatting.dll
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\Newtonsoft.Json.dll
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\POSDAL.pdb
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\POSModel.pdb
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\EntityFramework.xml
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Http.xml
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\System.Web.Mvc.Extensions.xml
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\bin\Debug\System.Net.Http.Formatting.xml
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.csprojResolveAssemblyReference.cache
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.dll
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSBLL\obj\Debug\POSBLL.pdb

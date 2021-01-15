@@ -1,0 +1,208 @@
+﻿@model POSModel.TransactionMasterModel
+@using POSBLL
+@{
+    int counter = 1;
+    decimal totalAmt = 0;
+    totalAmt = Model.TransactionDetails.Sum(x => x.Total);
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sales Bill</title>
+    <style type="text/css">
+        .container {
+            width: 1140px;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        table, th, td {
+            border: 1px solid #000;
+            padding: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        .width560px {
+            width: 560px;
+            max-width: 100%;
+        }
+
+        .left-right-side {
+            display: flex;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+        }
+
+            .left-right-side .left,
+            .left-right-side .right {
+                -ms-flex: 0 0 50%;
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+
+        .list-sty > li {
+            margin-bottom: 10px;
+        }
+
+            .list-sty > li > b {
+                padding-right: 10px;
+            }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .signature > span {
+            display: block;
+        }
+
+        .m-b5 {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-form-table">
+        <div class="container">
+            <h3 class="title text-center">Invoice</h3>
+            <div class="left-right-side">
+                <div class="left">
+                    <ul class="list-sty">
+                        <li><b>Bill Number : @Model.BillNumber</b></li>
+                        <li><b>Seller's PAN : </b></li>
+                        <li><b>Seller's Name : </b></li>
+                        <li><b>Address : </b></li>
+                        <li><b>Purchaser Name : @Model.PartyName</b></li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <ul class="list-sty">
+                        <li><b>Transaction Date : @Model.TransactionDate</b></li>
+                        <li><b>Invoice Issue Date : @CommonService.GetCurrentNepaliDate(DateTime.Now)</b></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="left-right-side">
+                <div class="left">
+                    <ul class="list-sty">
+                        <li><b>Address: @if (Model.PartyOrganization.Address != null)
+                        { @Model.PartyOrganization.Address}</b></li>
+                        <li>
+                            <b>Purcahser's PAN : </b>@if (Model.PartyOrganization.PanNumber != null)
+                            {@Model.PartyOrganization.PanNumber}
+                        </li>
+                    </ul>
+                </div>
+                <!--<div class="right">
+                    <ul class="list-sty">
+                        <li><b>Class:</b></li>
+                    </ul>
+                </div>-->
+            </div>
+            @*<p class="text-right m-b5"><b>Method of payment ://@Model.PaymentTypeName</b></p>*@
+            <div class="table-section">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SN</th>
+                            <th class="width560px">Details</th>
+                            <th>Quantity</th>
+                            <th>Per Unit Amount(Rs)</th>
+                            <th>Discount (%)</th>
+                            <th>Total  Amount(Rs)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.TransactionDetails)
+                        {
+                            <tr>
+                                <td>@counter</td>
+                                <td>@item.GoodsName</td>
+                                <td>@item.Quantity</td>
+                                <td>@CommonService.GetCurrencyFormat(item.GoodsRate)</td>
+                                <td>@item.DiscountPercentage</td>
+                                <td>@CommonService.GetCurrencyFormat(item.Total)</td>
+                            </tr>
+                            counter++;
+                        }
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><b>Discount %</b></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><b>Taxable Amount</b></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><b>VAT 13%</b></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><b>Total</b></td>
+                            <td></td>
+                            <td></td>
+                            <td>@CommonService.GetCurrencyFormat(totalAmt)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="word">
+                <p>(<b>In word :</b><span class="AmountInWords"></span>)</p>
+            </div>
+            <div class="signature text-right">
+                <span>...........................</span>
+                <span><b>Authorized Signature</b></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    $(function () {
+        debugger;
+        var numberInWords = NumberConverter.NumberToWords(@totalAmt);
+        $('.AmountInWords').html(numberInWords);
+
+        $('#MakePayment').val('@Model.MakePayment');
+        $('#TransactionMasterID').val('@Model.TransactionMasterID');
+    })
+
+
+    
+</script>
+
+ 

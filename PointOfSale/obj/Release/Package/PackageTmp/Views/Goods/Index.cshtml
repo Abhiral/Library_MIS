@@ -1,0 +1,142 @@
+﻿@model POSModel.GoodsModel
+
+@{
+    ViewBag.Title = "Goods";
+    int counter = 1;
+
+}
+<div class="main-title clearfix">
+    <h3>Goods</h3>
+</div>
+<div class="text-right">
+    <button id="AddEditButton" class="btn btn-add "><i class="fa fa-plus"></i>Add New</button>
+</div>
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="search-sec search-sty-1 search-sec3">
+    <div class="select-sty">
+
+
+        <div class="item form-group">
+            <label>Active Status</label>
+            @Html.DropDownListFor(model => model.IsActive, new SelectList(POSBLL.CommonService.GetTrueFalse(), "Value", "Text"), "-Select-", new { @class = "form-control", id = "ActiveStatusQuery" })
+        </div>
+
+        <div class="item form-group">
+            <button id="Search-Records" class="btn btn-search">Search</button>
+        </div>
+
+    </div>
+
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="width-30">
+                        S.N.
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(x => x.GoodsName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(x => x.UnitType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(x => x.DefaultRate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(x => x.Manufacturer)
+                    </th>
+                    <th>
+                        Discount (%)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(x => x.IsActive)
+                    </th>
+                    <th>
+                        @Html.DisplayName("Action")
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Goods)
+                {
+                    <tr>
+                        <td>
+                            @counter
+                        </td>
+
+                        <td>
+
+                            <a href="#" onclick="EditGoods('@item.GoodsId')"><i class="fa fa-edit"></i>@item.GoodsName</a>
+
+                        </td>
+                        <td>
+                            @item.UnitType
+                        </td>
+                        <td>
+                            @item.DefaultRate
+                        </td>
+                        <td>
+                            @item.Manufacturer
+                        </td>
+                        <td>
+                            @item.DiscountPercentage
+                        </td>
+                            
+                        <td>
+                            @Html.CheckBoxFor(x => item.IsActive)
+                        </td>
+                        <td>
+                            @if (item.HasSubCategory)
+                            {
+                                <a href="@Url.Content("~/Goods/CreateSubGoods?goodsId="+item.GoodsId)">  View SubCategory</a>
+                            }
+
+                        </td>
+
+                    </tr>
+                            counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+
+
+    $('#AddEditButton').on('click', function () {
+        EditGoods();
+    });
+
+    function EditGoods(uniqueId) {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/Goods/CreateEditGoods")',
+            data: { goodsId: uniqueId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static',
+                    'draggable':true
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+    $('#Search-Records').on('click', function () {
+        var activeType = $('#ActiveStatusQuery').val();
+        location.href = '@Url.Content("~/Goods/Index?activeType=")' + activeType;
+    });
+</script>
+
+

@@ -1,0 +1,48 @@
+E:\projects\PointOfSale\POSModel\bin\Debug\POSModel.dll
+E:\projects\PointOfSale\POSModel\bin\Debug\POSModel.pdb
+E:\projects\PointOfSale\POSModel\obj\Debug\POSModel.csprojResolveAssemblyReference.cache
+E:\projects\PointOfSale\POSModel\obj\Debug\POSModel.dll
+E:\projects\PointOfSale\POSModel\obj\Debug\POSModel.pdb
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSModel\bin\Debug\POSModel.dll
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSModel\bin\Debug\POSModel.pdb
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSModel\obj\Debug\POSModel.dll
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSModel\obj\Debug\POSModel.pdb
+E:\point of sale repo\trunk\PointOfSale\POSModel\bin\Debug\POSModel.dll
+E:\point of sale repo\trunk\PointOfSale\POSModel\bin\Debug\POSModel.pdb
+E:\point of sale repo\trunk\PointOfSale\POSModel\obj\Debug\POSModel.csprojResolveAssemblyReference.cache
+E:\point of sale repo\trunk\PointOfSale\POSModel\obj\Debug\POSModel.dll
+E:\point of sale repo\trunk\PointOfSale\POSModel\obj\Debug\POSModel.pdb
+E:\Asp.net\PointOfSale\POSModel\bin\Debug\POSModel.dll
+E:\Asp.net\PointOfSale\POSModel\bin\Debug\POSModel.pdb
+E:\Asp.net\PointOfSale\POSModel\obj\Debug\POSModel.dll
+E:\Asp.net\PointOfSale\POSModel\obj\Debug\POSModel.pdb
+G:\Dot.Net\PointOfSale\POSModel\bin\Debug\POSModel.dll
+G:\Dot.Net\PointOfSale\POSModel\bin\Debug\POSModel.pdb
+G:\Dot.Net\PointOfSale\POSModel\obj\Debug\POSModel.csprojResolveAssemblyReference.cache
+G:\Dot.Net\PointOfSale\POSModel\obj\Debug\POSModel.dll
+G:\Dot.Net\PointOfSale\POSModel\obj\Debug\POSModel.pdb
+F:\Dot.Net\PointOfSale\POSModel\bin\Debug\POSModel.dll
+F:\Dot.Net\PointOfSale\POSModel\bin\Debug\POSModel.pdb
+F:\Dot.Net\PointOfSale\POSModel\obj\Debug\POSModel.csprojResolveAssemblyReference.cache
+F:\Dot.Net\PointOfSale\POSModel\obj\Debug\POSModel.dll
+F:\Dot.Net\PointOfSale\POSModel\obj\Debug\POSModel.pdb
+F:\Dot.Net\POS\trunk\PointOfSale\POSModel\bin\Debug\POSModel.dll
+F:\Dot.Net\POS\trunk\PointOfSale\POSModel\bin\Debug\POSModel.pdb
+F:\Dot.Net\POS\trunk\PointOfSale\POSModel\obj\Debug\POSModel.csprojResolveAssemblyReference.cache
+F:\Dot.Net\POS\trunk\PointOfSale\POSModel\obj\Debug\POSModel.dll
+F:\Dot.Net\POS\trunk\PointOfSale\POSModel\obj\Debug\POSModel.pdb
+D:\POS\trunk\PointOfSale\POSModel\obj\Debug\POSModel.csprojResolveAssemblyReference.cache
+D:\POS\trunk\PointOfSale\POSModel\obj\Debug\POSModel.dll
+D:\POS\trunk\PointOfSale\POSModel\obj\Debug\POSModel.pdb
+D:\POS\trunk\PointOfSale\POSModel\bin\Debug\POSModel.dll
+D:\POS\trunk\PointOfSale\POSModel\bin\Debug\POSModel.pdb
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSModel\bin\Debug\POSModel.dll
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSModel\bin\Debug\POSModel.pdb
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSModel\obj\Debug\POSModel.dll
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSModel\obj\Debug\POSModel.pdb
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSModel\obj\Debug\POSModel.csprojResolveAssemblyReference.cache
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSModel\bin\Debug\POSModel.dll
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSModel\bin\Debug\POSModel.pdb
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSModel\obj\Debug\POSModel.csprojResolveAssemblyReference.cache
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSModel\obj\Debug\POSModel.dll
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSModel\obj\Debug\POSModel.pdb

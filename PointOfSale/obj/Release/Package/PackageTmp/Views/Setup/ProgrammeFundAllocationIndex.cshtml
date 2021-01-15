@@ -1,0 +1,186 @@
+﻿@model POSModel.ProgrammeFundAllocationAccHeadModel
+
+@{
+    ViewBag.Title = "ProgrammFundAllocationIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 1;
+}
+
+<div class="title clearfix">
+    <h3>Programme Fund Allocation Index </h3>
+</div>
+<button id="AddProgrammeFundAllocation" class="btn btn-add pull-right"><i class="fa fa-plus"></i> Add New</button>
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="width-30">
+                        S.N.
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountHeadID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProgrammID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DetailsID)
+                    </th>
+                    
+                    <th>
+                        @Html.DisplayNameFor(model => model.FundSourceID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FundProvider)
+                    </th>
+                    
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UsedAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RemainingAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ThapAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GhatAmount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FYID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DistributedDate)
+                    </th>
+
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.CreatedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedDate)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifiedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ModifiedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OrganisationID)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ProgrammeFundAllocationAccHeadList)
+                {
+                    <tr>
+                        <td>
+                            @counter <a href="#" onclick="AddEditProgrammeFund('@item.AccHeadDetailID')"><i class="fa fa-edit"></i></a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountHead)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Program)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DetailsID)
+                        </td>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FundSourceID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FundProvider)
+                        </td>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UsedAmount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RemainingAmount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ThapAmount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GhatAmount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FYID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DistributedDate)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.CreatedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrganisationID)
+                        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+
+
+    $('#AddProgrammeFundAllocation').on('click', function () {
+        AddEditProgrammeFund();
+
+    });
+
+    function AddEditProgrammeFund(uniqueId)
+    {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/SetUp/CreateEditProgrammeFundAllocation")',
+            data: { programmeFundId: uniqueId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+</script>

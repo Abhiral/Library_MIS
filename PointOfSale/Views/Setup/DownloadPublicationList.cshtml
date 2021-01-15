@@ -1,0 +1,88 @@
+﻿@model POSModel.DownloadPublicationModel
+@{
+    ViewBag.Title = "DownloadPublication Index";
+    int counter = 1;
+}
+<div class="title">
+    <h3>Download Publication</h3>
+</div>
+
+<button id="AddEditButton" class="btn btn-add pull-right"><i class="fa fa-plus"></i>Add New</button>
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>SN.</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DownloadCaptionEnglish)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FileLocation)
+                    </th>
+                    <th>
+                        @Html.DisplayName("Downloads/Publications")
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.DownloadPublicationList)
+                {
+                    <tr>
+                        <td>@counter</td>
+                        <td>
+                            <a id="@item.Id" href='#' onclick="AddEditFunction('@item.Id')">@item.DownloadCaptionEnglish</a>
+                        </td>
+                        <td>
+                            <a href='@Url.Content("~/Setup/Download?fileLocation=" + @item.FileLocation)' target="_blank"><i class="fa fa-download"></i> @item.FileLocation.Substring(@item.FileLocation.LastIndexOf('_') + 1) </a>
+                        </td>
+                        <td>
+                            @if (item.IsDownloads)
+                            {
+                                 <label>Downloads</label>
+                            }
+                            else
+                            {
+                                <label>Publications</label>
+                            }
+                        </td>
+                        <td>
+                            <input type="checkbox" checked="@item.IsActive" />
+                        </td>
+                    </tr>
+                            counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $('#AddEditButton').on('click', function () {
+        AddEditFunction();
+    });
+
+    function AddEditFunction(Id) {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/Setup/CreateEditDownloadPublication")',
+            data: { Id: Id },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+            },
+            error: function () {
+            }
+        });
+    }
+
+</script>

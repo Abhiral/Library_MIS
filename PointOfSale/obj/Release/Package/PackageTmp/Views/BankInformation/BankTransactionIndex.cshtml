@@ -1,0 +1,260 @@
+﻿@model POSModel.BankSearchModel
+
+
+@{
+    ViewBag.Title = "BankAccountIndex";
+    int counter = 1;
+    decimal balanceFigure = 0;
+    decimal totalDebit = 0;
+    decimal totalCredit = 0;
+
+}
+<div class="main-title clearfix">
+    <h3>Bank  Transaction</h3>
+</div>
+<div class="text-right">
+    <button id="AddEditButton" class="btn btn-add "><i class="fa fa-plus"></i>Add New</button>
+</div>
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="search-sec search-sty-1 search-sec3">
+    @using (Html.BeginForm("BankTransactionIndex", "BankInformation", FormMethod.Post, new { id = "purchase-form" }))
+    {
+        <div class="select-sty">
+            <div class="item form-group">
+                @Html.LabelFor(model => model.FromDateNepali)
+                @Html.TextBoxFor(model => model.FromDateNepali, new { @class = "form-control nepali-calendar" })
+            </div>
+            <div class="col-lg-3 col-md-2  col-sm-2 col-xs-6 form-group">
+                @Html.LabelFor(model => model.ToDateNepali)
+                @Html.TextBoxFor(model => model.ToDateNepali, new { @class = "form-control nepali-calendar" })
+            </div>
+
+            <div class="item form-group">
+                @Html.LabelFor(model => model.TransactionTypeId)
+                @Html.DropDownListFor(model => model.TransactionTypeId, new SelectList(POSBLL.CommonService.GetConfigChoices("BankTransactionType"), "SelectId", "SelectText"), "-- Select --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TransactionTypeId)
+            </div>
+
+            <div class="item form-group">
+
+                @Html.LabelFor(model => model.BankInformationId)
+                @Html.DropDownListFor(model => model.BankInformationId, new SelectList(POSBLL.CommonService.GetBankList(), "Id", "BankName", @ViewBag.BankId),
+                                  "-- Select --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BankInformationId)
+            </div>
+
+            <div class="item form-group">
+                <label>Active Status</label>
+                @Html.DropDownListFor(model => model.IsActive, new SelectList(POSBLL.CommonService.GetTrueFalse(), "Value", "Text"), "-- Select --", new { @class = "form-control" })
+            </div>
+
+            <div class="item form-group">
+                <button type="submit" id="Search-Records" class="btn btn-add">Search</button>
+            </div>
+
+        </div>
+    }
+
+</div>
+
+<div id="pop-up-div-transaction" class="modal fade" role="dialog">
+</div>
+
+
+@if (Model.BankTransactionList.Count > 0)
+{
+    <div class="content-table">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover" style="text-align:right">
+                <thead>
+                    <tr>
+                        <th class="width-30">
+                            S.N.
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(x => x.TransactionDateNepali)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.BankInformationId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.TransactionType)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(x => x.TransactionBy)
+                        </th>
+                        <th>
+                            @Html.DisplayName("Action")
+                        </th>
+
+
+
+                        <th>
+                            @Html.DisplayNameFor(x => x.IsActive)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(x => x.Debit)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.Credit)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.DrCr)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.Balance)
+                        </th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BankTransactionList)
+                    {
+                        <tr>
+
+                            <td>
+
+                                @counter
+
+                            </td>
+
+                            <td>
+                                @item.TransactionDateNepali
+                            </td>
+                            <td>
+                                @item.BankName
+                            </td>
+                            <td>
+                                @item.TransactionType
+                            </td>
+
+                            <td>
+                                @item.TransactionBy
+                            </td>
+
+                            <td>
+                                <a href="#" onclick="AddEditFunction(@item.BankTransactionId)"><i class="fa fa-edit"></i></a>
+                            </td>
+
+
+                            <td>
+                                @Html.CheckBoxFor(x => item.IsActive,new {disabled="disabled"})
+                            </td>
+
+                            @if (@item.DebitCredit == "Debit")
+                            {
+                                <td class="text-right">
+                                    @string.Format("{0:0.00}", @Math.Abs(item.TransactionAmount))
+                                </td>
+                                <td></td>
+                                balanceFigure += @Math.Abs(item.TransactionAmount);
+                                totalDebit += @Math.Abs(item.TransactionAmount);
+                                <td>
+                                    Dr
+                                </td>
+                            }
+                            else
+                            {
+                                <td></td>
+                                <td class="text-right">
+                                    @string.Format("{0:0.00}", @Math.Abs(item.TransactionAmount))
+                                </td>
+                                balanceFigure -= @Math.Abs(item.TransactionAmount);
+                                totalCredit += @Math.Abs(item.TransactionAmount);
+                                <td>
+                                    Cr
+                                </td>
+                            }
+
+
+                            <td class="text-right">
+
+                                @string.Format("{0:0.00}", @Math.Abs(balanceFigure))
+
+                           
+                            </td>
+
+
+
+                        </tr>
+                                counter++;
+                    }
+
+                    <tr class="text-right">
+                        <td colspan="7">Total</td>
+                        <td>@string.Format("{0:0.00}", totalDebit)</td>
+                        <td>@string.Format("{0:0.00}", totalCredit)</td>
+                        <td></td>
+                        @if (balanceFigure >= 0)
+                        {
+                            <td class="text-right">
+                                @string.Format("{0:0.00}", @Math.Abs(balanceFigure))
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="text-right">
+                                ( @string.Format("{0:0.00}", @Math.Abs(balanceFigure)) )
+                            </td>
+                        }
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div>
+        <p>
+            No Transactions Found !!
+        </p>
+    </div>
+}
+
+
+
+
+
+<script>
+
+
+    $('#AddEditButton').on('click', function () {
+        AddEditFunction();
+    });
+
+    function AddEditFunction(Id) {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/BankInformation/CreateEditBankTransaction")',
+
+            data: { Id: Id },
+            success: function (result) {
+                $('#pop-up-div-transaction').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static',
+                    'draggable': true
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+    $('#Search-Records').on('click', function () {
+        var activeType = $('#ActiveStatusQuery').val();
+        location.href = '@Url.Content("~/BankInformation/BankTransactionIndex?activeType=")' + activeType;
+    });
+
+</script>
+

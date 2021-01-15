@@ -1,0 +1,129 @@
+﻿@model POSModel.BankInformationModel
+
+@{
+    ViewBag.Title = "Create";
+}
+ 
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title"> Bank Information </h4>
+        </div>
+        @using (Html.BeginForm("CreateEditBankAccount", "BankInformation", FormMethod.Post, new { id = "b-form" }))
+        {
+            <div class="modal-body">
+                <div class="content-box">
+                    @Html.HiddenFor(model => model.Id)
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.BankName)
+                                    @Html.TextBoxFor(model => model.BankName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.BankName)
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.AccountHolderName)
+                                    @Html.TextBoxFor(model => model.AccountHolderName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.AccountHolderName)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.AccountNumber)
+                                    @Html.TextBoxFor(model => model.AccountNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.AccountNumber)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.Address)
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Address)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.PhoneNumber)
+                                    @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PhoneNumber)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    <div class="checkbox-sty-2">
+                                        <div>
+                                            @Html.CheckBoxFor(model => model.IsActive, new { @class = "form-control" })
+                                            @Html.LabelFor(model => model.IsActive)
+                                        </div>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.IsActive)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="btn-groups modal-footer">
+                @if (Model.Id == 0)
+                {
+
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save Change</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+<script>
+    $(function () {
+        $.validator.unobtrusive.parse('#b-form');
+        $('#b-form').ajaxForm({
+            beforeSubmit: function () {
+                $('#b-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#b-form'));
+                if ($("#b-form").valid()) {
+                    debugger;
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                //console.log(result);
+                debugger;
+                if (result.Success) {
+                    WorkForce.loader.hide();
+                    ShowMessage("success", "success", result.Msg);
+
+                    $('#pop-up-div').modal('hide');
+                    location.href = '@Url.Content("~/BankInformation/BankInformationIndex")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+
+
+            },
+            error: function () {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in calling ajax!!");
+            }
+
+        });
+    });
+
+
+</script>

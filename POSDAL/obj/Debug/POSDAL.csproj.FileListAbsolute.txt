@@ -1,0 +1,76 @@
+E:\projects\PointOfSale\POSDAL\bin\Debug\POSDAL.dll.config
+E:\projects\PointOfSale\POSDAL\bin\Debug\POSDAL.dll
+E:\projects\PointOfSale\POSDAL\bin\Debug\POSDAL.pdb
+E:\projects\PointOfSale\POSDAL\bin\Debug\EntityFramework.dll
+E:\projects\PointOfSale\POSDAL\bin\Debug\EntityFramework.xml
+E:\projects\PointOfSale\POSDAL\obj\Debug\POSDAL.csprojResolveAssemblyReference.cache
+E:\projects\PointOfSale\POSDAL\obj\Debug\POSDAL.dll
+E:\projects\PointOfSale\POSDAL\obj\Debug\POSDAL.pdb
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.dll.config
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.dll
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.pdb
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSDAL\bin\Debug\EntityFramework.dll
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSDAL\bin\Debug\EntityFramework.xml
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.dll
+E:\New checkout POS\point of sale repo\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.pdb
+E:\point of sale repo\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.dll.config
+E:\point of sale repo\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.dll
+E:\point of sale repo\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.pdb
+E:\point of sale repo\trunk\PointOfSale\POSDAL\bin\Debug\EntityFramework.dll
+E:\point of sale repo\trunk\PointOfSale\POSDAL\bin\Debug\EntityFramework.xml
+E:\point of sale repo\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.csprojResolveAssemblyReference.cache
+E:\point of sale repo\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.dll
+E:\point of sale repo\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.pdb
+E:\Asp.net\PointOfSale\POSDAL\bin\Debug\POSDAL.dll.config
+E:\Asp.net\PointOfSale\POSDAL\bin\Debug\POSDAL.dll
+E:\Asp.net\PointOfSale\POSDAL\bin\Debug\POSDAL.pdb
+E:\Asp.net\PointOfSale\POSDAL\bin\Debug\EntityFramework.dll
+E:\Asp.net\PointOfSale\POSDAL\bin\Debug\EntityFramework.xml
+E:\Asp.net\PointOfSale\POSDAL\obj\Debug\POSDAL.dll
+E:\Asp.net\PointOfSale\POSDAL\obj\Debug\POSDAL.pdb
+G:\Dot.Net\PointOfSale\POSDAL\bin\Debug\POSDAL.dll.config
+G:\Dot.Net\PointOfSale\POSDAL\bin\Debug\POSDAL.dll
+G:\Dot.Net\PointOfSale\POSDAL\bin\Debug\POSDAL.pdb
+G:\Dot.Net\PointOfSale\POSDAL\bin\Debug\EntityFramework.dll
+G:\Dot.Net\PointOfSale\POSDAL\bin\Debug\EntityFramework.xml
+G:\Dot.Net\PointOfSale\POSDAL\obj\Debug\POSDAL.csprojResolveAssemblyReference.cache
+G:\Dot.Net\PointOfSale\POSDAL\obj\Debug\POSDAL.dll
+G:\Dot.Net\PointOfSale\POSDAL\obj\Debug\POSDAL.pdb
+F:\Dot.Net\PointOfSale\POSDAL\bin\Debug\POSDAL.dll.config
+F:\Dot.Net\PointOfSale\POSDAL\bin\Debug\POSDAL.dll
+F:\Dot.Net\PointOfSale\POSDAL\bin\Debug\POSDAL.pdb
+F:\Dot.Net\PointOfSale\POSDAL\bin\Debug\EntityFramework.dll
+F:\Dot.Net\PointOfSale\POSDAL\bin\Debug\EntityFramework.xml
+F:\Dot.Net\PointOfSale\POSDAL\obj\Debug\POSDAL.csprojResolveAssemblyReference.cache
+F:\Dot.Net\PointOfSale\POSDAL\obj\Debug\POSDAL.dll
+F:\Dot.Net\PointOfSale\POSDAL\obj\Debug\POSDAL.pdb
+F:\Dot.Net\POS\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.dll.config
+F:\Dot.Net\POS\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.dll
+F:\Dot.Net\POS\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.pdb
+F:\Dot.Net\POS\trunk\PointOfSale\POSDAL\bin\Debug\EntityFramework.dll
+F:\Dot.Net\POS\trunk\PointOfSale\POSDAL\bin\Debug\EntityFramework.xml
+F:\Dot.Net\POS\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.csprojResolveAssemblyReference.cache
+F:\Dot.Net\POS\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.dll
+F:\Dot.Net\POS\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.pdb
+D:\POS\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.dll.config
+D:\POS\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.dll
+D:\POS\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.pdb
+D:\POS\trunk\PointOfSale\POSDAL\bin\Debug\EntityFramework.dll
+D:\POS\trunk\PointOfSale\POSDAL\bin\Debug\EntityFramework.xml
+D:\POS\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.csprojResolveAssemblyReference.cache
+D:\POS\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.dll
+D:\POS\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.pdb
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.dll.config
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.dll
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.pdb
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSDAL\bin\Debug\EntityFramework.xml
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.dll
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.pdb
+E:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.csprojResolveAssemblyReference.cache
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.dll.config
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.dll
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSDAL\bin\Debug\POSDAL.pdb
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSDAL\bin\Debug\EntityFramework.xml
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.csprojResolveAssemblyReference.cache
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.dll
+F:\Office works\MVC\LibraryManagementSystem\trunk\PointOfSale\POSDAL\obj\Debug\POSDAL.pdb

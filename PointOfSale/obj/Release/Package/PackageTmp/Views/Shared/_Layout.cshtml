@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - POS</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/custom-css/side_menu.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/custom-css/datepicker.css" rel="stylesheet" />
+    <link href="~/Content/toastr/toastr.min.css" rel="stylesheet" />
+    <link href="~/Scripts/datepicker/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Scripts/datepicker/jquery.timepicker.css" rel="stylesheet" />
+    <link href="~/Content/toastr/loader.min.css" rel="stylesheet" />
+    <link href="~/Content/nepali.datepicker.v2.2/nepali.datepicker.v2.2.min.css" rel="stylesheet" />
+    <link href="~/Content/custom-css/custom.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.12.2.min.js"></script>
+    <script src="~/Scripts/jquery.form.min.js"></script>
+    <script src="~/Scripts/datepicker/jquery-ui.min.js"></script>
+    <script src="~/Scripts/datepicker/jquery.timepicker.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Content/toastr/toastr.min.js"></script>
+    <script src="~/Content/toastr/customalert.js"></script>
+    <script src="~/Scripts/jquery.table2excel.js"></script>
+    <script src="~/Scripts/jquery.table2excel.min.js"></script>
+    <script src="~/Content/toastr/WorkForce.js"></script>
+    <script src="~/Content/nepali.datepicker.v2.2/nepali.datepicker.v2.2.min.js"></script>
+</head>
+<body>
+    @RenderSection("scripts", required: false)
+    <div class="loader-wrap"><span class="loader"><span></span><span></span><span></span><span></span><span></span></span></div>
+
+
+    <div id="header" class="clearfix">
+        <div class="col-md-12 col-sm-12">
+
+            <div>
+
+                <nav class="site-header navbar">
+                    <div class="header-logo col-sm-2 col-md-2">
+                        <a href="@Url.Action("Index", "Home")">
+                            @*@if (uc.UserOrganization.LogoLocation == null)
+                            {
+                                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxIQEhUSExMVFRUWFh4VFRgXGBgZFxkYFhcWFxcdGBkaHSgiGBolGxcVITEhJikrLi4uGB8zODctNygtLisBCgoKDg0OGxAQGjAmHyIvMi4wLi0vLS81ListKy0tLy4vMi0tLS0tLSstLS0tLi0tLSstLS8vLS0tLS0tNS0tLf/AABEIAOkA2AMBIgACEQEDEQH/xAAcAAEAAgMBAQEAAAAAAAAAAAAABQcDBAYBAgj/xABGEAACAQIEAgcDCAYIBwEAAAABAgADEQQFEiExQQYHEyJRYZEycYEUIzNCUqGx0RVicpKywTRDU4KDosLhNWNzdISz8Bb/xAAbAQEAAwEBAQEAAAAAAAAAAAAAAgMEBQYBB//EADERAAIBAwMCBAMHBQAAAAAAAAABAgMEERIhMRNBBVFhsRQigQYyM3GRodEjQlJicv/aAAwDAQACEQMRAD8AvGIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCJ5eIB7E8i8A9ieT2AInhMQD2IiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCfK1ASQDuOI8J7IjpBh6gXt6H0tMX08qijdkYfgeRkorLwRnLSsnznuLfCj5QoLUx9MgFzp+2o8RzHMe6SWBxlOui1KbB0YXBG4IM08lzWnjaOteB7rqeINtwZW1THVcixrUxdsNUOoIfssfqnkynbzFvfJqm8uPdGu1pK6hiD+bleq/ktmvU0qW8AT6C8/P2P6TYmtXNftXU3ulmICi/dGkbWtaXnlmZ0cbR10mDKwIPiDwII5GUlmHRHFUsQaC0nfeyMFOkryOrgNvGWUNKb1HT8IVOMpqrs/X9y7OjeYnFYWjXOxemGb9q3e++8kXcKCSbAbknhInKaKYDB00qOoWlTAdjsL27x+JvK6z7pPWzWuuDw10pO2kn6zD6zN4KBcgc9r8ZUoam8cHPp2rrVJOO0VnfyR3mV5kcfUZ6e2GpnSG/tnHG3/LX7z5DefZwOJmlhaFLB0FQd2nTWw+H8zMOWM1c9s2y/wBWvgPtHzMz1K0VNQXL9vMplFPMl91ErE8nssKRERAEREAREQBERAEREAREQBERAEREArjrJxtdK6KruqaLrpZlBNzqJ0kXI29Zm6B9J6j1BhqzF9Q+bY7m4F7E89gbe6ddnuS0sYmioDturD2lPl+UgMj6ErhawrtV1BLlRbTvYi5N/AzoxrUZW+iS3XByZ29xG66kH8r5/IgMVjTlmY1Cv0bEMyjmrb7eYOoj3yc6xMrXG4IV6Xean86hH1kI7w9N/eJxnS7MVxOKeohuuyqfEKLX9bzpernOb6sJUPEFqd/8y/z9ZdcUJdKNXulufPDfEOhduMXtnb+PqVnlGcVsI4qUXKnn9lh4MOBH5ztKfWtXC2NCmW8bsB6TlOluVHCYurS+qG1J5o26/wAx/dkPKtEJrLR+mytre6iqko5yS/SDpJiMc16r90G6oNkHw5nzM73qiyXSj4txuxKU7/ZHtN8Tt/dlZYDCtWqJSX2nYKPeTb8/SXnmLLg8MmHp7HSFFuQHE/8A3jMl/cQt6Lb4Ri8SahCNtSWNXsaec444iqtJT3A1h5nheSWe5h8nRaVPYkcfADbbznLYarodW+yQfSdXmOVriwlRHttbxBH5zx9pWq3FOrKm/wCo/b0OdWpwpSgpfdXuQmSYqqa699jc965JFuc7aR2VZOlDf2mPEn+XhJGdjw22qUKWKjy2YburCpPMFsexETomUREQBERAEREAREQBERAEREATw+U9iAQ2ZYnGoD2VCk/+Kb+hQfjK76UZvjnumIDU1O2kDSp+O+r1luTHiKC1AVdQwPEEAj0M029xGk8uKZjubWVaOFNooOZ8Dimo1FqL7SEMPh+fD4zv+kHQFWBfDd08ezJ7p/ZP1fdwle4ig1NijqVYbEHiDO9RuKdeO36HmK9rVtpJy/U6frOw64ihh8cg4jQ3ubcA+5rj4mVvLK6PH5VgcVgj7QQ1KV/tDf8AiA9ZWvH4zmqPTk4Pt7H6t9m7z4i0XmjuOqjLO0xJrt7NFbj9pwVHoNXrOmzXF9tVZ+XBfcOH8zMHROj8mywNwfEMWvz08Af3R98xgTxH2ku3OoqMfqTz1a86r7bL6cibmWYqshtSJPkBcfESUyro4W71XujkvM+/wnS4bCpTFkUKPKZPD/CK7aqSlp9zHc3tNfKln2NDBYjFNbXSQe9iD6WMk1J5z2ez1NODgsNt/mceUtTzjAiIlhEREQBERAEREAREQBERAERMWIraFLEEgC5Ci5+AG5gEN0szmvgqfbpQ7emv0oDaXUfaAsQwHPhbjOcy/rawT/SJVpfAOPVSdp1mWdIcJi9qNem53BUHvbcQVO4I5i0qHrO6G/I6nyiiPmKh3H9m55fsnl4G48JooxhJ6Z8mevOcVqgWzlnSvBYnaliKZP2S1m9DYyZvPyk2+x3Hnv8AjJTKekWLwluwr1EA+re6bctLXAHutLpWX+LKI3y/uR+mZA9KOjVPGJf2ao9l/wCTeIld5P1u1k2xNFao+1TOh/3TsfUSwcg6aYLG2FOqA5/q6ncf0PH4GUaKtF6kXuVKvHS9yu8lrPgcYnaDSVfRUH6r7H4bg38pA9I8qNPG1aC86tk/xCCtv3hLc6bdHBiqfaUx88g25al5r7+Y85x6UO3x2CxB50S9T9rDXVgfO5SbKtxGcVV74wzV9n5Ssq1Sk+Gm19CezcBTToIO7RRaageIUD8pO5FkopgPUF3PAcl/3mHo/l2onEVBuxLKD5m95LZnmlHDIXrVUpqObG3p4zylnZdWq7mqt29l6G25udMelF8cv1NyLyr8963EW64WkX/5lS6r/dTifjacHnHTXH4q4euyqfqUzoX/AC7n1noYWs5c7HHndU4+pfeZZ9hcN9NXp0/JmF/TjOXx/WpgKfsdpVP6i2Hq1hKL8+Z4nn6zouhHRh8xxATcUks1V/BeSg/ab8LmX/CwgsyZQruc5aYIt/of0sq5kxdMN2eHW47R3uzMOSqBY25m862RVbGYTAUlRnp0KarZQzBQFHgJs5XmKYlBUp3KH2WKlQw8VvuR585hlu8pbG6Pk3ubkREiSEREAREQBERAEREATyexAK26wehrK36QwQKV0Ot1TixH11H2rcR9YXkv0Wz6hnWEejWUa9OitT8iNnXnY8jyInZSsOm/Rqrga36TwHdIN61McP1mA5ofrL8RL4S1rS+ezKZR0vUuO6K26T5FUwGIeg+9t0b7aHg3v5HzHnImXwmGwXSHD06rghk4hWs6MR3lJ5rzHjtIjGdT1A37LE1U8A6o4+7SfvmyF1FLE+TDUtG3mHBT09Bt8J32Y9VGNp/RvSrDyJpt+61x984/NcmxGFNq9F6fmy9397cffL41YS4ZnnRqQ5R1HRLrGxOEIp1i1ejwsxvUQfqsd29x+Es3CpgqyfLUqp2OmoSxNlTtOzNUH7O9MXB4Enxn57tM1PFOqNTDsEchnUE6WK+ySOZH5eUpq2sZ8bZ5NFC8lTe5ZPSnrTc3pYEaFG3asu9h/Zodh72v7pXGOx1WuxerUeox4sxJP+3uG015s4DAVa7aKVN6jeCKWt77bD4yyFKFNbIpnVqVWa0Tt8s6rsfV3cU6I/Xa5/dW/wCM6TA9TqADtsW7HmKdNVHqxYz5K4prufY2tR9iq8DhHr1FpU11O50qPEn8BxN5e9BcNkOBGognnb2qtUjgo9fcBPnLei2AycPi7v3UIL1G1EDnpFhudhtxnK5Vga+f4r5VXU08HSNqaeNj7PmTxZvLTM1Soqv/ACjXSpdJf7MdFejtXOMQcxxoPY6vm6e4DhT3QOfZA/vm/KW0igCwFgNhaeUqYUBVAAAsAOAA4T7mSpNzfoa4QUUIiJAmIiIAiIgCIiAIiIAiIgCeMoIsdweM9njMBudoBx56tsBqZlFWnqN7U6z0wPcFIsJtUehVKnumJxy/+VWYejsRJijnWGd+zXEUWfhpFRS3oDN6Tc592RUY9iFp5NXT2cbWPlUWk4/hB++bHyfEW0uaNVTsQUK39+5H3T7qZ1hlfsziKIc7aTUQNf3XmarmFFG0NVpq23dLKG34bEz5uNjjM76t8JiASlI4ZzzpEGnfzTb7gJwWK6scwSsKSolRTwqhgEA/WB7ynyAMvPFYunSF6jqgJsCzBQT8Z90ayuoZGDKeBBBB9xEthcVIoqnb05vdFdZF1XYejZsRqxD8x7FK/uvdh752eHwVSkoSilCgg4BVJA+A0iZ8ZnOGosEq16VNjwV3VT6EzdVgRcbg7i0hOc5byJwhGO0SIq5ViH9rGVF/6aU1+9gxmnX6HpU+kxeOb3Ymog9KZUScxuOpUV1VaiU18XYKPUz3BY6lXXXSqJUXxRgw+6RzLklhHK1+rXAv7RxDftYiq38RM6vBYRKNNadNQqINKqOAAnxiswo0japVpobXszKpt47nhNkGHKTW4SWdj2IiRJCIiAIiIAiIgCIiAIiIAiIgCVN13ZxUU0sKpIQ0zVqAfX72lVPiNmNvdLZnHdYvQ79I01amQtekDovsrK1rqx5bgWPKW0ZRU05FVZNwaRD5J1V0aL0K3bszU2VyNKaDbey7XA87zB1vdJ6lIrgqLFS66qpU2bS1wqgjcXsxPu85CdE+l+Ly2uuExgbsrhCr+1TubAq31k8uHhNbp0b52NXs9rhh/dvS/MzTGEnUzPfbKM7lHp4htvhk/wBHuqZQtKpXrMtQMtQoiroGlg2k3Fydt5E9YCj9N0thxofxy6pRvWjr/So7O/aaaWi1r6rnTa+3G3GQozlUm9XkyVaCpwWPM67rtAOEo8/nv9DT6y7OfkOQ0qy2DCkFp/tuxVfxv8JX/Stc3FJfl5q9nr7uvsLarHh2e/C/GT/SIn/8/g7cNaX/AM/87SfTSjGOc7nx1Pmk15Ef0X6DNmOGrYt6rCoWbRex1sN2NQnc3O20nupbOn+dwbk6UHaUwT7G9nUeAvY2850vVZb9GUv2qn/seV51dE/pDEaf7Kv+ItEnrU0+3AUdDi135FOm+f5mwZyKShilt9NJGCjTfYMxKm/n5RlwfJM2FEOWpsyK3LXSq7KzAbalY8f1T4zb6iLdvW/7ZLfvb/ymHrb/AOJ07ceyp+ut7SefndPtgg1iHU75Prr3UHE0rgf0Zv42l1UfZHuH4SlevP8ApFL/ALU/xNLqo+yPcJmq/hw+pop/iSPuIiZy8REQBERAEREAREQBERAEREATkulPTuhl9dKFRHYtT7QlNJ0gsVAIJB3sfSdbI/M8kw2Kt29ClVsLAuisQONgSNhJRcc/MRknjYpfpLmZzzH0kw9Jl2Cb21aQ12drcFAO0muuDo+6OmNpglQgSqRxUpfQx8t7X5WEtHLcpoYYaaFGnSB4hFVb++w3m2ygggi4OxB4GXdfElpWyKehlPL3ZW/R/rUp1FpU61Kp2rMtMsukoSzBdV73G54Tn+sD/jdL/A/jloDolgA4qDB4cODcHskuCDcEbcbzZxWQ4WrUFWph6L1Bazsil+77PeIvtCqwjLMUfXSlKOGzi+uz+iUf+t/oafOHyZsZkFKkgu4ph0HiyMWA+NrTvMxyyjiFC1qVOqoNwHUMAfEAjjMuEwqUUFOmioiiyqoAUDyA4SKq4ikuzySdPMm33WCleh/TwYHCVcM1N2dSxpeAZuIqc0s1zJnqWydz2uLcHS47NCfrb3qMPEXsPhLBxvRnBVn7SrhaLv8AaampPxNt5KU6YUBVAAGwA2AHkOUlOsmnpXPJGFFprL44KKynEHIczdaiMadmTYbmkzBkZfHTpA9ZlwjPnWbiqqEUldGa/wBWnR7wB/WZuXnLkzTJ8PigFr0adUA3AdQ1j5XG0+8tyyjhl0UaVOkvgihR8bcZL4hc43xgj0HxnbOSoOvJb4qiOZwxHq7fnOxyjrLwterToLTranYICVFrn48Np1OY5HhsQwath6VVgNINRFYgXvYEjYXmCh0XwNNg6YTDqym6stJAQRwIIG0h1IOCi1wSVOSm5J8kvERKC8REQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREARMWJxSUhqqOqLwuzBR6mYKeaUWc0+0XWLWBYXa6hwVF7sLEbiAbkTSxWbUKSB2qIFOix1CxFVgiG9+BJG8+KWd4ZlLCtTsrFCS6gXBI5nnY28bQCQiar5jRBINWmCBqN3XZTuCd9hbnMa5vQLBRVpkspde8tioJBIN97WPoYBvRNT9J0NHadtS0Xtq1rpv4ar2vPqhj6bkqGFwxUAkd4hQx0+IswgGzE13x1JWKGogcDUVLKGAAuSRe4Ft7zGc1w+kP21LQTpDa10kgEkA3sTYHbygG5EwYfGU6lwlRH0+1pYNb32O0zwBEj6ebo/aBFdzTYIQoG5Iv3SSAQPG/KY6ueIKa1QlRkba4C91tfZ6SCwOrVtYXgEpE0EzZC+gBuLBTYWZqfthd7kix5DhPj9MpoVwrku7U1Sw16k16ha9ttDc+UAkomhRzVHamAGtVXWjWGnYXIO9w1uVp8PnKKXDq6FV12YDvLqC3WxPMgb24iASUTXwOMWspIBFmKsGtcMOI2JB48jNiAIiIAiIgCIiAIiIBpZrgjWUBWVWBuGKsbGxFxpdSDv4zXp5QRuamol6bliu57JUXffnpJ8tUlYgHPp0ecIqdsvcSklP5s7fJ6i1F1d/vX0gG1p91sidv61dnd1Bptb525cNaqL7naxFhtvJ2IBFLk9kqICnfCAXQ6RoVV4BwSO7e1xaYHyJ2TQ1fVem9NyUJJDsWXTd9tNwO9quBv4ybE9gEKuTVA3adqna9oahPZns96a0rBO0uNlBvq43n3RydqdWpWSoA1X2tSah7Kgae8CN1ud97+QMl4gEPiMmZhXXtAEr3LDQSwYoqXDarae6DYjx3n1RyhtQqO6s3amq1k0r9CaIABY22IN7m8lTPYBGZRlPycINWrRQp0eFr9mCNXE2vfhN5aAAYC/eJJ3N7txseUyxAIFcgamtQUK5QuEUFw1TSqCxA74JJHO+03Fys6aCll00m1FUQqrFQQmxYkWJB4m5AklEAiRk/z/AG2pBbUUAQizOLEuddm+AWYaOS1lVfnqfaJWesjCkwX53tNSspqksPnG31DgJORAIdMoqIcPoqoEorYhqZZnuLMdQqALceRmI5JVYVu0rIxq8GFJgQoa6qb1CGQC4IAF7k85OxANHKMv7BGW6nUxeyLoQXA2VbnSNr8eZm9EQBERAEREA//Z" />
+
+                            }
+                            else
+                            {
+                                <img src="@uc.UserOrganization.LogoLocation" />
+                            }*@
+                        </a>
+                    </div>
+                    <div class="site-heading col-sm-10 col-md-8">
+                        <h2>Point Of Sales </h2> @*<h3>@uc.UserOrganization.OrganizationName </h3>*@
+
+                    </div>
+                    <ul class="nav text-right col-sm-12 col-md-2">
+                        <li class="header-date"><i class="fa fa-calendar-o"></i> @POSBLL.CommonService.GetCurrentNepaliDate(DateTime.Now)</li>
+                        <li class="menu-dropdown">
+                            <a href="#" id="setting-menu" data-toggle="dropdown" title="head menu"><i class="fa fa-user" aria-hidden="true"></i>Hello, @WebSecurity.CurrentUserName.ToUpper()<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu dropdown-close" id="setting-menu">
+                                <li><a href="@Url.Action("Manage", "Account")"><i class="fa fa-key" title="Change Password"></i> Change Password</a></li>
+                                <li><a href="~/Account/LogOff"><i class="fa fa-power-off" title="Logout"></i> Logout</a></li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    @*<div id="header" class="clearfix">
+          
+            <div class="col-md-12 col-sm-12">
+                <a href="#" id="loginButton" title="head menu"><i class="fa fa-bars"></i></a>
+                <div id="loginBox">
+                    <nav class="navbar">
+                        <ul class="nav text-right">
+                            <li><i class="fa fa-calendar-o"></i> @DateTime.Now.ToString("yyyy/MM/dd")</li>
+                            <li>Hello : @WebSecurity.CurrentUserName.ToUpper()</li>
+                            <li><a href="@Url.Action("Manage", "Account")"><i class="fa fa-key" title="Change Password"></i>Change Password</a></li>
+                            <li><a href="~/Account/LogOff"><i class="fa fa-power-off" title="Logout"></i>Logout</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>*@
+
+    <div id="content-wrap" class="clearfix d-menu">
+        <div class="left-menu">
+            <div class="logo">
+                <a href="@Url.Action("Index", "Home")">
+                </a>
+            </div>
+            <div class="nav-side-menu">
+                <div class="brand"><span>Menu</span><i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i></div>
+
+                <div class="menu-list">
+                    <ul id="menu-content" class="menu-content navbar-collapse sidebar-navbar-collapse collapse" aria-expanded="false">
+                        <li data-toggle="collapse" data-target="#set-up" class="nav-list collapsed">
+                            <a href="#"><i class="fa fa-cogs"></i>Master Setup <span class="arrow"></span></a>
+                            <ul class="sub-menu collapse" id="set-up">
+                                <li><a href="~/User/UserLists">Users </a></li>
+                                <li><a href="~/Setup/UserRolesIndex">User Roles </a></li>
+                                <li><a href="~/Party/PartyIndex">Parties </a></li>
+                                <li><a href="~/Goods/Index">Goods </a></li>
+                                <li><a href="~/Setup/ConfigChoiceCategoryList">Config Choice Category </a></li>
+                                @*<li><a href="~/Setup/ProvinceIndex">Province Index</a></li>
+                    <li><a href="~/Setup/DistrictIndex">District Index</a></li>
+                    <li><a href="~/Setup/MunicipalityVDCIndex">Municipality Index</a></li>
+                    <li><a href="~/Setup/AccountTypeIndex">Account Type</a></li>
+                    <li><a href="~/Setup/AccountSubTypeIndex">Account Sub Type</a></li>
+                    <li><a href="~/Setup/AccountHeadIndex">Account Head</a></li>
+                    <li><a href="~/Setup/AccountSubHeadIndex">Account SubHead</a></li>
+                    <li><a href="~/Setup/ProgrammeIndex">Programme</a></li>
+                    <li><a href="~/Setup/ProgrammeFundAllocationIndex">Program Fund Allocation</a></li>
+                    <li><a href="~/Setup/StudentProfileIndex">Student Profile</a></li>
+                    <li><a href="~/Setup/GradeIndex">Grade</a></li>
+                    <li><a href="~/Setup/SectionIndex">Section</a></li>
+                    <li><a href="~/Setup/GradeSectionClassIndex">Grade Section Class</a></li>*@
+                            </ul>
+                        </li>
+                        <li data-toggle="collapse" data-target="#miscellaneous" class="nav-list collapsed">
+                            <a href="#"><i class="fa fa-envelope"></i>Transations <span class="arrow"></span></a>
+                            <ul class="sub-menu collapse" id="miscellaneous">
+                                <li><a href="~/Transactions/Index">Transactions </a></li>
+                                <li><a href="~/Transactions/TransactionsLedger">Ledgers </a></li>
+                                <li><a href="~/Goods/StockLedger">Stock Ledgers </a></li>
+                            </ul>
+                        </li>
+
+                        <li data-toggle="collapse" data-target="#bankTransaction" class="nav-list collapsed">
+                            <a href="#"><i class="fa fa-calculator"></i>Bank Transactions<span class="arrow"></span></a>
+                            <ul class="sub-menu collapse" id="bankTransaction">
+                                <li><a href="~/BankInformation/BankInformationIndex">Bank Information</a></li>
+                                <li><a href="~/BankInformation/BankTransactionIndex">Transactions</a></li>
+
+
+                            </ul>
+                        </li>
+
+                        <li data-toggle="collapse" data-target="#cashflow" class="nav-list collapsed">
+                            <a href="#"><i class="fa fa-calculator"></i>Cash Book<span class="arrow"></span></a>
+                            <ul class="sub-menu collapse" id="cashflow">
+                                <li><a href="~/CashBook/CashBookIndex">Cash Flow</a></li>
+
+
+
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-container">
+            @RenderSection("featured", required: false)
+            <section class="main-content clearfix">
+                @RenderBody()
+            </section>
+        </div>
+
+    </div>
+
+    @*<div id="content-wrap" class="clearfix">
+        <div class="left-menu">
+            <div class="logo">
+                <a href="@Url.Action("Index", "Home")">
+                </a>
+            </div>
+            <div class="nav-side-menu">
+                <div class="brand">Menu</div>
+                <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+                <div class="menu-list">
+                    <ul id="menu-content" class="menu-content navbar-collapse sidebar-navbar-collapse collapse" aria-expanded="false">
+                        <li data-toggle="collapse" data-target="#set-up" class="nav-list collapsed">
+                            <a href="#"><i class="fa fa-cogs"></i>Master Setup <span class="arrow"></span></a>
+                            <ul class="sub-menu collapse" id="set-up">
+                                <li><a href="~/User/UserLists">Users </a></li>
+                                <li><a href="~/Setup/UserRolesIndex">User Roles </a></li>
+                                <li><a href="~/Party/PartyIndex">Parties </a></li>
+                                <li><a href="~/Goods/Index">Goods </a></li>
+                                <li><a href="~/Setup/ConfigChoiceCategoryList">Config Choice Category </a></li>
+                                @*<li><a href="~/Setup/ProvinceIndex">Province Index</a></li>
+                                <li><a href="~/Setup/DistrictIndex">District Index</a></li>
+                                <li><a href="~/Setup/MunicipalityVDCIndex">Municipality Index</a></li>
+                                <li><a href="~/Setup/AccountTypeIndex">Account Type</a></li>
+                                <li><a href="~/Setup/AccountSubTypeIndex">Account Sub Type</a></li>
+                                <li><a href="~/Setup/AccountHeadIndex">Account Head</a></li>
+                                <li><a href="~/Setup/AccountSubHeadIndex">Account SubHead</a></li>
+                                <li><a href="~/Setup/ProgrammeIndex">Programme</a></li>
+                                <li><a href="~/Setup/ProgrammeFundAllocationIndex">Program Fund Allocation</a></li>
+                                <li><a href="~/Setup/StudentProfileIndex">Student Profile</a></li>
+                                <li><a href="~/Setup/GradeIndex">Grade</a></li>
+                                <li><a href="~/Setup/SectionIndex">Section</a></li>
+                                <li><a href="~/Setup/GradeSectionClassIndex">Grade Section Class</a></li>
+                            </ul>
+                        </li>
+                        <li data-toggle="collapse" data-target="#miscellaneous" class="nav-list collapsed">
+                            <a href="#"><i class="fa fa-envelope"></i>Transations <span class="arrow"></span></a>
+                            <ul class="sub-menu collapse" id="miscellaneous">
+                                <li><a href="~/Transactions/Index">Transactions </a></li>
+                                <li><a href="~/Transactions/TransactionsLedger">Ledgers </a></li>
+                                <li><a href="~/Goods/StockLedger">Stock Ledgers </a></li>
+                            </ul>
+                        </li>
+
+                        <li data-toggle="collapse" data-target="#bankTransaction" class="nav-list collapsed">
+                            <a href="#"><i class="fa fa-calculator"></i>Bank Transactions<span class="arrow"></span></a>
+                            <ul class="sub-menu collapse" id="bankTransaction">
+                                <li><a href="~/BankInformation/BankInformationIndex">Bank Information</a></li>
+                                <li><a href="~/BankInformation/BankTransactionIndex">Transactions</a></li>
+
+
+                            </ul>
+                        </li>
+
+                        <li data-toggle="collapse" data-target="#cashflow" class="nav-list collapsed">
+                            <a href="#"><i class="fa fa-calculator"></i>Cash Book<span class="arrow"></span></a>
+                            <ul class="sub-menu collapse" id="cashflow">
+                                <li><a href="~/CashBook/CashBookIndex">Cash Flow</a></li>
+                                
+
+
+                            </ul>
+                        </li>
+
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-container">
+            @RenderSection("featured", required: false)
+            <section class="main-content clearfix">
+                @RenderBody()
+            </section>
+        </div>
+
+    </div>*@
+
+    <div class="site-footer">
+        <p>All right reserved. Copyright © @System.DateTime.Now.Year - Mining Infosys</p>
+    </div>
+
+    <script>
+        $(function () {
+            $('.Date').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: "yy-mm-dd"
+            });
+            $('.nepali-calendar').nepaliDatePicker({
+                npdMonth: true,
+                npdYear: true,
+            });
+            var button = $('#loginButton');
+            var box = $('#loginBox');
+            var form = $('#loginForm');
+            button.removeAttr('href');
+            button.mouseup(function (login) {
+                box.toggle();
+                button.toggleClass('active');
+            });
+            form.mouseup(function () {
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>

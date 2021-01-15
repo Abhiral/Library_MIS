@@ -1,0 +1,208 @@
+﻿@model POSModel.StudentProfileModel
+@using POSBLL
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">Student Profile </h4>
+        </div>
+        @using (Html.BeginForm("CreateStudentProfile", "SetUp", FormMethod.Post, new { id = "student-form" }))
+        {
+            <div class="modal-body">
+                <div class="content-box">
+                    @Html.HiddenFor(model => model.ProfileId)
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row">
+
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.FirstName)
+                                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.FirstName)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+
+                                    @Html.LabelFor(model => model.LastName)
+                                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.LastName)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.Guardian)
+                                    @Html.TextBoxFor(model => model.Guardian, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Guardian)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.PhoneNumber)
+                                    @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PhoneNumber)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.MobileNumber)
+                                    @Html.TextBoxFor(model => model.MobileNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.MobileNumber)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.AdmissionDate)
+                                    @Html.TextBoxFor(model => model.AdmissionDate, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.AdmissionDate)
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.PermanentMunicipalityId)
+                                    @Html.TextBoxFor(model => model.PermanentMunicipalityId, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PermanentMunicipalityId)
+                                </div>
+                            </div><div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.PermWard)
+                                    @Html.TextBoxFor(model => model.PermWard, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PermWard)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.TemporaryMunicipalityId)
+                                    @Html.TextBoxFor(model => model.TemporaryMunicipalityId, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.TemporaryMunicipalityId)
+                                </div>
+                            </div><div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.TempWard)
+                                    @Html.TextBoxFor(model => model.TempWard, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.TempWard)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.Remarks)
+                                    @Html.TextBoxFor(model => model.Remarks, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Remarks)
+                                </div>
+                            </div><div class="col-md-12">
+                                      <div class="form-grop_padding">
+                                          @Html.LabelFor(model => model.IsDropped)
+                                          @Html.CheckBoxFor(model => model.IsDropped, new { @class = "form-control" })
+                                          @Html.ValidationMessageFor(model => model.IsDropped)
+                                      </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.DropedRemarks)
+                                    @Html.TextBoxFor(model => model.DropedRemarks, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DropedRemarks)
+                                </div>
+                            </div><div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.Classes)
+                                    @Html.TextBoxFor(model => model.Classes, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Classes)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.Status)
+                                    @Html.CheckBoxFor(model => model.Status, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Status)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="btn-groups modal-footer">
+                @if (Model.ProfileId == 0)
+                {
+
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save Change</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $.validator.unobtrusive.parse('#student-form');
+        $('#student-form').ajaxForm({
+
+            beforeSubmit: function () {
+                $('#student-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#student-form'));
+                if ($("#student-form").valid()) {
+                    WorkForce.loader.show();
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                if (result.Success) {
+                    WorkForce.loader.hide();
+                    ShowMessage("success", "success", result.Msg);
+                    $('#pop-up-div').modal('hide');
+                    location.href = '@Url.Content("~/SetUp/StudentProfileIndex")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+
+
+            },
+            error: function () {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in calling ajax!!");
+            }
+
+        });
+    });
+</script>

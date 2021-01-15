@@ -1,0 +1,157 @@
+﻿@model POSModel.GoodsModel
+@{
+    ViewBag.Title = "Sub Goods";
+}
+
+<div class="title clearfix">
+    <h3>Sub Goods</h3>
+</div>
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+<div class="row">
+    <div class="col-md-12">
+
+        <fieldset id="item-types">
+            <legend>Item Name</legend>
+            <div class="row">
+                <div class="col-md-6">
+
+                    <span>@Model.GoodsName</span>
+                </div>
+                <div class="col-md-6">
+
+                    <span>@Model.Manufacturer</span>
+                </div>
+                <div class="col-md-12">
+
+                    <span>@Model.Remarks</span>
+                </div>
+            </div>
+        </fieldset>
+        <button id="AddEditButton" class="btn btn-add pull-right"><i class="fa fa-plus"></i>Add New</button>
+        <div class="clearfix"></div>
+
+    </div>
+    <div class="col-md-12">
+        @using (Html.BeginForm("CreateSubGoods", "Goods", FormMethod.Post, new { id = "goods-entry-form" }))
+        {
+
+
+            <fieldset>
+                <legend>Sub-Items </legend>
+                @Html.HiddenFor(x => x.GoodsId)
+                <div class="content-table">
+                    <div id="items-table-div" style="overflow: auto; max-height: 300px">
+                        <div id="items-list" class="row" style="font-weight: 600;">
+                            <div class="col-md-1">
+                                SN.
+                            </div>
+                            <div class="col-md-2">
+                                Goods Name
+                            </div>
+                            <div class="col-md-1">
+                                Unit
+                            </div>
+                            <div class="col-md-1">
+                                Default Rate
+                            </div>
+                            <div class="col-md-1">
+                               Discount (%)
+                            </div>
+                            <div class="col-md-2">
+                                Manufacturer
+                            </div>
+                            <div class="col-md-1">
+                                IsActive
+                            </div>
+                            <div class="col-md-2">
+                                Remarks
+                            </div>
+                            <div class="col-md-1">
+                                Actions
+                            </div>
+                        </div>
+                        @if (Model.Goods != null)
+                        {
+                            int counter = 1;
+                            foreach (var item in Model.Goods)
+                            {
+                                ViewBag.Counter = counter;
+                                @Html.Partial("_SubGoodsView", item)
+                                counter++;
+
+                            }
+                        }
+                    </div>
+                </div>
+            </fieldset>
+
+
+            <div class="col-md-12 text-right">
+                <button id="submit-button" type="button" class="btn btn-success btn-save"><i class="fa fa-save"></i>Save</button>
+            </div>
+        }
+    </div>
+
+</div>
+
+<script>
+    $(function () {
+        $('#goods-entry-form').ajaxForm({
+
+            beforeSubmit: function () {
+                $('#goods-entry-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#goods-entry-form'));
+                if ($("#goods-entry-form").valid()) {
+                    WorkForce.loader.show();
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                if (result.Success) {
+                    location.href = '@Url.Content("~/Goods/Index")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+            },
+            error: function (result) {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in Saving data!!");
+                var responseText = JSON.parse(result.responseText);
+                if (responseText.IsSessionOut) {
+                    location.href = responseText.Redirect;
+                }
+            }
+        });
+
+    });
+
+
+    $('#submit-button').click(function () {
+        $('#goods-entry-form').submit();
+    });
+    $('#AddEditButton').on('click', function () {
+        EditGoods('@Model.GoodsId');
+    });
+
+    function EditGoods(goodsId) {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/Goods/ReturnCreateGoodsView")',
+            data:{goodsId:goodsId},
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+
+</script>

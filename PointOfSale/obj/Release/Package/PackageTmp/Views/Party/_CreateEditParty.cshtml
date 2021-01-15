@@ -1,0 +1,179 @@
+﻿@model POSModel.PartyOrganizationModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">Party </h4>
+        </div>
+        @using (Html.BeginForm("CreateEditParty", "Party", FormMethod.Post, new { id = "organization-form" }))
+        {
+            <div class="modal-body">
+                <div class="content-box">
+
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row equal-h">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.HiddenFor(model => model.PartyId)
+
+                                    @Html.LabelFor(model => model.PartyTypeId)
+                                    @Html.DropDownListFor(model => model.PartyTypeId, new SelectList(POSBLL.CommonService.GetConfigChoices("Party Type"), "SelectId", "SelectText"), "-- Select --", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PartyTypeId)
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.HiddenFor(model => model.PartyId)
+
+                                    @Html.LabelFor(model => model.PartyName)
+                                    @Html.TextBoxFor(model => model.PartyName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PartyName)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.PanNumber)
+                                    @Html.TextBoxFor(model => model.PanNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PanNumber)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.ContactPerson)
+                                    @Html.TextBoxFor(model => model.ContactPerson, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ContactPerson)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.PhoneNumber)
+                                    @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PhoneNumber)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.MobileNumber)
+                                    @Html.TextBoxFor(model => model.MobileNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.MobileNumber)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.Address)
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Address)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.BankName)
+                                    @Html.TextBoxFor(model => model.BankName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.BankName)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.BankAccountNumber)
+                                    @Html.TextBoxFor(model => model.BankAccountNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.BankAccountNumber)
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    <div class="checkbox-sty-2">
+                                        <div>
+
+                                            @Html.CheckBoxFor(model => model.IsActive, new { @class = "form-control" })
+                                            @Html.LabelFor(model => model.IsActive)
+                                        </div>
+                                    </div>
+
+                                    @Html.ValidationMessageFor(model => model.IsActive)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.Remarks)
+                                    @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Remarks)
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="btn-groups modal-footer">
+                @if (Model.PartyId == 0)
+                {
+
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save Change</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+<script>
+    $(function () {
+        $.validator.unobtrusive.parse('#organization-form');
+        $('#organization-form').ajaxForm({
+            beforeSubmit: function () {
+                $('#organization-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#organization-form'));
+                if ($("#organization-form").valid()) {
+                    WorkForce.loader.show();
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                if (result.Success) {
+                    WorkForce.loader.hide();
+                    ShowMessage("success", "success", result.Msg);
+                    $('#pop-up-div').modal('hide');
+                    location.href = '@Url.Content("~/Party/PartyIndex")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+
+
+            },
+            error: function () {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in calling ajax!!");
+            }
+
+        });
+    });
+
+
+</script>

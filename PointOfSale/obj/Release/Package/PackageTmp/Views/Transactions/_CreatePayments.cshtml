@@ -1,0 +1,193 @@
+﻿@model POSModel.TransactionPaymentModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">Payments </h4>
+        </div>
+        @using (Html.BeginForm("CreateEditPayments", "Transactions", FormMethod.Post, new { id = "payment-entry-form" }))
+        {
+            <div class="modal-body">
+                <div class="content-box">
+                    <div class="form-group">
+                        @Html.ValidationSummary(true)
+                        <div class="row equal-h">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(x => x.PaymentDateNepali)
+                                    @Html.TextBoxFor(x => x.PaymentDateNepali, new { @class = "form-control nepali-calendar" })
+                                    @Html.ValidationMessageFor(x => x.PaymentDateNepali)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(x => x.PaymentAmount)
+                                    @Html.HiddenFor(model => model.PaymentId)
+                                    @Html.HiddenFor(model => model.TransactionMasterId)
+                                    @Html.TextBoxFor(x => x.PaymentAmount, new { @Value = String.Format("{0:0.00}", Model.PaymentAmount), @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.PaymentAmount)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(x => x.ReceiptNumber)
+                                    @Html.TextBoxFor(x => x.ReceiptNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.ReceiptNumber)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6" id="Payment_type">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(x => x.PaymentTypeId)
+                                    @Html.DropDownListFor(x => x.PaymentTypeId, new SelectList(POSBLL.CommonService.GetConfigChoices("Payment Type"), "SelectId", "SelectText"), "---Select---", new { @class = "form-control", @id = "dropdown" })
+                                    @Html.ValidationMessageFor(x => x.PaymentTypeId)
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6" id="bank-div" style="display:none">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.BankName)
+                                    @Html.DropDownListFor(model => model.BankInformationId, new SelectList(POSBLL.CommonService.GetBankList(), "Id", "BankName"),
+                                    "--select--", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.BankInformationId)
+                                </div>
+
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-grop_padding">
+                                    <div class="checkbox-sty-2">
+                                        <div>
+
+                                            @Html.CheckBoxFor(model => model.IsActive, new { @class = "form-control" })
+                                            @Html.LabelFor(model => model.IsActive)
+                                        </div>
+                                    </div>
+
+                                    @Html.ValidationMessageFor(model => model.IsActive)
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <div class="form-grop_padding">
+                                    <label>Remarks</label>
+                                    @Html.TextAreaFor(x => x.Remarks, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.Remarks)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-groups modal-footer">
+                @if (Model.PaymentId == 0)
+                {
+
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save Change</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<div id="billPrint"></div>
+<script>
+
+                $("#Payment_type").on("change", function () {
+                    BankDivShowHide();
+                });
+                function BankDivShowHide() {
+                    var paymentType = $("#Payment_type option:selected").text();
+
+                    if (paymentType == "Cheque") {
+                        $("#bank-div").css("display", "block");
+                    }
+                    else {
+                        $("#bank-div").css("display", "none");
+                    }
+
+                }
+
+
+                $(function () {
+                    $('.Date').datepicker({
+                        changeMonth: true,
+                        changeYear: true,
+                        dateFormat: "yy-mm-dd"
+                    });
+
+
+                    $('.nepali-calendar').nepaliDatePicker({
+                        npdMonth: true,
+                        npdYear: true,
+                    });
+                    $('#payment-entry-form').ajaxForm({
+                        beforeSubmit: function () {
+                            $('#payment-entry-form').removeData("validator").removeData("unobtrusiveValidation");
+                            $.validator.unobtrusive.parse($('#payment-entry-form'));
+                            if ($("#payment-entry-form").valid()) {
+
+                            } else {
+                                return false;
+                            }
+                        },
+                        success: function (result) {
+
+                            if (result) {
+                                WorkForce.loader.hide();
+                                ShowMessage("success", "success", result.Msg);
+                                $('#pop-up-div').modal('hide');
+
+                                if (result.Success) {
+                                    location.href = '@Url.Content("~/Transactions/ViewPayments?transactionId="+Model.TransactionMasterId)';
+                                }
+                                else {
+                                    $('#billPrint').html(result);
+                                    printBill();
+                                    location.href = '@Url.Content("~/Transactions/ViewPayments?transactionId="+Model.TransactionMasterId)';
+                                }
+                            }
+
+                            else {
+                                WorkForce.loader.hide();
+                                ShowMessage("error", "error", result.Msg);
+                            }
+
+
+                        },
+                        error: function () {
+                            WorkForce.loader.hide();
+                            ShowMessage("error", "error", "error in calling ajax!!");
+                        },
+
+
+
+                    });
+                });
+
+
+                function printBill() {
+                    var printContent = document.getElementById("billPrint");
+                    var num;
+                    var uniqueName = new Date();
+                    var windowName = 'Print' + uniqueName.getTime();
+                    var printing = window.open(num, windowName);
+                    printing.document.write(printContent.outerHTML);
+                    printing.document.close();
+                    printing.focus();
+                    printing.print();
+                    printing.close();
+
+                }
+
+</script>

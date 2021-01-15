@@ -1,0 +1,186 @@
+﻿
+
+@model POSModel.AccountHeadModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">Account Head </h4>
+        </div>
+        @using (Html.BeginForm("CreateEditAccountHead", "SetUp", FormMethod.Post, new { id = "account-head-form" }))
+        {
+            <div class="modal-body">
+                <div class="content-box">
+                    @Html.HiddenFor(model => model.AccountHeadID)
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.AccountTypeID)
+                                    @Html.DropDownListFor(model => model.AccountTypeID, ViewBag.AccountTypes as SelectList,
+  "-- Select --", new { @class = "form-control", onchange = "GetAccountTypeListByAccountTypeID" })
+                                    @Html.ValidationMessageFor(model => model.AccountTypeID)
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.AccountSubTypeID)
+                                    @Html.DropDownListFor(model => model.AccountSubTypeID, ViewBag.AccountSubTypes as SelectList,
+  "-- Select --", new { @class = "form-control", @onchange = "GetAccountSubTypeListByAccountSubTypeID" })
+                                    @Html.ValidationMessageFor(model => model.AccountSubTypeID)
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.AccountHeadNameNepali)
+                                    @Html.TextBoxFor(model => model.AccountHeadNameNepali, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.AccountHeadNameNepali)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+
+                                    @Html.LabelFor(model => model.AccountHeadNameEnglish)
+                                    @Html.TextBoxFor(model => model.AccountHeadNameEnglish, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.AccountHeadNameEnglish)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.AccountHeadCode)
+                                    @Html.TextBoxFor(model => model.AccountHeadCode, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.AccountHeadCode)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+                                    @Html.LabelFor(model => model.Status)
+                                    @Html.CheckBoxFor(model => model.Status, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Status)
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-grop_padding">
+
+
+                                    @Html.LabelFor(model => model.OrganisationID)
+                                    @Html.TextBoxFor(model => model.OrganisationID, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.OrganisationID)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="btn-groups modal-footer">
+                @if (Model.AccountTypeID == 0)
+                {
+
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save Change</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $.validator.unobtrusive.parse('#account-head-form');
+        $('#account-head-form').ajaxForm({
+
+            beforeSubmit: function () {
+                $('#account-head-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#account-head-form'));
+                if ($("#account-head-form").valid()) {
+                    WorkForce.loader.show();
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                if (result.Success) {
+                    debugger
+                    WorkForce.loader.hide();
+                    ShowMessage("success", "success", result.Msg);
+                    $('#pop-up-div').modal('hide');
+                    location.href = '@Url.Content("~/SetUp/AccountHeadIndex")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+
+
+            },
+            error: function () {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in calling ajax!!");
+            }
+
+        });
+    });
+
+    $('#AccountTypeID').on('change', function () {
+        var accountTypeId = $('#AccountTypeID option:selected').val();
+        if (accountTypeId != "") {
+            WorkForce.loader.show();
+            $.ajax({
+                url: '@Url.Content("~/Setup/GetAccountWiseSubType")',
+                data: { accountTypeId: accountTypeId },
+                success: function (result) {
+                    if (result) {
+                        var optionList = "<option>--Select--</option>";
+                        $.each(result, function (accountSubTypes, accountSubType) {
+                            optionList += "<option value=" + accountSubType.SelectId + ">" + accountSubType.SelectText + "</option>";
+                        });
+
+                        $('#AccountSubTypeID').html(optionList);
+                    }
+                    WorkForce.loader.hide();
+                },
+                error: function (err) {
+                    if (err.statusText == 'Unauthorized') {
+                        ShowMessage('error', 'error', 'Please Login to Continue !!');
+                    } else {
+                        ShowMessage('error', 'error', 'Error !!');
+                    }
+                    WorkForce.loader.hide();
+                }
+            });
+
+        } else {
+            var optionList = "<option>--Select--</option>";
+            $('#AccountSubTypeID').html(optionList);
+        }
+    });
+</script>

@@ -1,0 +1,164 @@
+﻿@model POSModel.PartyOrganizationModel
+
+@{
+    ViewBag.Title = "Index";
+    int counter = 1;
+
+}
+<div class="title clearfix">
+    <h3>Party</h3>
+</div>
+<button id="AddEditButton" class="btn btn-add pull-right"><i class="fa fa-plus"></i>Add New</button>
+<div class="clearfix"></div>
+
+<div id="pop-up-div" class="modal fade" role="dialog">
+</div>
+@*<div class="search-sec, search-sec3">
+    <div class="row">
+
+
+        <div class="col-lg-3 col-md-3  col-sm-6 col-xs-6 form-group">
+            <label>Active Status</label>
+            @Html.DropDownListFor(model => model.IsActive,new SelectList(POSBLL.CommonService.GetTrueFalse(),"Value","Text"),"-Select-" ,new { @class = "form-control" })
+        </div>
+
+        <div class="col-lg-3 col-md-2  col-sm-6 col-xs-6 form-group">
+            <button id="Search-Records" class="btn btn-add">Search</button>
+        </div>
+
+    </div>
+
+</div>*@
+
+<div class="search-sec search-sty-1 search-sec3">
+    <div class="select-sty">
+
+
+        <div class="item form-group">
+            <label>Active Status</label>
+            @Html.DropDownListFor(model => model.IsActive, new SelectList(POSBLL.CommonService.GetTrueFalse(), "Value", "Text"), "-Select-", new { @class = "form-control" })
+        </div>
+
+        <div class="item form-group">
+            <button id="Search-Records" class="btn btn-search">Search</button>
+        </div>
+
+    </div>
+
+</div>
+<div class="content-table">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="width-30">
+                        S.N.
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(x => x.PartyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(x => x.ContactPerson)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(x => x.PhoneNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(x => x.MobileNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(x => x.PanNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(x => x.Address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(x => x.BankName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(x => x.BankAccountNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(x => x.IsActive)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.partyList)
+                {
+                    <tr>
+                        <td>
+                            @counter
+                        </td>
+
+                        <td>
+
+                            <a href="#" onclick="EditOrganizations('@item.PartyId')"><i class="fa fa-edit"></i>@item.PartyName</a>
+
+                        </td>
+                        <td>
+                            @item.ContactPerson
+                        </td>
+                        
+                        <td>
+                            @item.PhoneNumber
+                        </td>
+                        <td>
+                            @item.MobileNumber
+                        </td>
+                        <td>
+                            @item.PanNumber
+                        </td>
+                        <td>
+                            @item.Address
+                        </td>
+                        <td>
+                            @item.BankName
+                        </td>
+                        <td>
+                            @item.BankAccountNumber
+                        </td>
+                        <td>
+                           @Html.CheckBoxFor(x=> item.IsActive)
+                        </td>
+
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+
+
+    $('#AddEditButton').on('click', function () {
+        EditOrganizations();
+    });
+
+    function EditOrganizations(uniqueId) {
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Content("~/Party/CreateEditParty")',
+            data: { partyId: uniqueId },
+            success: function (result) {
+                $('#pop-up-div').html(result).modal({
+                    'show': true,
+                    'backdrop': 'static'
+                })
+
+            },
+            error: function () {
+
+            }
+        });
+    }
+    $('#Search-Records').on('click', function () {
+        // var organizationId = $('#OrganizationId  option:selected').val();
+        var activeType = $('#IsActive').prop('checked');
+        location.href = '@Url.Content("~/Party/PartyIndex?activeType=")' + activeType;
+    });
+</script>
+
+

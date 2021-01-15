@@ -1,0 +1,233 @@
+﻿@model POSModel.ResourceSetupModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" id="closeTop" data-dismiss="modal" aria-hidden="true">&times;</span>
+            <h4 class="modal-title">Resource</h4>
+        </div>
+        @using (Html.BeginForm("CreateResourceSetup", "SetUp", FormMethod.Post, new { id = "CreateResourceSetup-form" }))
+        {
+            <div class="modal-body">
+                <div class="content-box">
+                    @Html.HiddenFor(model => model.ResourceId)
+
+
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row">
+
+                            <div class="checkbox-sty-1 form-group col-md-6">
+                                <div>
+                                    @Html.CheckBoxFor(model => model.IsPublisher, new { @class = "form-control" })
+                                    @Html.LabelFor(model => model.IsPublisher)
+                                </div>
+                            </div>
+
+                            <div class="checkbox-sty-1 form-group col-md-6">
+                                <div>
+                                    @Html.CheckBoxFor(model => model.IsAuthor, new { @class = "form-control" })
+                                    @Html.LabelFor(model => model.IsAuthor)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.ResourceTypeName)
+                                    @Html.DropDownListFor(x => x.ResourceTypeId, ViewBag.ResourceTypeNameList as SelectList, "Choose one", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ResourceTypeId)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.ResourceName)
+                                    @Html.TextBoxFor(model => model.ResourceName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ResourceName)
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6" id="pub-party">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.PublicationName)
+                                    @Html.DropDownListFor(x => x.PublicationId, ViewBag.ResourcePublisherList as SelectList, "Choose one", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PublicationId)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6" id="pub-name" style="display:none">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.PublicationName)
+                                    @Html.TextBoxFor(model => model.PublicationName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PublicationName)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6" id="auth-party">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.AuthorId)
+                                    @Html.DropDownListFor(x => x.AuthorId, ViewBag.ResourceAuthorList as SelectList, "Choose one", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.AuthorId)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6" id="auth-name" style="display:none">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.AuthorName)
+                                    @Html.TextBoxFor(model => model.AuthorName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.AuthorName)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.GradeId)
+                                    @Html.DropDownListFor(x => x.GradeId, ViewBag.ResourceGradeNameList as SelectList, "Choose one", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.GradeId)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.SubjectId)
+                                    @Html.DropDownListFor(x => x.SubjectId, ViewBag.ResourceSubjectList as SelectList, "Choose one", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.SubjectId)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.Remarks)
+                                    @Html.TextBoxFor(model => model.Remarks, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Remarks)
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-grop_padding">
+
+                                    @Html.LabelFor(model => model.IsActive)
+                                    @Html.CheckBoxFor(model => model.IsActive, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.IsActive)
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="btn-groups modal-footer">
+                @if (Model.ResourceId == 0)
+                {
+
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i> Save Change</button>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(function () {
+
+        PublisherLogic();
+        AuthorLogic();
+
+        $('#CreateResourceSetup-form').ajaxForm({
+
+            beforeSubmit: function () {
+                $('#CreateResourceSetup-form').removeData("validator").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse($('#CreateResourceSetup-form'));
+                if ($("#CreateResourceSetup-form").valid()) {
+                    WorkForce.loader.show();
+                } else {
+                    return false;
+                }
+            },
+            success: function (result) {
+                if (result.Success) {
+                    WorkForce.loader.hide();
+                    ShowMessage("success", "success", result.Msg);
+                    $('#pop-up-div').modal('hide');
+                    location.href = '@Url.Content("~/SetUp/ResourceSetupIndex")';
+                } else {
+                    WorkForce.loader.hide();
+                    ShowMessage("error", "error", result.Msg);
+                }
+
+
+            },
+            error: function () {
+                WorkForce.loader.hide();
+                ShowMessage("error", "error", "error in calling ajax!!");
+            }
+
+        });
+    });
+
+    $('#IsPublisher').on('change', function () {
+        PublisherLogic();
+    })
+
+    function PublisherLogic() {
+        var chk = $('#IsPublisher').prop('checked');
+
+        if (chk) {
+            $('#pub-party').css('display', 'block');
+            $('#pub-name').css('display', 'none');
+            $('#PublicationName').prop('disabled', true);
+            $('#PublicationId').removeAttr('disabled', true);
+        }
+        else {
+            $('#pub-party').css('display', 'none');
+            $('#pub-name').css('display', 'block');
+            $('#PublicationName').removeAttr('disabled', true);
+            $('#PublicationId').prop('disabled', true);
+        }
+    }
+
+    $('#IsAuthor').on('change', function () {
+        AuthorLogic();
+    })
+
+    function AuthorLogic() {
+        var chk = $('#IsAuthor').prop('checked');
+
+        if (chk) {
+            $('#auth-party').css('display', 'block');
+            $('#auth-name').css('display', 'none');
+            $('#AuthorName').prop('disabled', true);
+            $('#AuthorId').removeAttr('disabled', true);
+        }
+        else {
+            $('#auth-party').css('display', 'none');
+            $('#auth-name').css('display', 'block');
+            $('#AuthorName').removeAttr('disabled', true);
+            $('#AuthorId').prop('disabled', true);
+        }
+    }
+</script>
